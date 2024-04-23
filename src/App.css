@@ -1,0 +1,52 @@
+.scale-1 {
+    transform: scale(1);
+}
+
+.scale-0 {
+    transform: scale(0);
+}
+
+.card {
+    width: 95%;
+    height:55px;
+    background-color: transparent;
+    position: relative;
+    cursor:pointer;
+    overflow:hidden;
+    border-radius: 7px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.card button {
+    z-index:99;
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    bottom:2%;
+    right:1%;
+    width: 98%;
+    height: 96%;
+    cursor:pointer;
+}
+
+.card::before {
+    content:'';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: rotate 2s linear infinite;
+    width:160%;
+    height:400%;
+    background-image: conic-gradient(#ffe7ab 0deg,#ffe7ab 90deg,transparent 130deg,transparent 180deg,#36ae88 180deg,#36ae88 270deg,transparent 310deg,transparent 360deg);
+    transition: transform 2s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
