@@ -5,7 +5,7 @@ import VerifyAccount from "../molecules/verify-account";
 import NewPassword from "../molecules/forms/create-new-password-form";
 
 const ResetPassword: React.FC = () => {
-  const [currentScreenIndex, setScreenIndex] = useState(2);
+  const [currentScreenIndex, setScreenIndex] = useState(0);
 
   const screens = useMemo(
     () => [<GetOtp />, <VerifyAccount />, <NewPassword />],

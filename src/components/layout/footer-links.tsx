@@ -17,7 +17,11 @@ const FooterLinks: React.FC = () => {
       <Each
         of={Items}
         render={(item: FooterLinkProp) => (
-          <Link className="text-white" key={item.id} to={item.path}>
+          <Link
+            className="text-white hover:underline"
+            key={item.id}
+            to={item.path}
+          >
             {item.title}
           </Link>
         )}
