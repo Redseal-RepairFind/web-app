@@ -16,7 +16,7 @@ const socials = [faFacebook, faInstagram, faLinkedinIn];
 const Footer: React.FC = () => {
   return (
     <div className="w-full py-4 absolute bottom-0 bg-black">
-      <Container className="flex items-center justify-between gap-5 sm:flex-row flex-col">
+      <Container className="flex items-center justify-between gap-2 sm:flex-row flex-col">
         <img src={logo} alt="Logo" />
         <FooterLinks />
         <div className="flex items-center justify-center gap-4">
