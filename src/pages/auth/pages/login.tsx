@@ -1,11 +1,11 @@
 import React from "react";
-import Container from "../../components/global/container";
-import Layout from "../../components/global/layout";
+import Container from "../../../components/global/container";
+import Layout from "../../../components/global/layout";
 
-import LoginBg from "../../images/login.png";
-import logo from "../../images/logo_white.png";
+import LoginBg from "../../../images/login.png";
+import logo from "../../../images/logo_white.png";
 
-import LoginForm from "./login-form";
+import LoginForm from "../molecules/login-form";
 
 const Login: React.FC = () => {
   return (

@@ -14,7 +14,7 @@ const LoginForm = () => {
         onSubmit={handleSubmit(handleLogin)}
       >
         <h1 className="font-semibold text-2xl mb-5">Login</h1>
-        <div className="mb-4">
+        <div className="mb-10">
           <label className="text-sm font-medium">Email / Phone number</label>
           <input
             type="text"
@@ -30,7 +30,7 @@ const LoginForm = () => {
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
           />
         </div>
-        <Link to={"/onboarding"} className="text-xs font-semibold">
+        <Link to={"/reset-password"} className="text-xs font-semibold">
           Forgot Password?
         </Link>
         <button className="border border-black bg-black mt-5 py-3 rounded-md text-white">
