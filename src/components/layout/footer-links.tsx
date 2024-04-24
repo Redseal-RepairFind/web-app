@@ -13,7 +13,7 @@ const Items: FooterLinkProp[] = [
 
 const FooterLinks: React.FC = () => {
   return (
-    <div className="flex items-center w-full justify-center gap-10 flex-wrap sm:mb-0 mb-2">
+    <div className="flex items-center w-[60%] sm:w-full justify-center gap-10 flex-wrap sm:mb-0 mb-2">
       <Each
         of={Items}
         render={(item: FooterLinkProp) => (

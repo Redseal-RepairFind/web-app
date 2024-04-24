@@ -3,10 +3,11 @@ import Container from "../../../components/global/container";
 import Layout from "../../../components/global/layout";
 
 import ForgotPassword from "../../../images/forgot_password.png";
+import logo from "../../../images/logo_white.png";
 
-import GetOtpForm from "./forms/get-otp-form";
+import VerifyAccountForm from "./forms/verify-account-form";
 
-const GetOtp: React.FC = () => {
+const VerifyAccount: React.FC = () => {
   return (
     <Layout>
       <Container className="flex items-center sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
@@ -18,11 +19,11 @@ const GetOtp: React.FC = () => {
               className="w-[60%]"
             />
           </div>
-          <GetOtpForm />
+          <VerifyAccountForm />
         </main>
       </Container>
     </Layout>
   );
 };
 
-export default GetOtp;
+export default VerifyAccount;
