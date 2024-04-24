@@ -1,14 +1,7 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./src/**/*.tsx"], // Add your CSS files here
   theme: {
-    extend: {
-      colors: {
-        customBlue: "#3e4eb1",
-        customPink: "#f02059",
-        paleBlue: "#dbe1eb",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
