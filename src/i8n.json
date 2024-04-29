@@ -1,0 +1,947 @@
+{
+  "select_language": {
+    "en": "Select Language",
+    "fr": "Choisir la langue",
+    "pa": "ਭਾਸ਼ਾ ਚੁਣੋ",
+    "zh": "选择语言",
+    "es": "Seleccione el idioma"
+  },
+  "continue": {
+    "en": "Continue",
+    "fr": "Continuer",
+    "pa": "ਜਾਰੀ ਰੱਖੋ",
+    "zh": "继续",
+    "es": "Continuar"
+  },
+  "welcome_msg": {
+    "en": "Welcome to RepairFind",
+    "fr": "Bienvenue sur RepairFind",
+    "pa": "RepairFind ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ",
+    "zh": "欢迎来到维修查找",
+    "es": "Bienvenido a RepairFind"
+  },
+  "get_started": {
+    "en": "Get Started",
+    "fr": "Commencer",
+    "pa": "ਸ਼ੁਰੂ ਕਰੋ",
+    "zh": "开始使用",
+    "es": "Empezar"
+  },
+  "contractor_onboard_header_one": {
+    "en": "Revolutionizing Home Repairs",
+    "fr": "Révolutionner les réparations domiciliaires",
+    "pa": "ਘਰ ਦੀ ਮੁਰੰਮਤ ਵਿੱਚ ਕ੍ਰਾਂਤੀਕਾਰੀ",
+    "zh": "彻底改变家居维修",
+    "es": "Revolucionando las reparaciones del hogar"
+  },
+  "contractor_onboard_header_two": {
+    "en": "Effortless Connections and Transparent Communication",
+    "fr": "Connexions sans effort et communication transparente",
+    "pa": "ਅਣਥੱਕ ਕਨੈਕਸ਼ਨ ਅਤੇ ਪਾਰਦਰਸ਼ੀ ਸੰਚਾਰ",
+    "zh": "轻松连接和透明通信",
+    "es": "Conexiones sin esfuerzo y comunicación transparente"
+  },
+  "contractor_onboard_header_three": {
+    "en": "Quick and Secure Payments",
+    "fr": "Paiements rapides et sécurisés",
+    "pa": "ਤੇਜ਼ ਅਤੇ ਸੁਰੱਖਿਅਤ ਭੁਗਤਾਨ",
+    "zh": "快速安全的付款",
+    "es": "Pagos rápidos y seguros"
+  },
+  "welcome": {
+    "en": "Welcome",
+    "fr": "Accueillir",
+    "pa": "ਸੁਆਗਤ ਹੈ",
+    "zh": "欢迎",
+    "es": "Bienvenido"
+  },
+  "sign_up": {
+    "en": "Sign Up",
+    "fr": "S'inscrire",
+    "pa": "ਸਾਇਨ ਅਪ",
+    "zh": "报名",
+    "es": "Inscribirse"
+  },
+  "as_an_individual": {
+    "en": "As an Individual",
+    "fr": "En tant que particulier",
+    "pa": "ਇੱਕ ਵਿਅਕਤੀ ਵਜੋਂ",
+    "zh": "作为个人",
+    "es": "Como un individuo"
+  },
+  "sign_up_individual": {
+    "en": "Sign up as an individual",
+    "fr": "S'inscrire en tant que particulier",
+    "pa": "ਇੱਕ ਵਿਅਕਤੀ ਵਜੋਂ ਸਾਈਨ ਅੱਪ ਕਰੋ",
+    "zh": "以个人身份注册",
+    "es": "Regístrese como individuo"
+  },
+  "as_a_company": {
+    "en": "As a Company",
+    "fr": "En tant qu'entreprise",
+    "pa": "ਇੱਕ ਕੰਪਨੀ ਦੇ ਰੂਪ ਵਿੱਚ",
+    "zh": "作为一家公司",
+    "es": "Como empresa"
+  },
+  "sign_up_company": {
+    "en": "Sign up as a Company",
+    "fr": "S'inscrire en tant qu'entreprise",
+    "pa": "ਇੱਕ ਕੰਪਨੀ ਵਜੋਂ ਸਾਈਨ ਅੱਪ ਕਰੋ",
+    "zh": "注册为公司",
+    "es": "Regístrese como empresa"
+  },
+  "as_a_journey_man": {
+    "en": "As an Employee",
+    "fr": "En tant qu'employé",
+    "pa": "ਇੱਕ ਕਰਮਚਾਰੀ ਦੇ ਰੂਪ ਵਿੱਚ",
+    "zh": "作为一名员工",
+    "es": "Como un empleado"
+  },
+  "sign_up_journey_man": {
+    "en": "Sign up as an Employee",
+    "fr": "S'inscrire en tant qu'employé",
+    "pa": "ਇੱਕ ਕਰਮਚਾਰੀ ਵਜੋਂ ਸਾਈਨ ਅੱਪ ਕਰੋ",
+    "zh": "注册成为员工",
+    "es": "Regístrese como empleado"
+  },
+  "qualified_contractor_note": {
+    "en": "Please note that this app is intended for qualified contractors",
+    "fr": "Veuillez noter que cette application est destinée aux entrepreneurs qualifiés",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਨੋਟ ਕਰੋ ਕਿ ਇਹ ਐਪ ਯੋਗਤਾ ਪ੍ਰਾਪਤ ਠੇਕੇਦਾਰਾਂ ਲਈ ਹੈ",
+    "zh": "请注意，此应用程序适用于合格的承包商",
+    "es": "Tenga en cuenta que esta aplicación está destinada a contratistas calificados."
+  },
+  "next": {
+    "en": "Next",
+    "fr": "Suivant",
+    "pa": "ਅਗਲਾ",
+    "zh": "下一个",
+    "es": "Próximo"
+  },
+  "firstname": {
+    "en": "First Name",
+    "fr": "Prénom",
+    "pa": "ਪਹਿਲਾ ਨਾਂ",
+    "zh": "名",
+    "es": "Nombre de pila"
+  },
+  "lastname": {
+    "en": "Last Name",
+    "fr": "Nom de famille",
+    "pa": "ਆਖਰੀ ਨਾਂਮ",
+    "zh": "姓",
+    "es": "Apellido"
+  },
+  "email": {
+    "en": "Email",
+    "fr": "E-mail",
+    "pa": "ਈ - ਮੇਲ",
+    "zh": "电子邮件",
+    "es": "Correo electrónico"
+  },
+  "dob": {
+    "en": "Date of Birth",
+    "fr": "Date de naissance",
+    "pa": "ਜਨਮ ਤਾਰੀਖ",
+    "zh": "出生日期",
+    "es": "Fecha de nacimiento"
+  },
+  "password": {
+    "en": "Password",
+    "fr": "Mot de passe",
+    "pa": "ਪਾਸਵਰਡ",
+    "zh": "密码",
+    "es": "Contraseña"
+  },
+  "confirm_password": {
+    "en": "Confirm Password",
+    "fr": "Confirmez le mot de passe",
+    "pa": "ਪਾਸਵਰਡ ਪੱਕਾ ਕਰੋ",
+    "zh": "确认密码",
+    "es": "confirmar Contraseña"
+  },
+  "term_first": {
+    "en": "By selecting I agree, I have reviewed and agree to the",
+    "fr": "En sélectionnant J'accepte, j'ai lu et j'accepte les",
+    "pa": "ਮੈਂ ਸਹਿਮਤ ਹਾਂ ਚੁਣ ਕੇ, ਮੈਂ ਸਮੀਖਿਆ ਕੀਤੀ ਹੈ ਅਤੇ ਇਸ ਨਾਲ ਸਹਿਮਤ ਹਾਂ",
+    "zh": "通过选择我同意，我已查看并同意",
+    "es": "Al seleccionar Acepto, he revisado y acepto las"
+  },
+  "term_last": {
+    "en": "and acknowledge the",
+    "fr": "et reconnaissons le",
+    "pa": "ਅਤੇ ਮੰਨਦੇ ਹਨ",
+    "zh": "并承认",
+    "es": "y reconocer el"
+  },
+  "term": {
+    "en": "Terms of Use",
+    "fr": "Conditions d'utilisation",
+    "pa": "ਵਰਤੋ ਦੀਆਂ ਸ਼ਰਤਾਂ",
+    "zh": "使用条款",
+    "es": "Condiciones de uso"
+  },
+  "privacy": {
+    "en": "Privacy Notice",
+    "fr": "Avis de confidentialité",
+    "pa": "ਗੋਪਨੀਯਤਾ ਨੋਟਿਸ",
+    "zh": "隐私声明",
+    "es": "Aviso de Privacidad"
+  },
+  "create_account": {
+    "en": "Create an Account",
+    "fr": "Créer un compte",
+    "pa": "ਅਕਾਉਂਟ ਬਣਾਓ",
+    "zh": "创建一个帐户",
+    "es": "Crea una cuenta"
+  },
+  "login": {
+    "en": "Login",
+    "fr": "Se connecter",
+    "pa": "ਲਾਗਿਨ",
+    "zh": "登录",
+    "es": "Acceso"
+  },
+  "have_account": {
+    "en": "Have an account?",
+    "fr": "Avoir un compte?",
+    "pa": "ਕੀ ਕੋਈ ਖਾਤਾ ਹੈ?",
+    "zh": "有一个账户？",
+    "es": "¿Tener una cuenta?"
+  },
+  "account_verification": {
+    "en": "Account Verification",
+    "fr": "Vérification de compte",
+    "pa": "ਖਾਤਾ ਪੁਸ਼ਟੀਕਰਨ",
+    "zh": "帐户验证",
+    "es": "Verificación de la cuenta"
+  },
+  "phone_verify_notice": {
+    "en": "Enter the 4-digit code sent to your phone number",
+    "fr": "Saisissez le code à 4 chiffres envoyé à votre numéro de téléphone",
+    "pa": "ਤੁਹਾਡੇ ਫ਼ੋਨ ਨੰਬਰ 'ਤੇ ਭੇਜਿਆ ਗਿਆ 4-ਅੰਕ ਦਾ ਕੋਡ ਦਾਖਲ ਕਰੋ",
+    "zh": "输入发送到您电话号码的 4 位数代码",
+    "es": "Ingresa el código de 4 dígitos enviado a tu número de teléfono"
+  },
+  "didnt_get_code": {
+    "en": "I didnt receive a code?",
+    "fr": "Je n'ai pas reçu de code ?",
+    "pa": "ਮੈਨੂੰ ਇੱਕ ਕੋਡ ਪ੍ਰਾਪਤ ਨਹੀਂ ਹੋਇਆ?",
+    "zh": "我没有收到代码？",
+    "es": "¿No recibí un código?"
+  },
+  "code_resent": {
+    "en": "Code Resent",
+    "fr": "Code renvoyé",
+    "pa": "ਕੋਡ ਦੁਬਾਰਾ ਭੇਜਿਆ ਗਿਆ",
+    "zh": "代码重新发送",
+    "es": "Código reenviado"
+  },
+  "wrong_pin": {
+    "en": "Wrong Pin",
+    "fr": "Mauvaise épingle",
+    "pa": "ਗਲਤ ਪਿੰਨ",
+    "zh": "引脚错误",
+    "es": "Pin erróneo"
+  },
+  "try_again": {
+    "en": "Try Again",
+    "fr": "Essayer à nouveau",
+    "pa": "ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+    "zh": "再试一次",
+    "es": "Intentar otra vez"
+  },
+  "business_details": {
+    "en": "Enter Business Details",
+    "fr": "Saisir les détails de l'entreprise",
+    "pa": "ਕਾਰੋਬਾਰੀ ਵੇਰਵੇ ਦਾਖਲ ਕਰੋ",
+    "zh": "输入业务详细信息",
+    "es": "Ingrese los detalles del negocio"
+  },
+  "business_name": {
+    "en": "Business Name",
+    "fr": "Nom de l'entreprise",
+    "pa": "ਵਪਾਰ ਨਾਮ",
+    "zh": "公司名称",
+    "es": "Nombre del Negocio"
+  },
+  "address": {
+    "en": "Address",
+    "fr": "Adresse",
+    "pa": "ਪਤਾ",
+    "zh": "地址",
+    "es": "DIRECCIÓN"
+  },
+  "consent": {
+    "en": "I consent to a background check",
+    "fr": "J'accepte une vérification des antécédents",
+    "pa": "ਮੈਂ ਪਿਛੋਕੜ ਜਾਂਚ ਲਈ ਸਹਿਮਤ ਹਾਂ",
+    "zh": "我同意背景调查",
+    "es": "Doy mi consentimiento para una verificación de antecedentes"
+  },
+  "skip": {
+    "en": "Skip",
+    "fr": "Sauter",
+    "pa": "ਛੱਡੋ",
+    "zh": "跳过",
+    "es": "Saltar"
+  },
+  "take_photo": {
+    "en": "Take a Live Photo",
+    "fr": "Prendre une photo en direct",
+    "pa": "ਇੱਕ ਲਾਈਵ ਫੋਟੋ ਲਓ",
+    "zh": "拍摄实时照片",
+    "es": "Tomar una foto en vivo"
+  },
+  "open_camera": {
+    "en": "Open Camera",
+    "fr": "Ouvrir la caméra",
+    "pa": "ਕੈਮਰਾ ਖੋਲ੍ਹੋ",
+    "zh": "开放式摄像头",
+    "es": "Cámara abierta"
+  },
+  "open_your_camera": {
+    "en": "Open your Camera",
+    "fr": "Ouvrir votre appareil photo",
+    "pa": "ਆਪਣਾ ਕੈਮਰਾ ਖੋਲ੍ਹੋ",
+    "zh": "打开你的照相机",
+    "es": "Abre tu cámara"
+  },
+  "photo_uploaded_success": {
+    "en": "Photo Uploaded Successfully",
+    "fr": "Photo téléchargée avec succès",
+    "pa": "ਫੋਟੋ ਸਫਲਤਾਪੂਰਵਕ ਅੱਪਲੋਡ ਕੀਤੀ ਗਈ",
+    "zh": "照片上传成功",
+    "es": "Foto cargada exitosamente"
+  },
+  "enter_profile": {
+    "en": "Enter your Profile Details",
+    "fr": "Entrez les détails de votre profil",
+    "pa": "ਆਪਣੇ ਪ੍ਰੋਫਾਈਲ ਵੇਰਵੇ ਦਰਜ ਕਰੋ",
+    "zh": "输入您的个人资料详细信息",
+    "es": "Ingrese los detalles de su perfil"
+  },
+  "specialization": {
+    "en": "Specialization/Skill",
+    "fr": "Spécialisation/Compétence",
+    "pa": "ਮੁਹਾਰਤ/ਮੁਹਾਰਤ",
+    "zh": "专业/技能",
+    "es": "Especialización/Habilidad"
+  },
+  "years_of_exp": {
+    "en": "Years of Experience",
+    "fr": "des années d'expérience",
+    "pa": "ਅਨੁਭਵ ਦੇ ਸਾਲ",
+    "zh": "多年经验",
+    "es": "años de experiencia"
+  },
+  "about_me": {
+    "en": "About Me",
+    "fr": "Sur moi",
+    "pa": "ਮੇਰੇ ਬਾਰੇ ਵਿੱਚ",
+    "zh": "关于我",
+    "es": "Acerca de mí"
+  },
+  "available_days": {
+    "en": "Available Days",
+    "fr": "Jours disponibles",
+    "pa": "ਉਪਲਬਧ ਦਿਨ",
+    "zh": "可用天数",
+    "es": "Días disponibles"
+  },
+  "available_for_emergency": {
+    "en": "Available for Emergency Jobs",
+    "fr": "Disponible pour les travaux d'urgence",
+    "pa": "ਐਮਰਜੈਂਸੀ ਨੌਕਰੀਆਂ ਲਈ ਉਪਲਬਧ",
+    "zh": "可用于紧急工作",
+    "es": "Disponible para trabajos de emergencia"
+  },
+  "max": {
+    "en": "Max",
+    "fr": "Max.",
+    "pa": "ਅਧਿਕਤਮ",
+    "zh": "最大限度",
+    "es": "máx."
+  },
+  "pictures_of_previous_jobs": {
+    "en": "Pictures of Previous Jobs",
+    "fr": "Photos des emplois précédents",
+    "pa": "ਪਿਛਲੀਆਂ ਨੌਕਰੀਆਂ ਦੀਆਂ ਤਸਵੀਰਾਂ",
+    "zh": "以前的工作照片",
+    "es": "Imágenes de trabajos anteriores"
+  },
+  "videos_of_previous_jobs": {
+    "en": "Videos of Previous Jobs",
+    "fr": "Vidéos des emplois précédents",
+    "pa": "ਪਿਛਲੀਆਂ ਨੌਕਰੀਆਂ ਦੇ ਵੀਡੀਓ",
+    "zh": "以前的工作视频",
+    "es": "Vídeos de trabajos anteriores"
+  },
+  "browse_files": {
+    "en": "Browse files",
+    "fr": "Parcourir les fichiers",
+    "pa": "ਫ਼ਾਈਲਾਂ ਬ੍ਰਾਊਜ਼ ਕਰੋ",
+    "zh": "浏览文件",
+    "es": "Búsqueda de archivos"
+  },
+  "preview": {
+    "en": "Preview",
+    "fr": "Aperçu",
+    "pa": "ਝਲਕ",
+    "zh": "预览",
+    "es": "Avance"
+  },
+  "optional": {
+    "en": "Optional",
+    "fr": "Facultatif",
+    "pa": "ਵਿਕਲਪਿਕ",
+    "zh": "选修的",
+    "es": "Opcional"
+  },
+  "sec": {
+    "en": "sec",
+    "fr": "seconde",
+    "pa": "ਸਕਿੰਟ",
+    "zh": "秒",
+    "es": "segundo"
+  },
+  "mondays": {
+    "en": "Mondays",
+    "fr": "les lundis",
+    "pa": "ਸੋਮਵਾਰ",
+    "zh": "周一",
+    "es": "lunes"
+  },
+  "tuesdays": {
+    "en": "Tuesdays",
+    "fr": "les mardis",
+    "pa": "ਮੰਗਲਵਾਰ",
+    "zh": "周二",
+    "es": "martes"
+  },
+  "wednesdays": {
+    "en": "Wednesdays",
+    "fr": "les mercredis",
+    "pa": "ਬੁੱਧਵਾਰ",
+    "zh": "周三",
+    "es": "miércoles"
+  },
+  "thursdays": {
+    "en": "Thursdays",
+    "fr": "les jeudis",
+    "pa": "ਵੀਰਵਾਰ",
+    "zh": "星期四",
+    "es": "jueves"
+  },
+  "fridays": {
+    "en": "Fridays",
+    "fr": "Les vendredis",
+    "pa": "ਸ਼ੁੱਕਰਵਾਰ",
+    "zh": "星期五",
+    "es": "viernes"
+  },
+  "saturdays": {
+    "en": "Saturdays",
+    "fr": "les samedis",
+    "pa": "ਸ਼ਨੀਵਾਰ",
+    "zh": "星期六",
+    "es": "sábados"
+  },
+  "rating": {
+    "en": "Rating",
+    "fr": "Notation",
+    "pa": "ਰੇਟਿੰਗ",
+    "zh": "评分",
+    "es": "Clasificación"
+  },
+  "response_time": {
+    "en": "Response Time",
+    "fr": "Temps de réponse",
+    "pa": "ਜਵਾਬ ਸਮਾਂ",
+    "zh": "响应时间",
+    "es": "Tiempo de respuesta"
+  },
+  "jobs_done": {
+    "en": "Jobs Done",
+    "fr": "Travaux effectués",
+    "pa": "ਨੌਕਰੀਆਂ ਹੋ ਗਈਆਂ",
+    "zh": "工作完成",
+    "es": "Trabajos realizados"
+  },
+  "jobs_cancelled": {
+    "en": "Jobs Cancelled",
+    "fr": "Emplois annulés",
+    "pa": "ਨੌਕਰੀਆਂ ਰੱਦ ਕੀਤੀਆਂ ਗਈਆਂ",
+    "zh": "职位取消",
+    "es": "Trabajos cancelados"
+  },
+  "about": {
+    "en": "About",
+    "fr": "À propos",
+    "pa": "ਬਾਰੇ",
+    "zh": "关于",
+    "es": "Acerca de"
+  },
+  "location": {
+    "en": "Location",
+    "fr": "Emplacement",
+    "pa": "ਟਿਕਾਣਾ",
+    "zh": "地点",
+    "es": "Ubicación"
+  },
+  "review": {
+    "en": "Review",
+    "fr": "Revoir",
+    "pa": "ਸਮੀਖਿਆ",
+    "zh": "审查",
+    "es": "Revisar"
+  },
+  "media": {
+    "en": "Media",
+    "fr": "Médias",
+    "pa": "ਮੀਡੀਆ",
+    "zh": "媒体",
+    "es": "Medios de comunicación"
+  },
+  "enter_bank_details": {
+    "en": "Enter your Bank Details",
+    "fr": "Entrez vos coordonnées bancaires",
+    "pa": "ਆਪਣੇ ਬੈਂਕ ਵੇਰਵੇ ਦਰਜ ਕਰੋ",
+    "zh": "输入您的银行详细信息",
+    "es": "Ingrese sus datos bancarios"
+  },
+  "bank_notify": {
+    "en": "Bank Information required for automatic payout",
+    "fr": "Informations bancaires requises pour le paiement automatique",
+    "pa": "ਆਟੋਮੈਟਿਕ ਭੁਗਤਾਨ ਲਈ ਬੈਂਕ ਜਾਣਕਾਰੀ ਦੀ ਲੋੜ ਹੈ",
+    "zh": "自动付款所需的银行信息",
+    "es": "Información bancaria requerida para el pago automático"
+  },
+  "finacial_institution": {
+    "en": "Financial Institution",
+    "fr": "Institution financière",
+    "pa": "ਵਿੱਤੀ ਸੰਸਥਾ",
+    "zh": "金融机构",
+    "es": "Institución financiera"
+  },
+  "transit_number": {
+    "en": "Transit Number",
+    "fr": "Numéro de transit",
+    "pa": "ਆਵਾਜਾਈ ਨੰਬਰ",
+    "zh": "转运号码",
+    "es": "Número de Tránsito"
+  },
+  "finacial_institution_number": {
+    "en": "Financial Institution Number",
+    "fr": "Numéro d'institution financière",
+    "pa": "ਵਿੱਤੀ ਸੰਸਥਾ ਦਾ ਨੰਬਰ",
+    "zh": "金融机构号码",
+    "es": "Número de institución financiera"
+  },
+  "account_number": {
+    "en": "Account Number",
+    "fr": "Numéro de compte",
+    "pa": "ਅਕਾਊਂਟ ਨੰਬਰ",
+    "zh": "帐号",
+    "es": "Número de cuenta"
+  },
+  "emergency_contact_header": {
+    "en": "Emergency Contact & References",
+    "fr": "Contact d'urgence et références",
+    "pa": "ਐਮਰਜੈਂਸੀ ਸੰਪਰਕ ਅਤੇ ਹਵਾਲੇ",
+    "zh": "紧急联系方式和参考资料",
+    "es": "Contacto de emergencia y referencias"
+  },
+  "emergency_contact": {
+    "en": "Emergency Contact",
+    "fr": "Personne à contacter en cas d'urgence",
+    "pa": "ਐਮਰਜੈਂਸੀ ਸੰਪਰਕ",
+    "zh": "紧急联系人",
+    "es": "Contacto de emergencia"
+  },
+  "name": {
+    "en": "Name",
+    "fr": "Nom",
+    "pa": "ਨਾਮ",
+    "zh": "姓名",
+    "es": "Nombre"
+  },
+  "relationship": {
+    "en": "Relationship",
+    "fr": "Relation",
+    "pa": "ਰਿਸ਼ਤਾ",
+    "zh": "关系",
+    "es": "Relación"
+  },
+  "job_reference": {
+    "en": "Job Reference",
+    "fr": "Référence du poste",
+    "pa": "ਨੌਕਰੀ ਦਾ ਹਵਾਲਾ",
+    "zh": "职位参考",
+    "es": "Referencia laboral"
+  },
+  "general_reference": {
+    "en": "General Reference",
+    "fr": "Référence générale",
+    "pa": "ਆਮ ਹਵਾਲਾ",
+    "zh": "一般参考",
+    "es": "Referencia general"
+  },
+  "validation_email_notify": {
+    "en": "An email has been Sent to Your References for Validation.",
+    "fr": "Un e-mail a été envoyé à vos références pour validation.",
+    "pa": "ਪ੍ਰਮਾਣਿਕਤਾ ਲਈ ਤੁਹਾਡੇ ਹਵਾਲੇ ਲਈ ਇੱਕ ਈਮੇਲ ਭੇਜੀ ਗਈ ਹੈ।",
+    "zh": "一封电子邮件已发送至您的参考人以进行验证。",
+    "es": "Se ha enviado un correo electrónico a sus referencias para su validación."
+  },
+  "upload": {
+    "en": "Upload",
+    "fr": "Télécharger",
+    "pa": "ਅੱਪਲੋਡ ਕਰੋ",
+    "zh": "上传",
+    "es": "Subir"
+  },
+  "upload_company_logo": {
+    "en": "Upload Company Logo",
+    "fr": "Télécharger le logo de l'entreprise",
+    "pa": "ਕੰਪਨੀ ਲੋਗੋ ਅੱਪਲੋਡ ਕਰੋ",
+    "zh": "上传公司标志",
+    "es": "Cargar logotipo de la empresa"
+  },
+  "logo_uploaded_successfully": {
+    "en": "Logo Uploaded Successfully",
+    "fr": "Logo téléchargé avec succès",
+    "pa": "ਲੋਗੋ ਸਫਲਤਾਪੂਰਵਕ ਅੱਪਲੋਡ ਕੀਤਾ ਗਿਆ",
+    "zh": "徽标上传成功",
+    "es": "Logotipo cargado exitosamente"
+  },
+  "enter_details": {
+    "en": "Enter Details",
+    "fr": "Entrez les détails",
+    "pa": "ਵੇਰਵੇ ਦਰਜ ਕਰੋ",
+    "zh": "输入详细信息",
+    "es": "Ingrese detalles"
+  },
+  "password_reset": {
+    "en": "Password Reset",
+    "fr": "Réinitialisation du mot de passe",
+    "pa": "ਪਾਸਵਰਡ ਰੀਸੈੱਟ",
+    "zh": "重设密码",
+    "es": "Restablecimiento de contraseña"
+  },
+  "reset_instruction": {
+    "en": "Please enter your email associated with your RepairFind Account and we will send you a link to reset your password.",
+    "fr": "Veuillez saisir votre e-mail associé à votre compte RepairFind et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣੇ RepairFind ਖਾਤੇ ਨਾਲ ਜੁੜੀ ਆਪਣੀ ਈਮੇਲ ਦਰਜ ਕਰੋ ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ ਪਾਸਵਰਡ ਨੂੰ ਰੀਸੈਟ ਕਰਨ ਲਈ ਇੱਕ ਲਿੰਕ ਭੇਜਾਂਗੇ।",
+    "zh": "请输入与您的 RepairFind 帐户关联的电子邮件，我们将向您发送用于重置密码的链接。",
+    "es": "Ingrese su correo electrónico asociado con su cuenta RepairFind y le enviaremos un enlace para restablecer su contraseña."
+  },
+  "minutes": {
+    "en": "minutes",
+    "fr": "minutes",
+    "pa": "ਮਿੰਟ",
+    "zh": "分钟",
+    "es": "minutos"
+  },
+  "sent_verification_to_email": {
+    "en": "We sent a verification code to",
+    "fr": "Nous avons envoyé un code de vérification à",
+    "pa": "ਨੂੰ ਅਸੀਂ ਇੱਕ ਪੁਸ਼ਟੀਕਰਨ ਕੋਡ ਭੇਜਿਆ ਹੈ",
+    "zh": "我们发送验证码至",
+    "es": "Enviamos un código de verificación a"
+  },
+  "please_enter_here": {
+    "en": "Please enter it here.",
+    "fr": "Veuillez le saisir ici.",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਇਸਨੂੰ ਇੱਥੇ ਦਾਖਲ ਕਰੋ।",
+    "zh": "请在此输入。",
+    "es": "Por favor ingréselo aquí."
+  },
+  "verify_email": {
+    "en": "Verify Email",
+    "fr": "Vérifier les courriels",
+    "pa": "ਈਮੇਲ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+    "zh": "验证邮件",
+    "es": "Verificar correo electrónico"
+  },
+  "code_expires": {
+    "en": "Code expires in",
+    "fr": "Le code expire dans",
+    "pa": "ਕੋਡ ਦੀ ਮਿਆਦ ਸਮਾਪਤ ਹੋ ਜਾਂਦੀ ਹੈ",
+    "zh": "代码有效期为",
+    "es": "El código caduca en"
+  },
+  "click_to_resend": {
+    "en": "Click here to resend",
+    "fr": "Cliquez ici pour renvoyer",
+    "pa": "ਦੁਬਾਰਾ ਭੇਜਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ",
+    "zh": "点击此处重新发送",
+    "es": "Haga clic aquí para reenviar"
+  },
+  "create_new_password": {
+    "en": "Create new Password",
+    "fr": "Créer un nouveau mot de passe",
+    "pa": "ਨਵਾਂ ਪਾਸਵਰਡ ਬਣਾਓ",
+    "zh": "创建新密码",
+    "es": "Crear nueva contraseña"
+  },
+  "create_new_password_subhead": {
+    "en": "Enter the new password you will like to use when logging in to your account",
+    "fr": "Entrez le nouveau mot de passe que vous souhaitez utiliser lors de la connexion à votre compte",
+    "pa": "ਨਵਾਂ ਪਾਸਵਰਡ ਦਰਜ ਕਰੋ ਜੋ ਤੁਸੀਂ ਆਪਣੇ ਖਾਤੇ ਵਿੱਚ ਲੌਗਇਨ ਕਰਨ ਵੇਲੇ ਵਰਤਣਾ ਚਾਹੋਗੇ",
+    "zh": "输入您登录帐户时要使用的新密码",
+    "es": "Ingrese la nueva contraseña que le gustaría usar al iniciar sesión en su cuenta"
+  },
+  "new_password": {
+    "en": "New Password",
+    "fr": "nouveau mot de passe",
+    "pa": "ਨਵਾਂ ਪਾਸਵਰਡ",
+    "zh": "新密码",
+    "es": "Nueva contraseña"
+  },
+  "new_password_created": {
+    "en": "New Password Successfuly Created",
+    "fr": "Nouveau mot de passe créé avec succès",
+    "pa": "ਨਵਾਂ ਪਾਸਵਰਡ ਸਫਲਤਾਪੂਰਵਕ ਬਣਾਇਆ ਗਿਆ",
+    "zh": "新密码已成功创建",
+    "es": "Nueva contraseña creada exitosamente"
+  },
+  "forgot_password": {
+    "en": "Forgot Password?",
+    "fr": "Mot de passe oublié?",
+    "pa": "ਪਾਸਵਰਡ ਭੁੱਲ ਗਏ?",
+    "zh": "忘记密码？",
+    "es": "¿Has olvidado tu contraseña?"
+  },
+  "welcome_video": {
+    "en": "Welcome Video",
+    "fr": "Vidéo de bienvenue",
+    "pa": "ਸੁਆਗਤ ਵੀਡੀਓ",
+    "zh": "欢迎视频",
+    "es": "Vídeo de bienvenida"
+  },
+  "hi_there": {
+    "en": "Hi",
+    "fr": "Salut",
+    "pa": "ਹੈਲੋ",
+    "zh": "你好",
+    "es": "Hola"
+  },
+  "video_subhead": {
+    "en": "To get onboarded fully, please watch this short training video. Once you have watched the video you will be prompted to complete a short quiz.",
+    "fr": "Pour vous intégrer pleinement, veuillez regarder cette courte vidéo de formation. Une fois que vous aurez visionné la vidéo, vous serez invité à répondre à un court quiz.",
+    "pa": "ਪੂਰੀ ਤਰ੍ਹਾਂ ਨਾਲ ਆਨ-ਬੋਰਡ ਹੋਣ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਛੋਟਾ ਸਿਖਲਾਈ ਵੀਡੀਓ ਦੇਖੋ। ਇੱਕ ਵਾਰ ਜਦੋਂ ਤੁਸੀਂ ਵੀਡੀਓ ਦੇਖ ਲੈਂਦੇ ਹੋ ਤਾਂ ਤੁਹਾਨੂੰ ਇੱਕ ਛੋਟੀ ਕਵਿਜ਼ ਨੂੰ ਪੂਰਾ ਕਰਨ ਲਈ ਕਿਹਾ ਜਾਵੇਗਾ।",
+    "zh": "要完全入门，请观看这​​段简短的培训视频。观看视频后，系统将提示您完成一个小测验。",
+    "es": "Para incorporarse completamente, mire este breve video de capacitación. Una vez que haya visto el video, se le pedirá que complete una breve prueba."
+  },
+  "quiz_brief_explanation": {
+    "en": "Brief explanation about this quiz:",
+    "fr": "Brève explication de ce quiz :",
+    "pa": "ਇਸ ਕਵਿਜ਼ ਬਾਰੇ ਸੰਖੇਪ ਵਿਆਖਿਆ:",
+    "zh": "关于本次测验的简要说明：",
+    "es": "Breve explicación sobre este cuestionario:"
+  },
+  "questions": {
+    "en": "Questions",
+    "fr": "Des questions",
+    "pa": "ਸਵਾਲ",
+    "zh": "问题",
+    "es": "Preguntas"
+  },
+  "question_info": {
+    "en": "You have to have 8 correct points to earn your certificate and ‘ready to work’ badge.",
+    "fr": "Vous devez avoir 8 points corrects pour obtenir votre certificat et votre badge « prêt à travailler ».",
+    "pa": "ਤੁਹਾਡੇ ਕੋਲ ਆਪਣਾ ਸਰਟੀਫਿਕੇਟ ਅਤੇ 'ਕੰਮ ਕਰਨ ਲਈ ਤਿਆਰ' ਬੈਜ ਹਾਸਲ ਕਰਨ ਲਈ 8 ਸਹੀ ਪੁਆਇੰਟ ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ।",
+    "zh": "您必须获得 8 分正确的分数才能获得证书和“准备工作”徽章。",
+    "es": "Debe tener 8 puntos correctos para obtener su certificado y su insignia de \"listo para trabajar\"."
+  },
+  "time_info": {
+    "en": "You have a total of 2 minutes to answer all questions.",
+    "fr": "Vous disposez d'un total de 2 minutes pour répondre à toutes les questions.",
+    "pa": "ਤੁਹਾਡੇ ਕੋਲ ਸਾਰੇ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦੇਣ ਲਈ ਕੁੱਲ 2 ਮਿੰਟ ਹਨ।",
+    "zh": "您总共有 2 分钟时间回答所有问题。",
+    "es": "Tienes un total de 2 minutos para responder todas las preguntas."
+  },
+  "get_certificate_badge": {
+    "en": "Gets a certificate and Badge",
+    "fr": "Obtient un certificat et un badge",
+    "pa": "ਸਰਟੀਫਿਕੇਟ ਅਤੇ ਬੈਜ ਪ੍ਰਾਪਤ ਕਰਦਾ ਹੈ",
+    "zh": "获得证书和徽章",
+    "es": "Obtiene un certificado y una insignia"
+  },
+  "certificate_info": {
+    "en": "You get a digital certificate and ‘Ready to work’ badge.",
+    "fr": "Vous recevez un certificat numérique et un badge « Prêt à travailler ».",
+    "pa": "ਤੁਹਾਨੂੰ ਇੱਕ ਡਿਜੀਟਲ ਸਰਟੀਫਿਕੇਟ ਅਤੇ 'ਕੰਮ ਕਰਨ ਲਈ ਤਿਆਰ' ਬੈਜ ਮਿਲਦਾ ਹੈ।",
+    "zh": "您将获得数字证书和“准备工作”徽章。",
+    "es": "Obtiene un certificado digital y una insignia de \"Listo para trabajar\"."
+  },
+  "watch_video_again": {
+    "en": "Watch Video Again",
+    "fr": "Regarder à nouveau la vidéo",
+    "pa": "ਵੀਡੀਓ ਦੁਬਾਰਾ ਦੇਖੋ",
+    "zh": "再次观看视频",
+    "es": "Ver vídeo de nuevo"
+  },
+  "start_quiz": {
+    "en": "Start Quiz",
+    "fr": "Démarrer le quiz",
+    "pa": "ਕਵਿਜ਼ ਸ਼ੁਰੂ ਕਰੋ",
+    "zh": "开始测验",
+    "es": "Iniciar prueba"
+  },
+  "question": {
+    "en": "Question",
+    "fr": "Question",
+    "pa": "ਸਵਾਲ",
+    "zh": "问题",
+    "es": "Pregunta"
+  },
+  "submit": {
+    "en": "Submit",
+    "fr": "Soumettre",
+    "pa": "ਜਮ੍ਹਾਂ ਕਰੋ",
+    "zh": "提交",
+    "es": "Entregar"
+  },
+  "download_certificate": {
+    "en": "Download Certificate",
+    "fr": "Télécharger le certificat",
+    "pa": "ਸਰਟੀਫਿਕੇਟ ਡਾਊਨਲੋਡ ਕਰੋ",
+    "zh": "下载证书",
+    "es": "Descargar Certificado"
+  },
+  "continue_to_app": {
+    "en": "Continue to App",
+    "fr": "Continuer vers l'application",
+    "pa": "ਐਪ 'ਤੇ ਜਾਰੀ ਰੱਖੋ",
+    "zh": "继续应用程序",
+    "es": "Continuar a la aplicación"
+  },
+  "congratulations": {
+    "en": "Congratulations",
+    "fr": "Toutes nos félicitations",
+    "pa": "ਵਧਾਈਆਂ",
+    "zh": "恭喜你",
+    "es": "Felicidades"
+  },
+  "congrat_info": {
+    "en": "You have earned the ‘Ready to work” badge and can now be seen by clients.",
+    "fr": "Vous avez obtenu le badge « Prêt à travailler » et pouvez désormais être vu par les clients.",
+    "pa": "ਤੁਸੀਂ 'ਕੰਮ ਕਰਨ ਲਈ ਤਿਆਰ' ਬੈਜ ਹਾਸਲ ਕੀਤਾ ਹੈ ਅਤੇ ਹੁਣ ਗਾਹਕਾਂ ਦੁਆਰਾ ਦੇਖਿਆ ਜਾ ਸਕਦਾ ਹੈ।",
+    "zh": "您已获得“准备工作”徽章，现在可以被客户看到。",
+    "es": "Obtuvo la insignia \"Listo para trabajar\" y ahora puede ser visto por los clientes."
+  },
+  "oops": {
+    "en": "Oops!!!",
+    "fr": "Oops!!!",
+    "pa": "ਓਹ!!!",
+    "zh": "哎呀！！！",
+    "es": "¡¡¡Ups!!!"
+  },
+  "oops_info": {
+    "en": "It is great that you tried, you sure can do better. You can take the test again",
+    "fr": "C'est formidable que vous ayez essayé, vous pouvez certainement faire mieux. Vous pouvez refaire le test",
+    "pa": "ਇਹ ਬਹੁਤ ਵਧੀਆ ਹੈ ਕਿ ਤੁਸੀਂ ਕੋਸ਼ਿਸ਼ ਕੀਤੀ, ਤੁਸੀਂ ਯਕੀਨਨ ਬਿਹਤਰ ਕਰ ਸਕਦੇ ਹੋ। ਤੁਸੀਂ ਦੁਬਾਰਾ ਟੈਸਟ ਦੇ ਸਕਦੇ ਹੋ",
+    "zh": "你尝试过真是太好了，你一定可以做得更好。您可以再次参加测试",
+    "es": "Es genial que lo hayas probado, seguro que puedes hacerlo mejor. Puedes volver a realizar la prueba."
+  },
+  "phone_number": {
+    "en": "Phone Number",
+    "fr": "Numéro de téléphone",
+    "pa": "ਫੋਨ ਨੰਬਰ",
+    "zh": "电话号码",
+    "es": "Número de teléfono"
+  },
+  "create_password": {
+    "en": "Create Password",
+    "fr": "Créer un mot de passe",
+    "pa": "ਪਾਸਵਰਡ ਬਣਾਓ",
+    "zh": "创建密码",
+    "es": "Crear contraseña"
+  },
+  "quiz": {
+    "en": "Quiz",
+    "fr": "Questionnaire",
+    "pa": "ਕਵਿਜ਼",
+    "zh": "测验",
+    "es": "Prueba"
+  },
+  "dont_have_account": {
+    "en": "Don’t have an account?",
+    "fr": "Vous n'avez pas de compte ?",
+    "pa": "ਕੀ ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਹੈ?",
+    "zh": "没有帐户？",
+    "es": "¿No tienes una cuenta?"
+  },
+  "signup": {
+    "en": "Sign up",
+    "fr": "S'inscrire",
+    "pa": "ਸਾਇਨ ਅਪ",
+    "zh": "报名",
+    "es": "Inscribirse"
+  },
+  "reenter": {
+    "en": "Re-enter Password",
+    "fr": "Entrez à nouveau le mot de passe",
+    "pa": "ਪਾਸਵਰਡ ਦੋਬਾਰਾ ਭਰੋ",
+    "zh": "重新输入密码",
+    "es": "Escriba la contraseña otra vez"
+  },
+  "open_your_photos": {
+    "en": "Open your Photos",
+    "fr": "Ouvrez vos photos",
+    "pa": "ਆਪਣੀਆਂ ਫੋਟੋਆਂ ਖੋਲ੍ਹੋ",
+    "zh": "打开你的照片",
+    "es": "Abre tus fotos"
+  },
+  "punjabi": {
+    "en": "Punjabi",
+    "fr": "Pendjabi",
+    "pa": "ਪੰਜਾਬੀ",
+    "zh": "旁遮普语",
+    "es": "punjabi"
+  },
+  "french": {
+    "en": "French",
+    "fr": "Français",
+    "pa": "ਫ੍ਰੈਂਚ",
+    "zh": "法语",
+    "es": "Francés"
+  },
+  "mandarin": {
+    "en": "Mandarin",
+    "fr": "mandarin",
+    "pa": "ਮੈਂਡਰਿਨ",
+    "zh": "普通话",
+    "es": "mandarín"
+  },
+  "spanish": {
+    "en": "Spanish",
+    "fr": "Espagnol",
+    "pa": "ਸਪੇਨੀ",
+    "zh": "西班牙语",
+    "es": "Español"
+  },
+  "save_changes": {
+    "en": "Save changes",
+    "fr": "Sauvegarder les modifications",
+    "pa": "ਕੀਤੇ ਗਏ ਬਦਲਾਅ ਸੁਰੱਖਿਅਤ ਕਰੋ",
+    "zh": "保存更改",
+    "es": "Guardar cambios"
+  },
+  "reset_password": {
+    "en": "Reset Password",
+    "fr": "réinitialiser le mot de passe",
+    "pa": "ਪਾਸਵਰਡ ਰੀਸੈਟ ਕਰੋ",
+    "zh": "重设密码",
+    "es": "Restablecer la contraseña"
+  },
+  "sundays": {
+    "en": "Sundays",
+    "fr": "les dimanches",
+    "pa": "ਐਤਵਾਰ",
+    "zh": "周日",
+    "es": "domingos"
+  }
+}

@@ -7,6 +7,8 @@ export interface ContainerProps {
 
 export interface LayoutProps {
   children?: React.ReactNode;
+  className?: any;
+  hasBackground?: boolean;
 }
 
 export interface EachProps {
@@ -18,4 +20,19 @@ export interface FooterLinkProp {
   id: number;
   title: string;
   path: string;
+}
+
+export interface LanguageItemProp {
+  id: number;
+  name: string;
+  image_href: string;
+  slug: string;
+}
+
+export interface LanguageMap {
+  en: string;
+  fr: string;
+  pa: string;
+  zh: string;
+  es: string;
 }
