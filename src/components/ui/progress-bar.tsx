@@ -1,77 +1,53 @@
 import React from "react";
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
+import StepItem from "./progress-step-item";
+import Each from "../helpers/each";
 
-const StepProgressBar = () => {
+const StepProgressBar = ({
+  steps,
+  stepIndex,
+}: {
+  steps: any[];
+  stepIndex: number;
+}) => {
+  const percent = (stepIndex / (steps.length - 1)) * 100;
+
+  const positions = steps.map((step, index) => {
+    return (index / (steps.length - 1)) * 100;
+  });
+
+  //   console.log(positions);
+
+  //   console.log(percent);
   return (
-    <ProgressBar stepPositions={4} percent={50} filledBackground="#000000">
-      <Step transition="scale">
-        {({ accomplished, index }: { accomplished: any; index: number }) => (
-          <div
-            className={`w-8 relative h-8 flex items-center justify-center rounded-full border ${
-              accomplished
-                ? "border-black bg-black"
-                : "border-gray-300 bg-gray-300"
-            }`}
-          >
-            <p
-              className={`text-xs ${
-                accomplished ? "text-white" : "text-black"
-              }`}
-            >
-              {index + 1}
-            </p>
-            <p className="absolute text-center bottom-[-40px] text-xs text-black">
-              Current Step
-            </p>
-          </div>
-        )}
-      </Step>
-      <Step transition="scale">
-        {({ accomplished, index }: { accomplished: any; index: number }) => (
-          <div
-            className={`w-8 relative h-8 flex items-center justify-center rounded-full border ${
-              accomplished
-                ? "border-black bg-black"
-                : "border-gray-300 bg-gray-300"
-            }`}
-          >
-            <p
-              className={`text-xs ${
-                accomplished ? "text-white" : "text-black"
-              }`}
-            >
-              {index + 1}
-            </p>
-            <p className="absolute text-center bottom-[-40px] text-xs text-black">
-              Current Step
-            </p>
-          </div>
-        )}
-      </Step>
-      <Step transition="scale">
-        {({ accomplished, index }: { accomplished: any; index: number }) => (
-          <div
-            className={`w-8 relative h-8 flex items-center justify-center rounded-full border ${
-              accomplished
-                ? "border-black bg-black"
-                : "border-gray-300 bg-gray-300"
-            }`}
-          >
-            <p
-              className={`text-xs ${
-                accomplished ? "text-white" : "text-black"
-              }`}
-            >
-              {index + 1}
-            </p>
-            <p className="absolute text-center bottom-[-40px] text-xs text-black">
-              Current Step
-            </p>
-          </div>
-        )}
-      </Step>
-    </ProgressBar>
+    <div className="w-full p-4">
+      <ProgressBar
+        height={2}
+        stepPositions={positions}
+        percent={percent}
+        filledBackground="#000000"
+      >
+        {steps.map((step) => (
+          <Step transition="scale">
+            {({
+              accomplished,
+              index,
+            }: {
+              accomplished: any;
+              index: number;
+            }) => (
+              <StepItem
+                item={step}
+                stepIndex={stepIndex}
+                accomplished={accomplished}
+                index={index}
+              />
+            )}
+          </Step>
+        ))}
+      </ProgressBar>
+    </div>
   );
 };
 

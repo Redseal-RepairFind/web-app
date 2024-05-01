@@ -6,7 +6,7 @@ import ForgotPassword from "../../../images/forgot_password.png";
 
 import GetOtpForm from "./forms/get-otp-form";
 
-const GetOtp: React.FC = () => {
+const GetOtp = ({ handleNext }: { handleNext: any }) => {
   return (
     <Layout>
       <Container className="flex items-center sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
@@ -18,7 +18,7 @@ const GetOtp: React.FC = () => {
               className="w-[60%]"
             />
           </div>
-          <GetOtpForm />
+          <GetOtpForm handleNext={handleNext} />
         </main>
       </Container>
     </Layout>

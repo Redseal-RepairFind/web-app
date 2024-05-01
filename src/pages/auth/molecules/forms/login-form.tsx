@@ -1,16 +1,40 @@
 import React from "react";
 
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import useLanguage from "../../../../hooks/useLanguage";
+import useAuth from "../../../../hooks/useAuth";
+import PasswordField from "../../../../components/form/password-field";
 
 const LoginForm = () => {
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { isSubmitting },
+  } = useForm();
 
   const { handleLanguageChoice } = useLanguage();
+  const { Login } = useAuth();
 
-  const handleLogin = () => {};
+  const navigate = useNavigate();
+
+  const handleLogin = async (payload: any) => {
+    toast.loading("Logging you in...");
+    try {
+      const data = await Login(payload);
+      toast.remove();
+      toast.success(data?.message);
+      setTimeout(() => {
+        navigate(`/account`);
+      }, 1000);
+    } catch (e: any) {
+      console.log({ e });
+      toast.remove();
+      toast.error(e?.response?.data?.message);
+    }
+  };
   return (
     <div className="flex-1 p-3">
       <form
@@ -22,29 +46,30 @@ const LoginForm = () => {
         </h1>
         <div className="mb-10">
           <label className="text-sm font-medium">
-            {handleLanguageChoice("email")} /{" "}
-            {handleLanguageChoice("phone_number")}
+            {handleLanguageChoice("email")}
           </label>
           <input
-            type="text"
-            placeholder="Enter email or phone number*"
+            type="email"
+            placeholder="Enter Email*"
+            {...register("email", {
+              required: true,
+            })}
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
           />
         </div>
-        <div className="mb-1">
-          <label className="text-sm font-medium">
-            {handleLanguageChoice("password")}
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Password*"
-            className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-          />
-        </div>
+        <PasswordField
+          title={handleLanguageChoice("password")}
+          {...register("password", {
+            required: true,
+          })}
+        />
         <Link to={"/reset-password"} className="text-xs font-semibold">
           {handleLanguageChoice("forgot_password")}
         </Link>
-        <button className="border border-black bg-black mt-5 py-3 rounded-md text-white">
+        <button
+          disabled={isSubmitting}
+          className="border border-black bg-black mt-5 py-3 rounded-md text-white"
+        >
           {handleLanguageChoice("continue")}
         </button>
         <span className="flex text-xs mt-1 items-center justify-center gap-1">

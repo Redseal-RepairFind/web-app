@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/auth/pages/login";
 import Onboardingroutes from "./pages/onboarding/onboarding-routes";
+import Accountroutes from "./pages/account/account-routes";
 import ResetPassword from "./pages/auth/pages/reset-password";
 import { Toaster } from "react-hot-toast";
 import { UserContext } from "./context/user-context";
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/onboarding/*" element={<Onboardingroutes />} />
+            <Route path="/account/*" element={<Accountroutes />} />
             <Route path="/reset-password" element={<ResetPassword />} />
           </Routes>
         </UserContext.Provider>

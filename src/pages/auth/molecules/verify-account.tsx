@@ -7,7 +7,13 @@ import logo from "../../../images/logo_white.png";
 
 import VerifyAccountForm from "./forms/verify-account-form";
 
-const VerifyAccount: React.FC = () => {
+const VerifyAccount = ({
+  handleNext,
+  handlePrev,
+}: {
+  handleNext: any;
+  handlePrev: any;
+}) => {
   return (
     <Layout>
       <Container className="flex items-center sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
@@ -19,7 +25,7 @@ const VerifyAccount: React.FC = () => {
               className="w-[60%]"
             />
           </div>
-          <VerifyAccountForm />
+          <VerifyAccountForm handleNext={handleNext} />
         </main>
       </Container>
     </Layout>
