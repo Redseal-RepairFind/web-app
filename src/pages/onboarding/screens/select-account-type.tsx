@@ -5,19 +5,26 @@ import useOnboarding from "../../../hooks/useOnboarding";
 import Each from "../../../components/helpers/each";
 import AccountType from "./molecules/account-type";
 
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
-
+import { faArrowRightLong, faInfo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
 
 import useLanguage from "../../../hooks/useLanguage";
 
 const SelectAccountType: React.FC = () => {
-  const { accountTypes, selectedRoute, handleRoute } = useOnboarding();
+  const { accountTypes, selectedRoute, handleRoute, handleAccountChoice } =
+    useOnboarding();
 
   const { handleLanguageChoice } = useLanguage();
 
   console.log(selectedRoute);
+
+  const handleBtnStyle = (selectedRoute: any) => {
+    if (selectedRoute)
+      return `relative border border-black bg-black mt-5 py-3 rounded-md text-white cursor-pointer`;
+
+    return `relative border border-gray-100 bg-gray-100 mt-5 py-3 rounded-md text-gray-600 cursor-not-allowed`;
+  };
+
   return (
     <Layout hasBackground={true}>
       <Container className="flex w-full items-center sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
@@ -28,7 +35,7 @@ const SelectAccountType: React.FC = () => {
             </h1>
             <Each
               of={accountTypes}
-              render={(type) => {
+              render={(type: any) => {
                 const props = { type, selectedRoute, handleRoute };
                 return <AccountType {...props} />;
               }}
@@ -42,13 +49,8 @@ const SelectAccountType: React.FC = () => {
             </div>
             <button
               disabled={!selectedRoute}
-              className={`relative border ${
-                selectedRoute ? "border-black" : "border-gray-100"
-              } ${
-                selectedRoute ? "bg-black" : "bg-gray-100"
-              } mt-5 py-3 rounded-md ${
-                selectedRoute ? "text-white" : "text-gray-600"
-              } ${selectedRoute ? "cursor-pointer" : "cursor-not-allowed"}`}
+              onClick={handleAccountChoice}
+              className={handleBtnStyle(selectedRoute)}
             >
               {handleLanguageChoice("next")}
               <FontAwesomeIcon

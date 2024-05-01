@@ -22,7 +22,7 @@ const SelectLanguage: React.FC = () => {
             </h1>
             <Each
               of={languages}
-              render={(language) => {
+              render={(language: any) => {
                 const prop = {
                   language,
                   selectedLanguage,

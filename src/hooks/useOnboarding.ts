@@ -44,6 +44,10 @@ const useOnboarding = () => {
     navigate("select-account-type");
   };
 
+  const handleAccountChoice = () => {
+    navigate(`/onboarding${selectedRoute}`);
+  };
+
   const languages = [
     { id: 1, name: "English", image_href: english, slug: "en" },
     { id: 2, name: "French", image_href: french, slug: "fr" },
@@ -63,7 +67,7 @@ const useOnboarding = () => {
       id: 2,
       titleKey: "as_a_company",
       descKey: "sign_up_company",
-      route: "/contractor",
+      route: "/company",
     },
     {
       id: 3,
@@ -81,6 +85,7 @@ const useOnboarding = () => {
     selectedRoute,
     handleRoute,
     verifyLanguage,
+    handleAccountChoice,
   };
 };
 

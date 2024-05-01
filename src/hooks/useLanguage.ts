@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import translations from "../i8n.json";
-import { wordKey, LanguageKey } from "@/types";
+import { wordKey, LanguageKey } from "../types";
 import { UserContext } from "../context/user-context";
 
 const useLanguage = () => {
@@ -8,7 +8,7 @@ const useLanguage = () => {
 
   const { languageChoice } = context;
 
-  console.log(languageChoice);
+  // console.log(languageChoice);
 
   const language = languageChoice as LanguageKey;
 

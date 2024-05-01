@@ -217,14 +217,14 @@
     "es": "Verificación de la cuenta"
   },
   "phone_verify_notice": {
-    "en": "Enter the 4-digit code sent to your phone number",
+    "en": "Enter the 4-digit code sent to your email or phone number",
     "fr": "Saisissez le code à 4 chiffres envoyé à votre numéro de téléphone",
     "pa": "ਤੁਹਾਡੇ ਫ਼ੋਨ ਨੰਬਰ 'ਤੇ ਭੇਜਿਆ ਗਿਆ 4-ਅੰਕ ਦਾ ਕੋਡ ਦਾਖਲ ਕਰੋ",
     "zh": "输入发送到您电话号码的 4 位数代码",
     "es": "Ingresa el código de 4 dígitos enviado a tu número de teléfono"
   },
   "didnt_get_code": {
-    "en": "I didnt receive a code?",
+    "en": "I didn't receive a code?",
     "fr": "Je n'ai pas reçu de code ?",
     "pa": "ਮੈਨੂੰ ਇੱਕ ਕੋਡ ਪ੍ਰਾਪਤ ਨਹੀਂ ਹੋਇਆ?",
     "zh": "我没有收到代码？",
