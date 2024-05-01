@@ -24,11 +24,14 @@ const LoginForm = () => {
     toast.loading("Logging you in...");
     try {
       const data = await Login(payload);
+      console.log(data);
       toast.remove();
       toast.success(data?.message);
+      sessionStorage.setItem("repairfind_user", JSON.stringify(data?.user));
+      sessionStorage.setItem("userToken", data?.accessToken);
       setTimeout(() => {
         navigate(`/account`);
-      }, 1000);
+      }, 300);
     } catch (e: any) {
       console.log({ e });
       toast.remove();
