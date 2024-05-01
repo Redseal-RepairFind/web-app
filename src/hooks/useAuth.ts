@@ -30,8 +30,10 @@ const useAuth = () => {
 
   const returnType = () => {
     if (location.pathname.includes("individual")) return "Individual";
-    else {
+    else if (location.pathname.includes("company")) {
       return "Company";
+    } else {
+      return "Employee";
     }
   };
 
@@ -44,13 +46,17 @@ const useAuth = () => {
 
     if (!phone) return toast.error("Please enter your phone number...");
 
+    const phoneNumber = location.pathname.includes("company")
+      ? values.phoneNumber
+      : {
+          code: phone.countryCallingCode,
+          number: phone.nationalNumber,
+        };
+
     const payload = {
       ...values,
       dateOfBirth: formattedDateOfBirth,
-      phoneNumber: {
-        code: phone.countryCallingCode,
-        number: phone.nationalNumber,
-      },
+      phoneNumber,
       accountType: returnType(),
     };
 

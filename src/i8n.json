@@ -125,6 +125,13 @@
     "zh": "名",
     "es": "Nombre de pila"
   },
+  "companyname": {
+    "en": "Company Name",
+    "fr": "Nom de l'entreprise",
+    "pa": "ਕੰਪਨੀ ਦਾ ਨਾਂ",
+    "zh": "公司名称",
+    "es": "Nombre de la empresa"
+  },
   "lastname": {
     "en": "Last Name",
     "fr": "Nom de famille",

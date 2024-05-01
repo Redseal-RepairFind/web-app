@@ -265,14 +265,14 @@ const ProfileDetails = ({
             className="relative border w-full border-black bg-transparent py-3 rounded-md text-black"
             onClick={(e) => {
               e.preventDefault();
-              handlePrev();
+              handleNext();
             }}
           >
-            Back
-            <FontAwesomeIcon
+            {handleLanguageChoice("skip")}
+            {/* <FontAwesomeIcon
               className="absolute top-[50%] translate-y-[-50%] left-2.5"
               icon={faArrowLeftLong}
-            />
+            /> */}
           </button>
           <button
             type="submit"

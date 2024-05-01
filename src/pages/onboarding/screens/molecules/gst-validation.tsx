@@ -7,7 +7,7 @@ import {
   faArrowRightLong,
   faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
   const {
@@ -24,10 +24,13 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+
   const { handleLanguageChoice } = useLanguage();
   const { UpdateGST } = useAuth();
 
   const onSubmit = async (values: any) => {
+    const gstType = location;
     try {
       const data = (await UpdateGST(values)) as ApiResponse;
       console.log(data);

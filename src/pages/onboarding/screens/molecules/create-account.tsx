@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PasswordField from "../../../../components/form/password-field";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input/react-hook-form";
@@ -13,6 +13,7 @@ const CreateAccount = () => {
   const { handleLanguageChoice } = useLanguage();
 
   const { handleCreate } = useAuth();
+  const location = useLocation();
 
   const {
     handleSubmit,
@@ -34,6 +35,20 @@ const CreateAccount = () => {
         <h1 className="font-semibold text-2xl text-center mb-5">
           Create an Account
         </h1>
+        {location.pathname.includes("company") && (
+          <div className="w-full mb-10 flex-1">
+            <label className="text-sm font-medium">
+              {handleLanguageChoice("companyname")}
+            </label>
+            <input
+              type="text"
+              {...register("companyName", {
+                required: true,
+              })}
+              className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+            />
+          </div>
+        )}
         <div className="flex items-center sm:flex-row flex-col gap-2 justify-between">
           <div className="w-full mb-10 flex-1">
             <label className="text-sm font-medium">
