@@ -728,7 +728,7 @@
     "es": "Vídeo de bienvenida"
   },
   "hi_there": {
-    "en": "Hi",
+    "en": "Hi there",
     "fr": "Salut",
     "pa": "ਹੈਲੋ",
     "zh": "你好",
@@ -763,11 +763,11 @@
     "es": "Debe tener 8 puntos correctos para obtener su certificado y su insignia de \"listo para trabajar\"."
   },
   "time_info": {
-    "en": "You have a total of 2 minutes to answer all questions.",
-    "fr": "Vous disposez d'un total de 2 minutes pour répondre à toutes les questions.",
+    "en": "You have a total of 20 minutes to answer all questions.",
+    "fr": "Vous disposez d'un total de 20 minutes pour répondre à toutes les questions.",
     "pa": "ਤੁਹਾਡੇ ਕੋਲ ਸਾਰੇ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦੇਣ ਲਈ ਕੁੱਲ 2 ਮਿੰਟ ਹਨ।",
     "zh": "您总共有 2 分钟时间回答所有问题。",
-    "es": "Tienes un total de 2 minutos para responder todas las preguntas."
+    "es": "Tienes un total de 20 minutos para responder todas las preguntas."
   },
   "get_certificate_badge": {
     "en": "Gets a certificate and Badge",

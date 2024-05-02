@@ -30,14 +30,19 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
   const { UpdateGST } = useAuth();
 
   const onSubmit = async (values: any) => {
-    const gstType = location;
+    toast.loading("Processing...");
+    const gstType = location.pathname.includes("individual")
+      ? "Individual"
+      : "Company";
+
+    const payload = { ...values, gstType };
     try {
-      const data = (await UpdateGST(values)) as ApiResponse;
+      const data = (await UpdateGST(payload)) as ApiResponse;
       console.log(data);
       toast.remove();
       toast.success(data?.message);
       setTimeout(() => {
-        navigate("/account");
+        navigate("/quiz");
       }, 1000);
     } catch (e: any) {
       console.log({ e });
@@ -78,9 +83,9 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
           />
         </div>
-        <div className="w-full mb-10 flex-1">
+        {/* <div className="w-full mb-10 flex-1">
           <label className="text-sm font-medium">
-            {/* {handleLanguageChoice("business_name")} */}
+            {handleLanguageChoice("business_name")}
             GST Type
           </label>
           <select
@@ -92,7 +97,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
             <option value={"Individual"}>Individual</option>
             <option value={"Company"}>Company</option>
           </select>
-        </div>
+        </div> */}
         <div className="w-full mb-1 flex-1">
           <label className="text-sm font-medium">
             {/* {handleLanguageChoice("business_name")} */}

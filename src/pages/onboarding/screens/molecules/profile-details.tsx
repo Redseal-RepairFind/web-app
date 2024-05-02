@@ -10,6 +10,7 @@ import { useDropzone } from "react-dropzone";
 import Switch from "react-switch";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ProfileDetails = ({
   handleNext,
@@ -20,6 +21,9 @@ const ProfileDetails = ({
 }) => {
   const { handleLanguageChoice } = useLanguage();
   const { UpdateProfile } = useAuth();
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const [mediaFiles, setMediaFiles] = useState<any[]>([]);
 
@@ -81,6 +85,9 @@ const ProfileDetails = ({
 
   const { register, handleSubmit } = useForm();
 
+  const searchParams = new URLSearchParams(location.search);
+  const accountType = searchParams.get("accountType");
+
   const onSubmit = async (values: any) => {
     if (!selectedDays.length)
       return toast.error("Please select days available...");
@@ -103,6 +110,9 @@ const ProfileDetails = ({
       console.log(data);
       toast.remove();
       toast.success(data?.message);
+      setTimeout(() => {
+        accountType === "employee" ? navigate("/quiz") : handleNext();
+      }, 1000);
     } catch (e: any) {
       console.log({ e });
       toast.remove();

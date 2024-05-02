@@ -37,4 +37,7 @@ export const auth = {
     client
       .post(`/contractor/reset-password`, payload)
       .then(({ data }: any) => data),
+
+  getQuiz: () =>
+    client.get(`/contractor/quiz-start`).then(({ data }: any) => data),
 };
