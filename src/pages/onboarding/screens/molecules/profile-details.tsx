@@ -2,15 +2,43 @@ import React, { useState } from "react";
 import useLanguage from "../../../../hooks/useLanguage";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRightLong,
-  faArrowLeftLong,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { useDropzone } from "react-dropzone";
 import Switch from "react-switch";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import { LoadScript, Autocomplete } from "@react-google-maps/api";
+import ReactS3 from "react-s3";
+import S3 from "react-aws-s3";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+const skills = [
+  { label: "Carpenter", value: "Carpenter" },
+  { label: "Plumber", value: "Plumber" },
+  { label: "Painter", value: "Painter" },
+  { label: "Worker", value: "Worker" },
+];
+
+const experience = [
+  { label: "1", value: "1" },
+  { label: "2", value: "2" },
+  { label: "3", value: "3" },
+  { label: "4", value: "4" },
+  { label: "5", value: "5" },
+  { label: "6", value: "6" },
+  { label: "7", value: "7" },
+  { label: "8", value: "8" },
+  { label: "9", value: "9" },
+  { label: "10+", value: "10+" },
+];
+
+const config = {
+  bucketName: process.env.REACT_APP_AWS_S3_BUCKET,
+  region: process.env.REACT_APP_AWS_REGION,
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY,
+};
 
 const ProfileDetails = ({
   handleNext,
@@ -22,12 +50,26 @@ const ProfileDetails = ({
   const { handleLanguageChoice } = useLanguage();
   const { UpdateProfile } = useAuth();
 
+  const credentials: any = {
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY,
+  };
+
+  const s3Client = new S3Client({
+    region: process.env.REACT_APP_AWS_REGION,
+    credentials,
+  });
+
+  const ReactS3Client = new S3(config);
+
   const location = useLocation();
   const navigate = useNavigate();
 
   const [mediaFiles, setMediaFiles] = useState<any[]>([]);
 
   const [emergencyJobs, setEmergencyJobs] = useState(false);
+
+  const [address, setAddress] = useState<any>(null);
 
   const onVideoDrop = (acceptedFiles: any) => {
     // Update state with the new media files
@@ -89,15 +131,16 @@ const ProfileDetails = ({
   const accountType = searchParams.get("accountType");
 
   const onSubmit = async (values: any) => {
+    if (!address) return toast.error("Please enter your address...");
+
     if (!selectedDays.length)
       return toast.error("Please select days available...");
-    console.log(values);
+    // console.log(values);
 
-    toast.loading("Updating profile...");
-
-    const payload = {
+    const payload: any = {
       ...values,
       emergencyJobs,
+      address,
       availableDays: selectedDays,
       previousJobPhotos: pictures,
       previousJobVideos: mediaFiles,
@@ -105,18 +148,107 @@ const ProfileDetails = ({
 
     console.log(payload);
 
+    const params = {
+      Bucket: process.env.REACT_APP_AWS_S3_BUCKET,
+      Key: "Image",
+      Body: payload.previousJobPhotos[0], // Data you want to upload
+    };
+
+    // Upload the data to S3
     try {
-      const data = (await UpdateProfile(payload)) as ApiResponse;
-      console.log(data);
-      toast.remove();
-      toast.success(data?.message);
-      setTimeout(() => {
-        accountType === "employee" ? navigate("/quiz") : handleNext();
-      }, 1000);
-    } catch (e: any) {
-      console.log({ e });
-      toast.remove();
-      toast.error(e?.response?.data?.message);
+      const data = await s3Client.send(new PutObjectCommand(params));
+      console.log("Successfully uploaded data to S3", data);
+    } catch (error) {
+      console.error("Error uploading data to S3", error);
+    }
+
+    // const params = { params: payload.previousJobPhotos };
+
+    // const command = new ListBucketsCommand(params);
+
+    // try {
+    //   toast.loading("Updating profile...");
+    //   const data = await client.send(command);
+    //   console.log(data);
+    //   toast.remove();
+    //   process data.
+    // } catch (error) {
+    //   console.log(error);
+    //   toast.remove();
+    //   error handling.
+    // } finally {
+    //   finally.
+    // }
+
+    // ReactS3Client.uploadFile(payload.previousJobPhotos[0], "images")
+    //   .then((data: any) => {
+    //     console.log(data);
+    //     toast.remove();
+    //     toast.success("Uploaded images successfully...");
+    //   })
+    //   .catch((err: any) => {
+    //     console.log({ err });
+    //     toast.remove();
+    //     toast.error("Error, please try again later...");
+    //   });
+
+    // ReactS3.uploadFile(payload.previousJobPhotos[0], config)
+    //   .then((data: any) => {
+    //     console.log(data);
+    //     toast.remove();
+    //     toast.success("Uploaded images successfully...");
+    //   })
+    //   .catch((err: any) => {
+    //     console.log({ err });
+    //     toast.remove();
+    //     toast.error("Error, please try again later...");
+    //   });
+
+    // try {
+    //   const data = (await UpdateProfile(payload)) as ApiResponse;
+    //   console.log(data);
+    //   toast.remove();
+    //   toast.success(data?.message);
+    //   setTimeout(() => {
+    //     accountType === "employee" ? navigate("/quiz") : handleNext();
+    // sessionStorage.removeItem("employee_session_step");
+    //   }, 1000);
+    // } catch (e: any) {
+    //   console.log({ e });
+    //   toast.remove();
+    //   toast.error(e?.response?.data?.message);
+    // }
+  };
+
+  const [autocomplete, setAutocomplete] = useState<any>(null);
+
+  const onLocationSelect = (locationData: any) => {
+    setAddress(locationData);
+  };
+
+  // console.log(address);
+
+  const handlePlaceSelect = () => {
+    if (autocomplete !== null) {
+      const place = autocomplete.getPlace();
+      if (place && place.geometry) {
+        const locationData = {
+          address: place.formatted_address,
+          city: place.address_components.find(
+            (component: any) =>
+              component.types.includes("locality") ||
+              component.types.includes("administrative_area_level_1")
+          ).long_name,
+          country: place.address_components.find((component: any) =>
+            component.types.includes("country")
+          ).long_name,
+          latitude: place.geometry.location.lat(),
+          longitude: place.geometry.location.lng(),
+        };
+        onLocationSelect(locationData);
+      } else {
+        console.error("Place data is not available");
+      }
     }
   };
 
@@ -130,30 +262,31 @@ const ProfileDetails = ({
           <label className="text-sm font-medium">
             {handleLanguageChoice("specialization")}
           </label>
-          <input
-            type="text"
+          <select
             {...register("skill", {
               required: true,
             })}
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-          />
+          >
+            {skills.map((skill) => (
+              <option value={skill.value}>{skill.label}</option>
+            ))}
+          </select>
         </div>
         <div className="w-full mb-10 flex-1">
           <label className="text-sm font-medium">
             {handleLanguageChoice("years_of_exp")}
           </label>
-          <input
-            type="number"
-            min={0}
+          <select
             {...register("experienceYear", {
               required: true,
-              min: {
-                value: 0,
-                message: "Experience year cannot be less than 0",
-              },
             })}
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-          />
+          >
+            {experience.map((item) => (
+              <option value={item.value}>{item.label}</option>
+            ))}
+          </select>
         </div>
         <div className="w-full mb-10 flex-1">
           <label className="text-sm font-medium">
@@ -179,6 +312,26 @@ const ProfileDetails = ({
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
           />
         </div> */}
+        <div className="w-full mb-10 flex-1">
+          <label className="text-sm font-medium">
+            {handleLanguageChoice("address")}
+          </label>
+          <LoadScript
+            googleMapsApiKey={`${process.env.REACT_APP_MAP_API_KEY}`}
+            libraries={["places"]}
+          >
+            <Autocomplete
+              onLoad={(autocomplete) => setAutocomplete(autocomplete)}
+              onPlaceChanged={handlePlaceSelect}
+            >
+              <input
+                className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+                type="text"
+                placeholder="Enter your location"
+              />
+            </Autocomplete>
+          </LoadScript>
+        </div>
         <div className="w-full mb-10 flex-1">
           <label className="text-sm font-medium">
             {handleLanguageChoice("available_days")}

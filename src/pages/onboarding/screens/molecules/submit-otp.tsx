@@ -11,15 +11,37 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
 import useLanguage from "../../../../hooks/useLanguage";
+import toast from "react-hot-toast";
+
+interface ApiResponse {
+  message: string;
+  user?: any;
+  accessToken?: any;
+  // Add other properties as needed
+}
 
 const SubmitOtp = () => {
   const [otp, setOtp] = useState("");
 
-  const { VerifyEmail } = useAuth();
+  const { VerifyEmail, ResendEmail } = useAuth();
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const email = searchParams.get("email");
+
+  const handleResend = async () => {
+    try {
+      toast.loading("Processing...");
+      const data = (await ResendEmail({ email })) as ApiResponse;
+      toast.remove();
+      toast.success(data?.message);
+      console.log(data);
+    } catch (e: any) {
+      console.log({ e });
+      toast.remove();
+      toast.error(e?.response?.data?.message);
+    }
+  };
 
   //   console.log(email);
 
@@ -62,9 +84,9 @@ const SubmitOtp = () => {
             </div>
             <span className="mb-7 text-gray-500 text-xs font-medium flex gap-1 items-center">
               {handleLanguageChoice("didnt_get_code")} (0:05){" "}
-              <p className="text-black">
+              <button onClick={handleResend} className="text-black">
                 {handleLanguageChoice("click_to_resend")}
-              </p>
+              </button>
             </span>
             <button
               onClick={() => VerifyEmail(payload)}

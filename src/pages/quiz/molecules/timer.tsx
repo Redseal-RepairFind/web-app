@@ -1,8 +1,10 @@
+/* eslint-disable no-restricted-globals */
 "use client";
 
 import React, { useEffect, useCallback } from "react";
 import useCountDown from "react-countdown-hook";
 import Each from "../../../components/helpers/each";
+import toast from "react-hot-toast";
 
 const initialTime = 1200000;
 const interval = 1000;
@@ -16,6 +18,17 @@ export default function Timer() {
   useEffect(() => {
     start();
   }, []);
+
+  // console.log(timeLeft);
+
+  useEffect(() => {
+    if (timeLeft === 1000) {
+      toast.error("Your timer is up, kindly retake the assessment...");
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
+    }
+  }, [timeLeft]);
 
   const restart = useCallback(() => {
     const newTime = 42 * 1000;

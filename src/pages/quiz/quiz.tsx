@@ -6,7 +6,11 @@ import { useQuery } from "react-query";
 import { auth } from "../../api/auth";
 
 const Quiz = () => {
-  const [screenIndex, setScreenIndex] = useState(0);
+  const sessionIndex = JSON.parse(
+    sessionStorage.getItem("sessionIndex") || "null"
+  );
+
+  const [screenIndex, setScreenIndex] = useState(sessionIndex || 0);
 
   const { data } = useQuery(
     ["Quiz"],
@@ -16,13 +20,14 @@ const Quiz = () => {
     { cacheTime: 30000, staleTime: 30000, select: (data) => data?.data }
   );
 
-  console.log(data);
+  // console.log(data);
 
   const handleIndex = (number: number) => {
     setScreenIndex(number);
+    sessionStorage.setItem("sessionIndex", JSON.stringify(number));
   };
 
-  console.log(screenIndex);
+  // console.log(screenIndex);
 
   const screens = useMemo(
     () => [

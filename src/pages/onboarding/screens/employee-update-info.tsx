@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Layout from "../../../components/global/layout";
 import Container from "../../../components/global/container";
 import StepProgressBar from "../../../components/ui/progress-bar";
@@ -7,11 +7,21 @@ import ProfileDetails from "./molecules/profile-details";
 import GstValidation from "./molecules/gst-validation";
 
 const EmployeeUpdateInformation: React.FC = () => {
-  const [stepIndex, setStepIndex] = useState(0);
+  const employee_session_step = sessionStorage.getItem("employee_session_step");
+
+  // Check if employee_session_step is not null before parsing
+  const parsedStep =
+    employee_session_step !== null ? parseInt(employee_session_step) : null;
+
+  const [stepIndex, setStepIndex] = useState<number>(parsedStep || 0);
 
   const handleNextStep = () => {
     setStepIndex(stepIndex + 1);
   };
+
+  useEffect(() => {
+    sessionStorage.setItem("employee_session_step", stepIndex.toString());
+  }, [stepIndex]);
 
   const handlePrevStep = () => {
     setStepIndex(stepIndex - 1);

@@ -17,6 +17,10 @@ const useAuth = () => {
   const { mutateAsync: GetOTP } = useMutation(auth.getOtp);
   const { mutateAsync: VerifyAccount } = useMutation(auth.verifyEmail);
   const { mutateAsync: ResetPassword } = useMutation(auth.resetPassword);
+  const { mutateAsync: ResendEmail } = useMutation(auth.resendEmail);
+  const { mutateAsync: AddCompanyDetails } = useMutation(
+    auth.addCompanyDetails
+  );
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,10 +42,7 @@ const useAuth = () => {
   };
 
   const handleCreate = async (values: any) => {
-    const [year, month, day] = values.dateOfBirth.split("-");
-
-    const formattedDateOfBirth = `${day}/${month}/${year}`;
-
+    console.log(values);
     const phone = parsePhoneNumber(values.phoneNumber);
 
     if (!phone) return toast.error("Please enter your phone number...");
@@ -52,28 +53,55 @@ const useAuth = () => {
           code: phone.countryCallingCode,
           number: phone.nationalNumber,
         };
+    if (location.pathname.includes("company")) {
+      const payload = {
+        ...values,
+        phoneNumber,
+        accountType: returnType(),
+      };
 
-    const payload = {
-      ...values,
-      dateOfBirth: formattedDateOfBirth,
-      phoneNumber,
-      accountType: returnType(),
-    };
+      try {
+        toast.loading("Processing...");
+        const data = (await CreateAccount(payload)) as ApiResponse;
+        toast.remove();
+        toast.success(data?.message);
+        sessionStorage.setItem("repairfind_user", data?.user);
+        console.log(data);
+        setTimeout(() => {
+          navigate(`/onboarding/submit-otp?email=${values.email}`);
+        }, 1000);
+      } catch (e: any) {
+        console.log({ e });
+        toast.remove();
+        toast.error(e?.response?.data?.message);
+      }
+    } else {
+      const [year, month, day] = values.dateOfBirth.split("-");
 
-    try {
-      toast.loading("Processing...");
-      const data = (await CreateAccount(payload)) as ApiResponse;
-      toast.remove();
-      toast.success(data?.message);
-      sessionStorage.setItem("repairfind_user", data?.user);
-      console.log(data);
-      setTimeout(() => {
-        navigate(`/onboarding/submit-otp?email=${values.email}`);
-      }, 1000);
-    } catch (e: any) {
-      console.log({ e });
-      toast.remove();
-      toast.error(e?.response?.data?.message);
+      const formattedDateOfBirth = `${day}/${month}/${year}`;
+
+      const payload = {
+        ...values,
+        dateOfBirth: formattedDateOfBirth,
+        phoneNumber,
+        accountType: returnType(),
+      };
+
+      try {
+        toast.loading("Processing...");
+        const data = (await CreateAccount(payload)) as ApiResponse;
+        toast.remove();
+        toast.success(data?.message);
+        sessionStorage.setItem("repairfind_user", data?.user);
+        console.log(data);
+        setTimeout(() => {
+          navigate(`/onboarding/submit-otp?email=${values.email}`);
+        }, 1000);
+      } catch (e: any) {
+        console.log({ e });
+        toast.remove();
+        toast.error(e?.response?.data?.message);
+      }
     }
   };
 
@@ -108,6 +136,8 @@ const useAuth = () => {
     VerifyAccount,
     ResetPassword,
     Login,
+    ResendEmail,
+    AddCompanyDetails,
   };
 };
 

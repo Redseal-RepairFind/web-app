@@ -19,7 +19,7 @@ const CreateAccount = () => {
     handleSubmit,
     control,
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   // const handleLogin = (values: any) => {
@@ -49,32 +49,34 @@ const CreateAccount = () => {
             />
           </div>
         )}
-        <div className="flex items-center sm:flex-row flex-col gap-2 justify-between">
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("firstname")}
-            </label>
-            <input
-              type="text"
-              {...register("firstName", {
-                required: true,
-              })}
-              className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-            />
+        {!location.pathname.includes("company") && (
+          <div className="flex items-center sm:flex-row flex-col gap-2 justify-between">
+            <div className="w-full mb-10 flex-1">
+              <label className="text-sm font-medium">
+                {handleLanguageChoice("firstname")}
+              </label>
+              <input
+                type="text"
+                {...register("firstName", {
+                  required: true,
+                })}
+                className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+              />
+            </div>
+            <div className="w-full mb-10 flex-1">
+              <label className="text-sm font-medium">
+                {handleLanguageChoice("lastname")}
+              </label>
+              <input
+                type="text"
+                {...register("lastName", {
+                  required: true,
+                })}
+                className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+              />
+            </div>
           </div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("lastname")}
-            </label>
-            <input
-              type="text"
-              {...register("lastName", {
-                required: true,
-              })}
-              className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-            />
-          </div>
-        </div>
+        )}
         <div className="flex items-center sm:flex-row flex-col gap-2 justify-between">
           <div className="w-full mb-10 flex-1">
             <label className="text-sm font-medium">
@@ -89,18 +91,20 @@ const CreateAccount = () => {
               className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
             />
           </div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("dob")}
-            </label>
-            <input
-              type="date"
-              {...register("dateOfBirth", {
-                required: true,
-              })}
-              className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-            />
-          </div>
+          {!location.pathname.includes("company") && (
+            <div className="w-full mb-10 flex-1">
+              <label className="text-sm font-medium">
+                {handleLanguageChoice("dob")}
+              </label>
+              <input
+                type="date"
+                {...register("dateOfBirth", {
+                  required: true,
+                })}
+                className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+              />
+            </div>
+          )}
         </div>
         <div className="w-full">
           <label className="text-sm font-medium">
@@ -110,11 +114,16 @@ const CreateAccount = () => {
             name="phoneNumber"
             countryCallingCodeEditable={false}
             international
-            defaultCountry="NG"
-            className="mt-1 px-3 mb-10 py-3 rounded-md focus:ring-0 outline-none border border-slate-300"
+            defaultCountry="CA"
+            className="mt-1 px-3 mb-10 py-3 rounded-md focus:ring-0 focus:border-black outline-none border border-slate-300"
             control={control}
             rules={{ required: true }}
           />
+          {errors.phoneNumber && (
+            <div className="text-red-500 text-xs font-medium w-full text-center">
+              Please enter your phone number
+            </div>
+          )}
         </div>
         <div className="flex items-center sm:flex-row flex-col gap-2 justify-between">
           <PasswordField
@@ -144,15 +153,10 @@ const CreateAccount = () => {
               type="checkbox"
               className="accent-black"
             />{" "}
-            <span className="flex gap-1 flex-wrap">
+            <span className="flex gap-1 items-start justify-start">
               {handleLanguageChoice("term_first")}{" "}
-              <Link className="underline text-blue-800" to={"/terms"}>
-                {handleLanguageChoice("term")}
-              </Link>{" "}
-              {handleLanguageChoice("term_last")}{" "}
-              <Link className="underline text-blue-800" to={"/privacy-notice"}>
-                {handleLanguageChoice("privacy")}
-              </Link>
+              {handleLanguageChoice("term")} {handleLanguageChoice("term_last")}{" "}
+              {handleLanguageChoice("privacy")}
             </span>
           </label>
         </div>
@@ -162,8 +166,13 @@ const CreateAccount = () => {
           </div>
         )}
         <button
+          disabled={isSubmitting}
           type="submit"
-          className={`relative border border-black bg-black mt-5 py-3 rounded-md text-white cursor-pointer`}
+          className={`relative border ${
+            isSubmitting
+              ? "border-gray-300 bg-gray-300 cursor-not-allowed"
+              : "border-black bg-black cursor-pointer"
+          } mt-5 py-3 rounded-md text-white`}
         >
           {handleLanguageChoice("next")}
           <FontAwesomeIcon

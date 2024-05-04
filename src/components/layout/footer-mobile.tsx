@@ -13,9 +13,9 @@ import Each from "../helpers/each";
 
 const socials = [faFacebook, faInstagram, faLinkedinIn];
 
-const Footer: React.FC = () => {
+const FooterMobile: React.FC = () => {
   return (
-    <div className="w-full py-4 bg-black bottom-0 absolute hidden md:block">
+    <div className="w-full py-4 bg-black block md:hidden">
       <Container className="flex items-center justify-between gap-2 sm:flex-row flex-col">
         <img src={logo} alt="Logo" />
         <FooterLinks />
@@ -32,4 +32,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default FooterMobile;

@@ -28,6 +28,11 @@ export const auth = {
       .post(`/contractor/forgot-password`, payload)
       .then(({ data }: any) => data),
 
+  resendEmail: (payload: any) =>
+    client
+      .post(`/contractor/resend-email`, payload)
+      .then(({ data }: any) => data),
+
   verifyEmail: (payload: any) =>
     client
       .post(`/contractor/reset-password-verification`, payload)
@@ -40,4 +45,9 @@ export const auth = {
 
   getQuiz: () =>
     client.get(`/contractor/quiz-start`).then(({ data }: any) => data),
+
+  addCompanyDetails: (payload: any) =>
+    client
+      .post(`/contractor/me/company`, payload)
+      .then(({ data }: any) => data),
 };

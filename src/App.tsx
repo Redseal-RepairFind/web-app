@@ -12,6 +12,9 @@ import { ContextType } from "./types";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
+// @ts-ignore
+window.Buffer = window.Buffer || require("buffer").Buffer;
+
 function App() {
   const [context, setContext] = useState<ContextType>({ languageChoice: "en" });
 

@@ -5,6 +5,7 @@ import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import useLanguage from "../../../../hooks/useLanguage";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
+import io, { Socket } from "socket.io-client";
 
 const TakePhoto = ({
   handleNext,
@@ -29,6 +30,45 @@ const TakePhoto = ({
   }, [webcamRef]);
 
   console.log(verifyUrl);
+
+  const token = sessionStorage.getItem("userToken");
+
+  // console.log(token);
+
+  useEffect(() => {
+    console.log("ln39", "socket", token);
+    let socket: Socket;
+
+    if (token) {
+      socket = io(`https://lionfish-app-r3zaf.ondigitalocean.app`, {
+        auth: {
+          token,
+        },
+      });
+
+      socket.on("connect", () => {
+        console.log("Connected to Socket.IO server");
+      });
+
+      socket.on("disconnect", () => {
+        console.log("Disconnected from Socket.IO server");
+      });
+
+      socket.on("error", (error) => {
+        console.error("Socket.IO error:", error);
+      });
+
+      socket.on("stripe_identity", (data) => {
+        console.log("Received stripe_identity event:", data);
+      });
+    }
+
+    return () => {
+      if (socket) {
+        socket.disconnect();
+      }
+    };
+  }, [verifyUrl, token]);
 
   const handleIdentity = async () => {
     toast.remove();

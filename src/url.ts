@@ -1,1 +1,1 @@
-export const url = "https://lionfish-app-r3zaf.ondigitalocean.app/api/v1";
+export const url = process.env.REACT_APP_BASE_URL;

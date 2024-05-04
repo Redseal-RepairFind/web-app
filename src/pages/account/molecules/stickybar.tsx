@@ -2,9 +2,12 @@ import React from "react";
 import { routes } from "../routes";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRightFromBracket,
+  faX,
+} from "@fortawesome/free-solid-svg-icons";
 
-const Sidebar = () => {
+const Stickybar = ({ toggleSticky }: { toggleSticky: any }) => {
   const userString = sessionStorage.getItem("repairfind_user");
   const user = userString ? JSON.parse(userString) : null;
 
@@ -15,7 +18,13 @@ const Sidebar = () => {
 
   console.log(user);
   return (
-    <div className="flex-1 p-2 md:block hidden">
+    <div className="flex-1 p-2 border-l border-gray-100 shadow bg-white z-10 left-0 h-[100vh] w-[70%] absolute">
+      <button
+        className="w-full flex items-center justify-start p-3"
+        onClick={toggleSticky}
+      >
+        <FontAwesomeIcon icon={faX} className="text-sm text-gray-600" />
+      </button>
       <div className="w-full flex items-center border-b border-gray-300 justify-between pb-4 px-2 my-3">
         <div>
           <h1 className="text-lg font-medium">{user?.name}</h1>
@@ -51,4 +60,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Stickybar;
