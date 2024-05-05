@@ -12,12 +12,17 @@ const Quiz = () => {
 
   const [screenIndex, setScreenIndex] = useState(sessionIndex || 0);
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     ["Quiz"],
     () => {
       return auth.getQuiz();
     },
-    { cacheTime: 30000, staleTime: 30000, select: (data) => data?.data }
+    {
+      cacheTime: 30000,
+      staleTime: 30000,
+      select: (data) => data?.data,
+      refetchOnWindowFocus: false,
+    }
   );
 
   // console.log(data);
@@ -39,7 +44,11 @@ const Quiz = () => {
       {
         id: 3,
         page: (
-          <Questions questions={data?.questions} handleIndex={handleIndex} />
+          <Questions
+            data={data}
+            isLoading={isLoading}
+            handleIndex={handleIndex}
+          />
         ),
       },
     ],

@@ -46,6 +46,11 @@ export const auth = {
   getQuiz: () =>
     client.get(`/contractor/quiz-start`).then(({ data }: any) => data),
 
+  submitQuiz: (payload: any) =>
+    client
+      .post(`/contractor/quiz-submit`, payload)
+      .then(({ data }: any) => data),
+
   addCompanyDetails: (payload: any) =>
     client
       .post(`/contractor/me/company`, payload)

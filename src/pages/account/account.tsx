@@ -5,6 +5,8 @@ import Sidebar from "./molecules/sidebar";
 import Stickybar from "./molecules/stickybar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import useLanguage from "../../hooks/useLanguage";
+import welcome from "../../images/welcome.png";
 
 const Account = () => {
   const userString = sessionStorage.getItem("repairfind_user");
@@ -12,29 +14,58 @@ const Account = () => {
 
   const [showSticky, setShowSticky] = useState(false);
 
+  const { handleLanguageChoice } = useLanguage();
+
   const toggleSticky = () => {
     setShowSticky(!showSticky);
   };
 
   return (
-    <Layout className={"bg-gray-100 relative"}>
-      {showSticky && <Stickybar toggleSticky={toggleSticky} />}
-      <Container className="flex w-full items-start py-3 bg-white sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
-        <div className="w-full p-5 flex relative">
-          <button
-            onClick={toggleSticky}
-            className="md:hidden block absolute top-0 left-0"
-          >
-            <FontAwesomeIcon className="text-xl" icon={faBars} />
-          </button>
-          <Sidebar />
-          <div className="flex-[4] flex items-center justify-center flex-col">
-            <h1 className="text-2xl font-medium">Welcome, {user?.name}</h1>
-            <p className="text-sm text-gray-600 mt-1">
-              Check out our app on playstore and apple store
-            </p>
-            <div className="flex items-center justify-center gap-2 md:flex-row flex-col w-full mt-10">
-              <button className="border flex items-center justify-center gap-2 border-black bg-black py-3 w-full max-w-[200px] rounded-md text-white">
+    <React.Fragment>
+      <img
+        src={welcome}
+        className="w-[90%] lg:w-[70%] h-auto mb-10"
+        alt="Welcome"
+      />
+      <h1 className="text-2xl font-medium">
+        {handleLanguageChoice("welcome_msg")}
+      </h1>
+      <p className="text-sm text-gray-600 text-center mt-1 md:w-[400px]">
+        Congratulations! Your registration process is complete. We'll notify you
+        as soon as we go live. Thank you for joining the Repairfind community!
+      </p>
+      <div className="flex items-center justify-center gap-2 md:flex-row flex-col w-full mt-10">
+        {/* <button className="border flex items-center justify-center gap-2 border-black bg-black py-3 w-full max-w-[200px] rounded-md text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6"
+                  viewBox="0 0 404 404"j
+                  id="playstore"
+                >
+                  <path
+                    fill="#f6b94c"
+                    d="m21.963 402.378 373.648-186.806c11.185-5.592 11.185-21.553 0-27.145L21.963 1.622C11.872-3.423 0 3.914 0 15.194v373.612c0 11.28 11.872 18.617 21.963 13.572z"
+                  ></path>
+                  <path
+                    fill="#52c1ff"
+                    d="M5.068 3.875C2.007 6.593 0 10.559 0 15.194v373.612c0 4.635 2.007 8.601 5.068 11.319L203.193 202 5.068 3.875z"
+                  ></path>
+                  <path
+                    fill="#67c7a5"
+                    d="M276.377 128.816 21.963 1.622C16.018-1.35 9.458-.022 5.068 3.875L203.193 202l73.184-73.184z"
+                  ></path>
+                  <path
+                    fill="#f56c61"
+                    d="M5.068 400.125c4.39 3.897 10.95 5.225 16.895 2.253l254.414-127.195L203.193 202 5.068 400.125z"
+                  ></path>
+                </svg>
+                Play Store
+              </button>
+              <button className="flex items-center justify-center gap-2 border border-black w-full max-w-[200px] py-3 rounded-md text-black">
+
+                Apple Store
+              </button> */}
+        {/* <button className="border flex items-center justify-center gap-2 border-black bg-black py-3 w-full max-w-[200px] rounded-md text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6"
@@ -79,12 +110,9 @@ const Account = () => {
                   </g>
                 </svg>
                 Apple Store
-              </button>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </Layout>
+              </button> */}
+      </div>
+    </React.Fragment>
   );
 };
 

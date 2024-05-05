@@ -8,12 +8,19 @@ import useAuth from "../../../../hooks/useAuth";
 
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 
 const CreateAccount = () => {
   const { handleLanguageChoice } = useLanguage();
 
   const { handleCreate } = useAuth();
   const location = useLocation();
+
+  useEffect(() => {
+    sessionStorage.removeItem("employee_session_step");
+    sessionStorage.removeItem("individual_session_step");
+    sessionStorage.removeItem("company_session_step");
+  }, []);
 
   const {
     handleSubmit,

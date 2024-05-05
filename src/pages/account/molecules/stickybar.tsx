@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRightFromBracket,
   faX,
+  faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Stickybar = ({ toggleSticky }: { toggleSticky: any }) => {
@@ -41,17 +42,36 @@ const Stickybar = ({ toggleSticky }: { toggleSticky: any }) => {
         <Link
           className={`w-full flex items-center ${
             location.pathname === route.href ? "bg-gray-100" : "bg-transparent"
-          } border border-transparent gap-2 p-4 mb-3 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+          } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
           to={route.href}
         >
           <FontAwesomeIcon icon={route.icon} />
           <p>{route.title}</p>
         </Link>
       ))}
+      <Link
+        className={`w-full flex items-center ${
+          location.pathname === "/account/team"
+            ? "bg-gray-100"
+            : "bg-transparent"
+        } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+        to={"/account/team"}
+      >
+        Team Members
+      </Link>
+      <a
+        className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+        href="https://repairfind.ca/about-us/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FontAwesomeIcon icon={faExclamationCircle} />
+        About Repair Find
+      </a>
 
       <button
         onClick={() => navigate("/")}
-        className="w-full flex items-center mt-10 border border-transparent gap-2 p-4 mb-3 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md"
+        className="w-full flex items-center mt-10 border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md"
       >
         <FontAwesomeIcon icon={faArrowRightFromBracket} />
         <p>Logout</p>

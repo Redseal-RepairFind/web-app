@@ -22,6 +22,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
   interface ApiResponse {
     message: string;
     user?: any;
+    data?: any;
     // Add other properties as needed
   }
 
@@ -47,9 +48,10 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
     try {
       toast.loading("Processing...");
       const data = (await UpdateGST(payload)) as ApiResponse;
-      console.log(data);
+      // console.log(data);
       toast.remove();
       toast.success(data?.message);
+      sessionStorage.setItem("repairfind_user", JSON.stringify(data?.data));
       sessionStorage.removeItem("individual_session_step");
       sessionStorage.removeItem("company_session_step");
       setTimeout(() => {
@@ -175,7 +177,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
           </div>
         )}
         <div className="w-full flex items-center justify-center gap-4 mt-5">
-          <button
+          {/* <button
             className="relative border w-full border-black bg-transparent py-3 rounded-md text-black"
             onClick={(e) => {
               e.preventDefault();
@@ -187,7 +189,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
               className="absolute top-[50%] translate-y-[-50%] left-2.5"
               icon={faArrowLeftLong}
             />
-          </button>
+          </button> */}
           <button
             disabled={isSubmitting}
             type="submit"

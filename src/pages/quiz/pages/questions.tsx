@@ -11,30 +11,21 @@ import Timer from "../molecules/timer";
 import toast from "react-hot-toast";
 import CenteredModal from "../../../components/ui/centered-modal";
 import Result from "../molecules/result";
-import { useQuery } from "react-query";
-import { auth } from "../../../api/auth";
+import useAuth from "../../../hooks/useAuth";
 import { SyncLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const Questions = ({
   handleIndex,
-  questions,
+  data,
+  isLoading,
 }: {
   handleIndex: any;
-  questions: any;
+  data: any;
+  isLoading: boolean;
 }) => {
-  const { data, isLoading } = useQuery(
-    ["Quiz Data"],
-    () => {
-      return auth.getQuiz();
-    },
-    {
-      cacheTime: 30000,
-      staleTime: 30000,
-      select: (data) => data?.data,
-      refetchOnWindowFocus: false,
-    }
-  );
+  const { SubmitQuiz } = useAuth();
 
   const navigate = useNavigate();
 
@@ -67,18 +58,13 @@ const Questions = ({
       setAnswers(
         data?.questions?.map((question: any) => ({
           ...question,
+          options: Array.from(new Set(question.options)), // Filter out duplicate options
           selectedAnswer: null,
           isCorrect: false,
         }))
       );
     }
-  }, [data, isLoading]);
-
-  useEffect(() => {
-    sessionStorage.setItem("question_session_index", questionIndex.toString());
-    questionIndex > 0 &&
-      sessionStorage.setItem("answers_session_index", JSON.stringify(answers));
-  }, [questionIndex, answers]);
+  }, [isLoading]);
 
   // console.log(answers);
 
@@ -102,7 +88,7 @@ const Questions = ({
 
   // console.log("total", totalScore);
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     if (questionIndex + 1 === data?.questions?.length) {
       const totalScore = answers.reduce(
         (acc: any, answer: any) => acc + (answer.isCorrect ? 1 : 0),
@@ -111,7 +97,32 @@ const Questions = ({
       toast.success("You have completed all questions!");
       setTotalScore(totalScore);
       handleModal();
+      if (totalScore >= 8) {
+        toast.remove();
+        toast.loading("Submitting your answers...");
+        try {
+          const payload = {
+            quizId: data?._id,
+            response: answers?.map((answer: any) => {
+              return {
+                question: answer?.question,
+                answer: answer?.selectedAnswer,
+              };
+            }),
+          };
+          const response = await SubmitQuiz(payload);
+          toast.remove();
+          toast.success(response?.message);
+        } catch (e: any) {
+          console.log({ e });
+          toast.remove();
+          toast.error(e?.response?.data?.message);
+        }
+      }
+      handleModal();
+      if (totalScore >= 8) toast.loading("Re-directing to your account...");
       setTimeout(() => {
+        toast.remove();
         if (totalScore >= 8) navigate("/account");
       }, 3000);
       return;

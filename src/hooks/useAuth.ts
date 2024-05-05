@@ -21,6 +21,7 @@ const useAuth = () => {
   const { mutateAsync: AddCompanyDetails } = useMutation(
     auth.addCompanyDetails
   );
+  const { mutateAsync: SubmitQuiz } = useMutation(auth.submitQuiz);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const useAuth = () => {
     message: string;
     user?: any;
     accessToken?: any;
+    data?: any;
     // Add other properties as needed
   }
 
@@ -42,7 +44,7 @@ const useAuth = () => {
   };
 
   const handleCreate = async (values: any) => {
-    console.log(values);
+    // console.log(values);
     const phone = parsePhoneNumber(values.phoneNumber);
 
     if (!phone) return toast.error("Please enter your phone number...");
@@ -65,8 +67,8 @@ const useAuth = () => {
         const data = (await CreateAccount(payload)) as ApiResponse;
         toast.remove();
         toast.success(data?.message);
-        sessionStorage.setItem("repairfind_user", data?.user);
-        console.log(data);
+        sessionStorage.setItem("repairfind_user", data?.data);
+        // console.log(data);
         setTimeout(() => {
           navigate(`/onboarding/submit-otp?email=${values.email}`);
         }, 1000);
@@ -113,7 +115,7 @@ const useAuth = () => {
       toast.success(data?.message);
       sessionStorage.setItem("repairfind_user", JSON.stringify(data?.user));
       sessionStorage.setItem("userToken", data?.accessToken);
-      console.log(data);
+      // console.log(data);
       setTimeout(() => {
         navigate(
           `/onboarding/update-information?accountType=${data?.user?.accountType?.toLowerCase()}`
@@ -138,6 +140,7 @@ const useAuth = () => {
     Login,
     ResendEmail,
     AddCompanyDetails,
+    SubmitQuiz,
   };
 };
 

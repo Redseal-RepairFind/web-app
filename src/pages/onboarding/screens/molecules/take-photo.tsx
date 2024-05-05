@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Webcam from "react-webcam";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import useLanguage from "../../../../hooks/useLanguage";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
@@ -20,28 +17,19 @@ const TakePhoto = ({
 
   const [verifyUrl, setVerifyUrl] = useState("");
 
-  const [image, setImage] = useState(null);
-  const [showCamera, setShowCamera] = useState(false);
-  const webcamRef = React.useRef<any>(null);
-
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setImage(imageSrc);
-  }, [webcamRef]);
-
-  console.log(verifyUrl);
+  // console.log(verifyUrl);
 
   const token = sessionStorage.getItem("userToken");
 
   // console.log(token);
 
   useEffect(() => {
-    console.log("ln39", "socket", token);
     let socket: Socket;
 
     if (token) {
+      // console.log("ln42", token);
       socket = io(`https://lionfish-app-r3zaf.ondigitalocean.app`, {
-        auth: {
+        extraHeaders: {
           token,
         },
       });
@@ -50,16 +38,20 @@ const TakePhoto = ({
         console.log("Connected to Socket.IO server");
       });
 
+      socket.on("STRIPE_IDENTITY", (data) => {
+        // console.log("Received stripe_identity event:", data);
+        toast.success("Verification successful...");
+        setTimeout(() => {
+          handleNext();
+        }, 800);
+      });
+
       socket.on("disconnect", () => {
         console.log("Disconnected from Socket.IO server");
       });
 
       socket.on("error", (error) => {
         console.error("Socket.IO error:", error);
-      });
-
-      socket.on("stripe_identity", (data) => {
-        console.log("Received stripe_identity event:", data);
       });
     }
 
@@ -101,89 +93,7 @@ const TakePhoto = ({
           src={verifyUrl}
           className="w-[100%] min-h-[600px] border border-gray-200"
         />
-        {/* {!showCamera && (
-          <div className="w-full max-w-40 border border-gray-200 bg-gray-200 rounded-full">
-            <button
-                onClick={() => setShowCamera(true)}
-              onClick={handleIdentity}
-              className="inset-0 font-medium w-full h-full"
-              style={{ aspectRatio: "1/1" }}
-            >
-              {handleLanguageChoice("open_camera")}
-              Click to Verify
-            </button>
-          </div>
-        )}
-        {showCamera && (
-          <div>
-            <div className="w-full text-center">
-              {image ? (
-                <img
-                  src={image}
-                  alt="Snap"
-                  style={{ maxWidth: "100%", maxHeight: "500px" }}
-                />
-              ) : (
-                <Webcam
-                  audio={false}
-                  height={500}
-                  ref={webcamRef}
-                  screenshotFormat="image/jpeg"
-                  width={500}
-                  style={{ border: "1px solid #ccc" }}
-                />
-              )}
-            </div>
-            {!image ? (
-              <div className="w-full mt-5">
-                <button
-                  className="border w-full border-black bg-black py-3 rounded-md text-white"
-                  onClick={capture}
-                >
-                  Capture
-                </button>
-              </div>
-            ) : (
-              <div className="w-full flex items-center justify-center gap-4 mt-5">
-                <button
-                  className="border w-full border-black bg-transparent py-3 rounded-md text-black"
-                  onClick={() => setImage(null)}
-                >
-                  {handleLanguageChoice("open_camera")}
-                </button>
-                <button
-                  onClick={() => {
-                    toast.loading("Processing image...");
-
-                    setTimeout(() => {
-                      toast.remove();
-                      toast.success("Image verified successfully...");
-                      handleNext();
-                    }, 1000);
-                  }}
-                  className="relative border w-full border-black bg-black py-3 rounded-md text-white"
-                >
-                  {handleLanguageChoice("next")}
-                  <FontAwesomeIcon
-                    className="absolute top-[50%] translate-y-[-50%] right-2.5"
-                    icon={faArrowRightLong}
-                  />
-                </button>
-              </div>
-            )}
-          </div>
-        )} */}
       </div>
-      <button
-        onClick={() => handleNext()}
-        className="relative border w-full border-black bg-black py-3 rounded-md text-white"
-      >
-        {handleLanguageChoice("next")}
-        <FontAwesomeIcon
-          className="absolute top-[50%] translate-y-[-50%] right-2.5"
-          icon={faArrowRightLong}
-        />
-      </button>
     </div>
   );
 };

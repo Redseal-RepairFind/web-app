@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "../../../components/global/container";
 import Layout from "../../../components/global/layout";
 import useOnboarding from "../../../hooks/useOnboarding";
@@ -11,6 +11,12 @@ const SelectLanguage: React.FC = () => {
     useOnboarding();
 
   const { handleLanguageChoice } = useLanguage();
+
+  useEffect(() => {
+    sessionStorage.removeItem("employee_session_step");
+    sessionStorage.removeItem("individual_session_step");
+    sessionStorage.removeItem("company_session_step");
+  }, []);
 
   return (
     <Layout>
