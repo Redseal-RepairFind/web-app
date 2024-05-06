@@ -90,7 +90,7 @@ const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
             : "border-gray-300  bg-gray-300 text-black cursor-not-allowed"
         } w-full mt-7 py-3 px-8 rounded-md `}
       >
-        Send Invite
+        Invite a Staff to Join Your Team
       </button>
     </div>
   );
