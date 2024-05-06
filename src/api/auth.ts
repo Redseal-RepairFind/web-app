@@ -14,6 +14,9 @@ export const auth = {
       .post(`/contractor/email-verification`, payload)
       .then(({ data }: any) => data),
 
+  getProfile: () =>
+    client.get("/contractor/profiles").then(({ data }: any) => data),
+
   updateProfile: (payload: any) =>
     client.post(`/contractor/profiles`, payload).then(({ data }: any) => data),
 

@@ -14,20 +14,48 @@ import Result from "../molecules/result";
 import useAuth from "../../../hooks/useAuth";
 import { SyncLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { useQuery } from "react-query";
+import { auth } from "../../../api/auth";
 
-const Questions = ({
-  handleIndex,
-  data,
-  isLoading,
-}: {
-  handleIndex: any;
-  data: any;
-  isLoading: boolean;
-}) => {
+const Questions = ({ handleIndex }: { handleIndex: any }) => {
   const { SubmitQuiz } = useAuth();
 
   const navigate = useNavigate();
+
+  const { data, isLoading } = useQuery(
+    ["Quiz"],
+    () => {
+      return auth.getQuiz();
+    },
+    {
+      cacheTime: 30000,
+      staleTime: 30000,
+      select: (data) => data?.data,
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const { data: profile, refetch: refetchProfile } = useQuery(
+    ["Profile"],
+    () => {
+      return auth.getProfile();
+    },
+    {
+      cacheTime: 30000,
+      staleTime: 30000,
+      select: (data) => data?.data,
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  // console.log(profile);
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      "repairfind_user",
+      JSON.stringify(profile?.contractor)
+    );
+  }, [profile]);
 
   // console.log(data);
 
@@ -111,6 +139,9 @@ const Questions = ({
             }),
           };
           const response = await SubmitQuiz(payload);
+          refetchProfile();
+          console.log(response);
+          sessionStorage.setItem("repairfind_user", response?.data?.contractor);
           toast.remove();
           toast.success(response?.message);
         } catch (e: any) {
@@ -120,11 +151,11 @@ const Questions = ({
         }
       }
       handleModal();
-      if (totalScore >= 8) toast.loading("Re-directing to your account...");
-      setTimeout(() => {
-        toast.remove();
-        if (totalScore >= 8) navigate("/account");
-      }, 3000);
+      // if (totalScore >= 8) toast.loading("Re-directing to your account...");
+      // setTimeout(() => {
+      //   toast.remove();
+      //   if (totalScore >= 8) navigate("/account");
+      // }, 3000);
       return;
     }
 
@@ -148,7 +179,11 @@ const Questions = ({
   return (
     <div className="w-full h-[100vh] flex items-center justify-center">
       <CenteredModal title="" open={modal} setOpen={handleModal}>
-        <Result totalScore={totalScore} handleModal={handleModal} />
+        <Result
+          profile={profile}
+          totalScore={totalScore}
+          handleModal={handleModal}
+        />
       </CenteredModal>
       <div className="relative max-w-[800px] w-full flex items-center justify-center flex-col gap-5">
         {answers && answers.length > 1 && (

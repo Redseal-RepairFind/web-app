@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
-import { routes } from "../routes";
+// import { routes } from "../routes";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +9,7 @@ import {
   faExclamationCircle,
   faShield,
   faUsers,
+  faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ className }: { className?: string }) => {
@@ -26,7 +27,7 @@ const Sidebar = ({ className }: { className?: string }) => {
       <div className="w-full flex items-center gap-2 border-b border-gray-300 justify-between pb-4 px-2 my-3">
         <div className="w-[70%]">
           <h1 className="text-lg font-medium">{user?.name}</h1>
-          <div className="flex items-center gap-4 mt-2">
+          <div className="flex items-end gap-4 mt-2">
             <div className="flex items-center gap-1 justify-start">
               <span className="w-1 bg-black h-1 rounded-full"></span>
               <p className="text-sm">{user?.accountType}</p>
@@ -38,17 +39,9 @@ const Sidebar = ({ className }: { className?: string }) => {
               </div>
             )}
             {user?.accountType.toLowerCase() === "company" &&
-              user?.companyDetails?.status && (
+              user?.profile?.skill && (
                 <div className="flex items-center gap-1 justify-start">
-                  <span
-                    className={`rounded-3xl px-5 py-1 text-sm capitalize ${
-                      user?.companyDetails?.status.toLowerCase() === "pending"
-                        ? "bg-pink-200"
-                        : "bg-green-300"
-                    }`}
-                  >
-                    {user?.companyDetails?.status.toLowerCase()}
-                  </span>
+                  <span className="w-1 bg-black h-1 rounded-full"></span>
                   <p className="text-sm">{user?.profile?.skill}</p>
                 </div>
               )}
@@ -82,28 +75,41 @@ const Sidebar = ({ className }: { className?: string }) => {
         <FontAwesomeIcon icon={faBook} />
         Terms & Conditions
       </a>
-      {user?.accountType.toLowerCase() === "company" &&
-        user?.gstDetails?.status?.toLowerCase() !== "pending" && (
-          <Link
-            className={`w-full flex items-center ${
-              location.pathname === "/account/team"
-                ? "bg-gray-100"
-                : "bg-transparent"
-            } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
-            to={"/account/team"}
-          >
-            <FontAwesomeIcon icon={faUsers} />
-            Team Members
-          </Link>
-        )}
-      <a
+      {user?.accountType.toLowerCase() === "company" && (
+        // user?.gstDetails?.status?.toLowerCase() !== "pending" &&
+        <Link
+          className={`w-full flex items-center ${
+            location.pathname === "/account/team"
+              ? "bg-gray-100"
+              : "bg-transparent"
+          } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+          to={"/account/team"}
+        >
+          <FontAwesomeIcon icon={faUsers} />
+          Team Members
+        </Link>
+      )}
+      {user?.accountType.toLowerCase() !== "company" && (
+        <Link
+          className={`w-full flex items-center ${
+            location.pathname === "/account/my-team"
+              ? "bg-gray-100"
+              : "bg-transparent"
+          } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+          to={"/account/my-team"}
+        >
+          <FontAwesomeIcon icon={faBuilding} />
+          Your Company
+        </Link>
+      )}
+      {/* <a
         className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
         href="https://repairfind.ca/about-us/"
         target="_blank"
       >
         <FontAwesomeIcon icon={faExclamationCircle} />
         About Repair Find
-      </a>
+      </a> */}
 
       <button
         onClick={() => {

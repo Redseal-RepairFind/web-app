@@ -3,7 +3,7 @@ import Container from "../../../components/global/container";
 import Layout from "../../../components/global/layout";
 
 import LoginBg from "../../../images/login.png";
-import logo from "../../../images/logo_white.png";
+// import logo from "../../../images/logo_white.png";
 
 import LoginForm from "../molecules/forms/login-form";
 

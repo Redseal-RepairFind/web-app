@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Account from "./account";
 import TeamMembers from "./pages/team-members";
 import Stickybar from "./molecules/stickybar";
@@ -8,9 +8,19 @@ import Container from "../../components/global/container";
 import Layout from "../../components/global/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import TeamData from "./pages/team-data";
 
 function Accountroutes() {
   const [showSticky, setShowSticky] = useState(false);
+
+  const navigate = useNavigate();
+
+  const userString = sessionStorage.getItem("repairfind_user");
+  const user = userString ? JSON.parse(userString) : null;
+
+  // useEffect(() => {
+  //   !user && navigate("/");
+  // }, []);
 
   const toggleSticky = () => {
     setShowSticky(!showSticky);
@@ -32,6 +42,7 @@ function Accountroutes() {
               <Routes>
                 <Route path="/" element={<Account />} />
                 <Route path="/team" element={<TeamMembers />} />
+                <Route path="/my-team" element={<TeamData />} />
               </Routes>
             </div>
           </div>

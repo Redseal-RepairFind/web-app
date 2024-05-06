@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./pages/auth/pages/login";
 import Onboardingroutes from "./pages/onboarding/onboarding-routes";
 import Accountroutes from "./pages/account/account-routes";
@@ -19,8 +19,6 @@ function App() {
   const [context, setContext] = useState<ContextType>({ languageChoice: "en" });
 
   const queryClient = new QueryClient();
-
-  const navigate = useNavigate();
 
   return (
     <React.Fragment>

@@ -39,7 +39,7 @@ const Search = ({
     [debouncedSearch]
   );
   return (
-    <div className="relative my-1">
+    <div className="relative my-1 w-full">
       <FontAwesomeIcon
         className="text-sm text-gray-600 absolute left-2 top-[50%] translate-y-[-50%]"
         icon={faSearch}

@@ -51,7 +51,7 @@ const PreviewDetails = ({
       <div className="mb-4 flex items-center justify-between">
         <button
           onClick={() => setCurrentTab("profile")}
-          className={`text-gray-600 font-medium flex-1 border-b  ${
+          className={`text-gray-600 font-medium flex-1 border-b pb-2  ${
             currentTab === "profile" ? "border-black" : "border-gray-300"
           }`}
         >
@@ -59,7 +59,7 @@ const PreviewDetails = ({
         </button>
         <button
           onClick={() => setCurrentTab("media")}
-          className={`text-gray-600 font-medium flex-1 border-b  ${
+          className={`text-gray-600 font-medium flex-1 border-b pb-2  ${
             currentTab === "media" ? "border-black" : "border-gray-300"
           }`}
         >

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, Route, RouteProps } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 
 interface ProtectedRouteProps {
   isAuthenticated: boolean;

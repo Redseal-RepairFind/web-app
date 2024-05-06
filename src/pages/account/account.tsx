@@ -1,10 +1,4 @@
-import React, { useState } from "react";
-import Layout from "../../components/global/layout";
-import Container from "../../components/global/container";
-import Sidebar from "./molecules/sidebar";
-import Stickybar from "./molecules/stickybar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import useLanguage from "../../hooks/useLanguage";
 import welcome from "../../images/welcome.png";
 import stressed from "../../images/stressed.png";
@@ -13,13 +7,13 @@ const Account = () => {
   const userString = sessionStorage.getItem("repairfind_user");
   const user = userString ? JSON.parse(userString) : null;
 
-  const [showSticky, setShowSticky] = useState(false);
+  // const [showSticky, setShowSticky] = useState(false);
 
   const { handleLanguageChoice } = useLanguage();
 
-  const toggleSticky = () => {
-    setShowSticky(!showSticky);
-  };
+  // const toggleSticky = () => {
+  //   setShowSticky(!showSticky);
+  // };
 
   if (user?.gstDetails?.status?.toLowerCase() === "pending") {
     return (

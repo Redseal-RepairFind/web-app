@@ -43,13 +43,7 @@ const Quiz = () => {
       { id: 2, page: <Instructions handleIndex={handleIndex} /> },
       {
         id: 3,
-        page: (
-          <Questions
-            data={data}
-            isLoading={isLoading}
-            handleIndex={handleIndex}
-          />
-        ),
+        page: <Questions handleIndex={handleIndex} />,
       },
     ],
     [screenIndex, data]

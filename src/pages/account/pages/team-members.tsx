@@ -4,14 +4,26 @@ import { SyncLoader } from "react-spinners";
 import CenteredModal from "../../../components/ui/centered-modal";
 import AddTeamMember from "./add-member-modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExclamationCircle,
+  faRightFromBracket,
+  faEllipsisV,
+} from "@fortawesome/free-solid-svg-icons";
+import Search from "../../../components/ui/search";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TeamMembers = () => {
   const { data, isLoading } = useTeam();
 
-  const [showModal, hideModal] = useState<boolean>(false);
+  const [selectedContractor, setSelectedContractor] = useState<any | null>(
+    null
+  );
 
-  console.log(data, isLoading);
+  const [showModal, hideModal] = useState<boolean>(false);
+  const [searchContractor, setSearchContractor] = useState<string>("");
+
+  // console.log(data, isLoading);
 
   const toggleModal = () => {
     hideModal(!showModal);
@@ -30,25 +42,53 @@ const TeamMembers = () => {
       <CenteredModal open={showModal} setOpen={hideModal} title="">
         <AddTeamMember toggleModal={toggleModal} />
       </CenteredModal>
-      <div className="w-full max-w-[600px] flex items-start justify-start flex-col gap-4">
-        {/* {data?.members?.length && */}
-        <div className="w-full">
-          {/* <div className="relative mt-1">
-            <FontAwesomeIcon
-              className="text-sm text-gray-600 absolute right-3 top-[50%] translate-y-[-50%]"
-              icon={faSearch}
-            />
-            <input
-              placeholder="Search for contractors..."
-              className={`w-full py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-gray-100 bg-gray-100 focus:bg-white outline-none focus:ring-0`}
-              type="search"
-            />
-          </div> */}
+      <div className="w-full  max-w-[600px] flex items-center justify-center flex-col gap-4">
+        <Search
+          resetValue={() => setSelectedContractor(null)}
+          setSearch={setSearchContractor}
+          placeholder="Search for contractors..."
+        />
+        <div className="max-h-[200px] mt-2 md:max-h-[350px] w-full border border-gray-300 rounded-md px-3 pt-3 overflow-y-scroll">
+          {data?.members?.length ? (
+            <>
+              {data?.members?.map((member: any) => (
+                <div
+                  className={`w-full flex-col md:flex-row flex items-center gap-5 md:gap-2 justify-between border bg-white border-gray-200 shadow rounded-md mb-3 p-5`}
+                >
+                  <div className="flex items-center justify-start gap-4">
+                    <div className="w-12 flex items-center justify-center h-12 rounded-full border border-gray-100 shadow">
+                      <img
+                        className="w-7"
+                        src={member?.profilePhoto?.url}
+                        alt={""}
+                      />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-base">{member?.email}</p>
+                      <p className="font-medium text-sm">{member?.name}</p>
+                    </div>
+                  </div>
+                  <button className="flex items-center justify-end gap-2">
+                    <FontAwesomeIcon icon={faEllipsisV} />
+                  </button>
+                </div>
+              ))}
+            </>
+          ) : (
+            <>
+              <FontAwesomeIcon
+                icon={faExclamationCircle}
+                className="text-5xl text-black"
+              />
+              <p className="text-gray-500 font-semibold">
+                No team members have been added yet...
+              </p>
+            </>
+          )}
         </div>
-        {/* // } */}
         <button
           onClick={toggleModal}
-          className="border border-black bg-black w-full py-3 px-8 rounded-md text-white"
+          className="border border-black bg-black py-3 px-8 rounded-md text-white"
         >
           Add Team Member
         </button>

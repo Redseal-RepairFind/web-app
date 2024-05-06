@@ -4,7 +4,7 @@ import useLanguage from "../../..//hooks/useLanguage";
 const Welcomequiz = ({ handleIndex, url }: { handleIndex: any; url: any }) => {
   const { handleLanguageChoice } = useLanguage();
 
-  console.log(url);
+  // console.log(url);
   return (
     <div className="w-full h-[100vh] flex items-center justify-center">
       <div className="flex items-center justify-center max-w-[700px] p-5 gap-5 flex-col">

@@ -2,7 +2,6 @@ import Footer from "../layout/footer";
 import { LayoutProps } from "../../interfaces";
 import Container from "./container";
 import logo from "../../images/logo_white.png";
-import phone_bg from "../../images/phone_bg.png";
 import FooterMobile from "../layout/footer-mobile";
 
 const Layout = ({ children, className, hasBackground }: LayoutProps) => {

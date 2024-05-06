@@ -5,8 +5,8 @@ import { SyncLoader } from "react-spinners";
 import Search from "../../../components/ui/search";
 
 const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
-  const userString = sessionStorage.getItem("repairfind_user");
-  const user = userString ? JSON.parse(userString) : null;
+  //   const userString = sessionStorage.getItem("repairfind_user");
+  //   const user = userString ? JSON.parse(userString) : null;
 
   const [selectedContractor, setSelectedContractor] = useState<any | null>(
     null
