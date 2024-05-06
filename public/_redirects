@@ -1,0 +1,11 @@
+# Redirect from old path to new path
+/old-path /new-path 301
+
+# Redirect from one domain to another
+https://old-domain.com/* https://new-domain.com/:splat 301
+
+# Redirect to a specific URL
+/contact /contact-us.html 301
+
+# Redirect all paths to a single page (useful for single-page applications)
+/* /index.html 200
