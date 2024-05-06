@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import useLanguage from "../../hooks/useLanguage";
 import welcome from "../../images/welcome.png";
+import stressed from "../../images/stressed.png";
 
 const Account = () => {
   const userString = sessionStorage.getItem("repairfind_user");
@@ -20,17 +21,40 @@ const Account = () => {
     setShowSticky(!showSticky);
   };
 
+  if (user?.gstDetails?.status?.toLowerCase() === "pending") {
+    return (
+      <div className="w-full flex items-center justify-center flex-col">
+        {" "}
+        <img
+          src={stressed}
+          className="w-[80%] lg:w-[50%] h-auto mb-10"
+          alt="Stressed"
+        />
+        <h1 className="text-2xl font-semibold text-center">
+          Registration Pending
+        </h1>
+        <p className="text-sm text-gray-500 font-medium text-center w-full mt-1 md:max-w-[500px]">
+          Thank you for submitting your GST details. Please note that
+          verification may take some time. Rest assured, our team is diligently
+          processing your information. We appreciate your patience and will
+          notify you as soon as your GST details are verified.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
+      <div></div>
       <img
         src={welcome}
         className="w-[90%] lg:w-[70%] h-auto mb-10"
         alt="Welcome"
       />
-      <h1 className="text-2xl font-medium">
+      <h1 className="text-2xl font-semibold">
         {handleLanguageChoice("welcome_msg")}
       </h1>
-      <p className="text-sm text-gray-600 text-center mt-1 md:w-[400px]">
+      <p className="text-sm text-gray-500 font-medium text-center mt-1 md:max-w-[400px]">
         Congratulations! Your registration process is complete. We'll notify you
         as soon as we go live. Thank you for joining the Repairfind community!
       </p>

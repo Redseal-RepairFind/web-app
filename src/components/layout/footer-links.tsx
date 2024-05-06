@@ -4,11 +4,8 @@ import Each from "../helpers/each";
 import { FooterLinkProp } from "@/interfaces";
 
 const Items: FooterLinkProp[] = [
-  { id: 1, title: "About Us", path: "/" },
+  { id: 1, title: "Home", path: "/" },
   { id: 2, title: "Contractors", path: "/" },
-  { id: 3, title: "Contact Us", path: "/" },
-  { id: 4, title: "How it works", path: "/" },
-  { id: 5, title: "Blog", path: "/" },
 ];
 
 const FooterLinks: React.FC = () => {
@@ -26,6 +23,18 @@ const FooterLinks: React.FC = () => {
           </Link>
         )}
       />
+      <a
+        className="text-white hover:underline"
+        href="https://repairfind.ca/privacy-policy/"
+      >
+        Privacy Policy
+      </a>
+      <a
+        className="text-white hover:underline"
+        href="https://repairfind.ca/terms-of-service/"
+      >
+        Terms & Conditions
+      </a>
     </div>
   );
 };

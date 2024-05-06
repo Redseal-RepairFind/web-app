@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { team } from "../api/team";
 import { useQuery, useMutation } from "react-query";
 
 const useTeam = () => {
+  const [searchContractor, setSearchContractor] = useState<string>("");
+
   const { data, isLoading } = useQuery(
     ["Team"],
     () => {
@@ -15,9 +18,9 @@ const useTeam = () => {
   );
 
   const { data: contractors, isLoading: loadingContractors } = useQuery(
-    ["Contractos"],
+    ["Contractors", { searchContractor }],
     () => {
-      return team.searchContractors();
+      return team.searchContractors({ email: searchContractor });
     },
     {
       cacheTime: 30000,
@@ -28,7 +31,14 @@ const useTeam = () => {
 
   const { mutateAsync: SendInvite } = useMutation(team.sendInvite);
 
-  return { data, isLoading, contractors, loadingContractors, SendInvite };
+  return {
+    data,
+    isLoading,
+    contractors,
+    loadingContractors,
+    SendInvite,
+    setSearchContractor,
+  };
 };
 
 export default useTeam;

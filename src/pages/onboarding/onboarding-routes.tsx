@@ -21,7 +21,7 @@ function onboardingroutes() {
           <Route path="/select-account-type" element={<SelectAccountType />} />
           <Route path="/individual" element={<Individual />} />
           <Route path="/company" element={<Company />} />
-          <Route path="/Employee" element={<Employee />} />
+          <Route path="/employee" element={<Employee />} />
           <Route path="/submit-otp" element={<SubmitOtp />} />
           <Route path="/update-information" element={<UpdateInformation />} />
         </Routes>

@@ -5,3 +5,14 @@
 .PhoneInputInput {
   outline: none;
 }
+
+::-webkit-scrollbar {
+  width: 3px; /* Width of the scrollbar */
+  height: 40px;
+}
+
+/* Change the color of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #000000; /* Black color for the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}

@@ -10,8 +10,8 @@ export const team = {
       .post(`/contractor/teams/invitations`, payload)
       .then(({ data }: any) => data),
 
-  searchContractors: () =>
+  searchContractors: ({ email, name }: { email?: string; name?: string }) =>
     client
-      .get("/contractor/teams/search-contractors")
+      .get(`/contractor/teams/search-contractors?email=${email}`)
       .then(({ data }: any) => data),
 };

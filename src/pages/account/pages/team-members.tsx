@@ -11,7 +11,7 @@ const TeamMembers = () => {
 
   const [showModal, hideModal] = useState<boolean>(false);
 
-  //   console.log(data, isLoading);
+  console.log(data, isLoading);
 
   const toggleModal = () => {
     hideModal(!showModal);

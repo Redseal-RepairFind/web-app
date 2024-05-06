@@ -19,7 +19,7 @@ function Accountroutes() {
     <React.Fragment>
       <Layout className={"relative"}>
         {showSticky && <Stickybar toggleSticky={toggleSticky} />}
-        <Container className="flex w-full items-start py-3 bg-white sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
+        <Container className="flex w-full items-start py-3 bg-white sm:min-h-[70vh] min-h-[64.2vh] justify-center">
           <div className="w-full p-5 flex relative">
             <button
               onClick={toggleSticky}

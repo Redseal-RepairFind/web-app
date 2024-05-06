@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import useTeam from "../../../hooks/useTeam";
 import toast from "react-hot-toast";
 import { SyncLoader } from "react-spinners";
-import Select from "react-select";
+import Search from "../../../components/ui/search";
 
 const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
   const userString = sessionStorage.getItem("repairfind_user");
@@ -13,27 +12,22 @@ const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
     null
   );
 
-  const { SendInvite, contractors, loadingContractors } = useTeam();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm();
+  const { SendInvite, contractors, loadingContractors, setSearchContractor } =
+    useTeam();
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async () => {
     if (!selectedContractor) return toast.error("Please select a contractor");
     // console.log(values);
     toast.loading("Processing...");
     try {
       const data = await SendInvite({
-        ...values,
-        contractorId: selectedContractor?.value,
+        contractorId: selectedContractor?._id,
       });
       toast.remove();
       toast.success(data?.message);
       setTimeout(() => {
         toggleModal();
-      }, 800);
+      }, 1000);
     } catch (e: any) {
       console.log({ e });
       toast.remove();
@@ -42,57 +36,62 @@ const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
     // Perform actions with the form data, such as submitting to a backend
   };
 
-  if (loadingContractors) {
-    return (
-      <div className=" flex items-center justify-center">
-        <SyncLoader className="text-[#000000]" />
-      </div>
-    );
-  }
-
   //   console.log(contractors);
 
-  //   console.log(selectedContractor);
+  console.log(selectedContractor);
 
   const handleContractorChange = (selectedOption: any) => {
     setSelectedContractor(selectedOption);
   };
 
   return (
-    <div className="h-[350px]">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="text-sm text-left w-full font-medium">Role</div>
-        <input
-          className="w-full mt-1 py-2 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-          type="text"
-          id="role"
-          {...register("role", { required: true })}
-        />
-        {errors.role && (
-          <div className="text-red-500 text-xs font-medium w-full text-center">
-            This field is required
-          </div>
-        )}
-        <div className="text-sm text-left w-full font-medium mt-10 mb-1">
-          Select Contractor
+    <div className="max-h-[350px] md:max-h-[500px]">
+      <Search
+        resetValue={() => setSelectedContractor(null)}
+        setSearch={setSearchContractor}
+        placeholder="Search for contractors..."
+      />
+      {loadingContractors ? (
+        <div className="h-[200px] md:h-[350px] flex items-center justify-center">
+          <SyncLoader className="text-[#000000]" />
         </div>
-        <Select
-          value={selectedContractor}
-          onChange={handleContractorChange}
-          isMulti={false}
-          options={contractors?.map((contractor: any) => {
-            return { label: contractor?.name, value: contractor?._id };
-          })}
-        />
-
-        <button
-          disabled={isSubmitting}
-          className="border border-black bg-black w-full mt-7 py-3 px-8 rounded-md text-white"
-          type="submit"
-        >
-          Submit
-        </button>
-      </form>
+      ) : (
+        <div className="max-h-[200px] mt-2 md:max-h-[350px] w-full border border-gray-300 rounded-md p-3 overflow-y-scroll">
+          {contractors?.map((contractor: any) => (
+            <div
+              onClick={() => handleContractorChange(contractor)}
+              className={`w-full flex items-center justify-start gap-2 border ${
+                contractor?.id === selectedContractor?.id
+                  ? "bg-gray-100 border-gray-200"
+                  : "bg-transparent border-gray-200"
+              }shadow rounded-md mb-3 p-3 cursor-pointer`}
+            >
+              <div className="w-12 flex items-center overflow-hidden justify-center h-12 rounded-full border border-gray-100 shadow">
+                <img
+                  className="w-full rounded-full"
+                  src={contractor?.profilePhoto?.url}
+                  alt={""}
+                />
+              </div>
+              <div className="flex flex-col items-start gap-1">
+                <p className="font-medium">{contractor?.email}</p>
+                <p className="text-gray-600">{contractor?.name}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <button
+        onClick={onSubmit}
+        disabled={!selectedContractor?._id}
+        className={`border  ${
+          selectedContractor?._id
+            ? "border-black bg-black text-white cursor-pointer"
+            : "border-gray-300  bg-gray-300 text-black cursor-not-allowed"
+        } w-full mt-7 py-3 px-8 rounded-md `}
+      >
+        Send Invite
+      </button>
     </div>
   );
 };
