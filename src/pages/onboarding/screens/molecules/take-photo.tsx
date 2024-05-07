@@ -28,18 +28,20 @@ const TakePhoto = ({
 
     if (token) {
       // console.log("ln42", token);
-      socket = io(`https://lionfish-app-r3zaf.ondigitalocean.app`, {
+      socket = io(`${process.env.REACT_APP_SOCKET_TEST_URL}`, {
         extraHeaders: {
           token,
         },
       });
 
       socket.on("connect", () => {
-        console.log("Connected to Socket.IO server");
+        toast.remove();
+        toast.success("Connection successful..");
       });
 
       socket.on("STRIPE_IDENTITY", (data) => {
         // console.log("Received stripe_identity event:", data);
+        toast.remove();
         toast.success("Verification successful...");
         setTimeout(() => {
           handleNext();
@@ -47,7 +49,9 @@ const TakePhoto = ({
       });
 
       socket.on("disconnect", () => {
-        console.log("Disconnected from Socket.IO server");
+        toast.remove();
+        toast.success("Disconnected..");
+        // console.log("Disconnected from Socket.IO server");
       });
 
       socket.on("error", (error) => {

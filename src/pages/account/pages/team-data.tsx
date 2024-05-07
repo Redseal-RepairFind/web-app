@@ -12,9 +12,13 @@ import CenteredModal from "../../../components/ui/centered-modal";
 import ViewInvites from "./view-invites";
 import toast from "react-hot-toast";
 import useTeam from "../../../hooks/useTeam";
+import { convertDate } from "../../../utils";
+import useLanguage from "../../../hooks/useLanguage";
 
 const TeamData = () => {
   const { AcceptReject } = useTeam();
+
+  const { handleLanguageChoice } = useLanguage();
 
   const { data: teamData, isLoading } = useQuery(
     ["Team Data"],
@@ -102,19 +106,26 @@ const TeamData = () => {
               </div>
               <div>
                 <p className="font-semibold text-base text-center">
-                  Company name
+                  {handleLanguageChoice("companyname")}
                 </p>
-                <p className="font-medium text-sm text-center">Repair Find</p>
+                <p className="font-medium text-sm text-center">
+                  {team?.contractor?.name}
+                </p>
               </div>
               <div>
                 <p className="font-semibold text-base text-center">
                   Date Joined
                 </p>
-                <p className="font-medium text-sm text-center">06/05/2024</p>
+                <p className="font-medium text-sm text-center">
+                  {convertDate({
+                    isoDate: team?.dateJoined,
+                    dateStyle: "short",
+                  })}
+                </p>
               </div>
               <button className="flex items-center justify-end gap-2">
                 <FontAwesomeIcon icon={faRightFromBracket} />
-                Exit
+                {handleLanguageChoice("exit")}
               </button>
             </div>
           ))}

@@ -53,9 +53,9 @@ const TeamMembers = () => {
             <>
               {data?.members?.map((member: any) => (
                 <div
-                  className={`w-full flex-col md:flex-row flex items-center gap-5 md:gap-2 justify-between border bg-white border-gray-200 shadow rounded-md mb-3 p-5`}
+                  className={`w-full relative flex-col md:flex-row flex items-center gap-5 md:gap-2 justify-between border bg-white border-gray-200 shadow rounded-md mb-3 p-5`}
                 >
-                  <div className="flex items-center justify-start gap-4">
+                  <div className="flex items-center flex-col md:flex-row justify-start gap-4">
                     <div className="w-12 flex items-center justify-center h-12 rounded-full border border-gray-100 shadow">
                       <img
                         className="w-7"
@@ -63,12 +63,19 @@ const TeamMembers = () => {
                         alt={""}
                       />
                     </div>
-                    <div>
+                    <div className="relative">
+                      {member?.status?.toLowerCase() === "active " && (
+                        <span className="md:absolute inline top-0 font-medium right-[-70px] text-center bg-pink-300 py-1 px-3 text-[12px]">
+                          Pending
+                        </span>
+                      )}
                       <p className="font-semibold text-base">{member?.email}</p>
-                      <p className="font-medium text-sm">{member?.name}</p>
+                      <p className="text-sm font-medium text-gray-500">
+                        {member?.name}
+                      </p>
                     </div>
                   </div>
-                  <button className="flex items-center justify-end gap-2">
+                  <button className="absolute md:inline top-5 right-5">
                     <FontAwesomeIcon icon={faEllipsisV} />
                   </button>
                 </div>

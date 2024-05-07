@@ -3,10 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRightLong,
-  faArrowLeftLong,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { useState } from "react";

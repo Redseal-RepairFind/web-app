@@ -132,6 +132,13 @@
     "zh": "公司名称",
     "es": "Nombre de la empresa"
   },
+  "exit": {
+    "en": "Exit",
+    "fr": "Sortie",
+    "pa": "ਬਾਹਰ ਨਿਕਾਸ",
+    "zh": "退出",
+    "es": "Salir"
+  },
   "lastname": {
     "en": "Last Name",
     "fr": "Nom de famille",

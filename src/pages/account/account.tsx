@@ -2,6 +2,7 @@ import React from "react";
 import useLanguage from "../../hooks/useLanguage";
 import welcome from "../../images/welcome.png";
 import stressed from "../../images/stressed.png";
+import failed from "../../images/Failed businessman.png";
 
 const Account = () => {
   const userString = sessionStorage.getItem("repairfind_user");
@@ -32,6 +33,85 @@ const Account = () => {
           verification may take some time. Rest assured, our team is diligently
           processing your information. We appreciate your patience and will
           notify you as soon as your GST details are verified.
+        </p>
+      </div>
+    );
+  }
+
+  if (user?.certnStatus?.toLowerCase() === "not_started") {
+    return (
+      <div className="w-full flex items-center justify-center flex-col">
+        {" "}
+        <img
+          src={stressed}
+          className="w-[80%] lg:w-[50%] h-auto mb-10"
+          alt="Stressed"
+        />
+        <h1 className="text-2xl font-semibold text-center">
+          Certn Verification not Started
+        </h1>
+        <p className="text-sm text-gray-500 font-medium text-center w-full mt-1 md:max-w-[500px]">
+          Kindly refer to your mail to start your certn verification process.
+        </p>
+      </div>
+    );
+  }
+
+  if (user?.certnStatus?.toLowerCase() === "not_submitted") {
+    return (
+      <div className="w-full flex items-center justify-center flex-col">
+        {" "}
+        <img
+          src={stressed}
+          className="w-[80%] lg:w-[50%] h-auto mb-10"
+          alt="Stressed"
+        />
+        <h1 className="text-2xl font-semibold text-center">
+          Registration Pending
+        </h1>
+        <p className="text-sm text-gray-500 font-medium text-center w-full mt-1 md:max-w-[500px]">
+          Please complete the verification email sent by Certn.
+        </p>
+      </div>
+    );
+  }
+
+  if (user?.certnStatus?.toLowerCase() === "pending") {
+    return (
+      <div className="w-full flex items-center justify-center flex-col">
+        {" "}
+        <img
+          src={stressed}
+          className="w-[80%] lg:w-[50%] h-auto mb-10"
+          alt="Stressed"
+        />
+        <h1 className="text-2xl font-semibold text-center">
+          Registration Pending
+        </h1>
+        <p className="text-sm text-gray-500 font-medium text-center w-full mt-1 md:max-w-[500px]">
+          Thank you for completing the Certn email verification process. Kindly
+          note that verification may take some time. Rest assured, our team is
+          diligently processing your information.
+        </p>
+      </div>
+    );
+  }
+
+  if (user?.certnStatus?.toLowerCase() === "failure") {
+    return (
+      <div className="w-full flex items-center justify-center flex-col">
+        {" "}
+        <img
+          src={failed}
+          className="w-[80%] lg:w-[50%] h-auto mb-10"
+          alt="Stressed"
+        />
+        <h1 className="text-2xl font-semibold text-center">
+          Registration Failed
+        </h1>
+        <p className="text-sm text-gray-500 font-medium text-center w-full mt-1 md:max-w-[500px]">
+          We found some issues with your registration. Please contact us for
+          more information.
         </p>
       </div>
     );

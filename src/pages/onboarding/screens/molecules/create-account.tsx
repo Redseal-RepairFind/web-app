@@ -160,10 +160,23 @@ const CreateAccount = () => {
               type="checkbox"
               className="accent-black"
             />{" "}
-            <span className="flex gap-1 items-start justify-start">
-              {handleLanguageChoice("term_first")}{" "}
-              {handleLanguageChoice("term")} {handleLanguageChoice("term_last")}{" "}
-              {handleLanguageChoice("privacy")}
+            <span className="flex gap-1 items-start justify-start flex-wrap text-wrap">
+              <p>
+                {handleLanguageChoice("term_first")}{" "}
+                <a
+                  className="text-blue-500 text-wrap hover:underline"
+                  href="https://repairfind.ca/terms-of-service/"
+                >
+                  {handleLanguageChoice("term")}
+                </a>{" "}
+                {handleLanguageChoice("term_last")}{" "}
+                <a
+                  className="text-blue-500 text-wrap hover:underline"
+                  href="https://repairfind.ca/privacy-policy/"
+                >
+                  {handleLanguageChoice("privacy")}
+                </a>
+              </p>
             </span>
           </label>
         </div>

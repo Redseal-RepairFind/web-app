@@ -38,7 +38,7 @@ const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
 
   //   console.log(contractors);
 
-  console.log(selectedContractor);
+  // console.log(selectedContractor);
 
   const handleContractorChange = (selectedOption: any) => {
     setSelectedContractor(selectedOption);
@@ -49,7 +49,7 @@ const AddMemberModal = ({ toggleModal }: { toggleModal: any }) => {
       <Search
         resetValue={() => setSelectedContractor(null)}
         setSearch={setSearchContractor}
-        placeholder="Search for contractors..."
+        placeholder="Search for team member..."
       />
       {loadingContractors ? (
         <div className="h-[200px] md:h-[350px] flex items-center justify-center">

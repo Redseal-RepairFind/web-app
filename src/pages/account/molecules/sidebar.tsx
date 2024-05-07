@@ -27,7 +27,7 @@ const Sidebar = ({ className }: { className?: string }) => {
       <div className="w-full flex items-center gap-2 border-b border-gray-300 justify-between pb-4 px-2 my-3">
         <div className="w-[70%]">
           <h1 className="text-lg font-medium">{user?.name}</h1>
-          <div className="flex items-end gap-4 mt-2">
+          <div className="flex items-end gap-2 mt-2">
             <div className="flex items-center gap-1 justify-start">
               <span className="w-1 bg-black h-1 rounded-full"></span>
               <p className="text-sm">{user?.accountType}</p>

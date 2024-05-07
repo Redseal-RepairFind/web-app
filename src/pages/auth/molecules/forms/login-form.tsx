@@ -29,7 +29,7 @@ const LoginForm = () => {
       toast.success(data?.message);
       sessionStorage.setItem("repairfind_user", JSON.stringify(data?.user));
       sessionStorage.setItem("userToken", data?.accessToken);
-      console.log(data?.user);
+      // console.log(data?.user);
       const { user } = data;
       if (user?.onboarding?.stage?.status === 1) {
         toast.remove();
