@@ -55,6 +55,13 @@
     "zh": "欢迎",
     "es": "Bienvenido"
   },
+  "welcome_msg_subtext": {
+    "en": "Congratulations! Your registration process is complete. We'll notify you as soon as we go live. Thank you for joining the Repairfind community!",
+    "fr": "Félicitations ! Votre processus d'inscription est terminé. Nous vous informerons dès que nous serons en direct. Merci de rejoindre la communauté Repairfind !",
+    "pa": "ਬਧਾਈ ਹੋ! ਤੁਹਾਡਾ ਰਜਿਸਟਰੇਸ਼ਨ ਪ੍ਰਕਿਰਿਆ ਮੁਕੰਮਲ ਹੈ। ਅਸੀਂ ਤੁਹਾਨੂੰ ਜਿਵੇਂ ਹੀ ਅਸੀਂ ਲਾਈਵ ਜਾਂਦੇ ਹਾਂ ਤੁਹਾਨੂੰ ਸੂਚਿਤ ਕਰਾਂਗੇ। ਰਿਪੇਅਰਫਾਈਂਡ ਕਮਿਊਨਿਟੀ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਧੰਨਵਾਦ!",
+    "zh": "恭喜！您的注册过程已完成。 我们将在上线时立即通知您。 感谢您加入Repairfind社区！",
+    "es": "¡Felicidades! Su proceso de registro está completo. Le notificaremos tan pronto como estemos en vivo. ¡Gracias por unirse a la comunidad de Repairfind!"
+  },
   "sign_up": {
     "en": "Sign Up",
     "fr": "S'inscrire",
@@ -230,12 +237,26 @@
     "zh": "帐户验证",
     "es": "Verificación de la cuenta"
   },
+  "certn_verification_not_started_subtext": {
+    "en": "Kindly refer to your mail to start your Certn verification process.",
+    "fr": "Veuillez vous référer à votre courrier pour commencer votre processus de vérification Certn.",
+    "pa": "ਆਪਣੇ ਮੇਲ ਦਾ ਸਾਰਾਂਸ਼ ਕਰੋ ਅਤੇ ਆਪਣੇ Certn ਪੁਸ਼ਟੀ ਪ੍ਰਕਿਰਿਆ ਨੂੰ ਸ਼ੁਰੂ ਕਰੋ।",
+    "zh": "请参考您的邮件开始Certn验证流程。",
+    "es": "Por favor, consulte su correo electrónico para comenzar su proceso de verificación de Certn."
+  },
   "phone_verify_notice": {
     "en": "Enter the 4-digit code sent to your email or phone number",
     "fr": "Saisissez le code à 4 chiffres envoyé à votre numéro de téléphone",
     "pa": "ਤੁਹਾਡੇ ਫ਼ੋਨ ਨੰਬਰ 'ਤੇ ਭੇਜਿਆ ਗਿਆ 4-ਅੰਕ ਦਾ ਕੋਡ ਦਾਖਲ ਕਰੋ",
     "zh": "输入发送到您电话号码的 4 位数代码",
     "es": "Ingresa el código de 4 dígitos enviado a tu número de teléfono"
+  },
+  "certn_verification_not_started": {
+    "en": "Certn Verification not Started",
+    "fr": "Vérification Certn non commencée",
+    "pa": "ਸਰਟਨ ਪੁਸ਼ਟੀ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਈ",
+    "zh": "Certn验证未开始",
+    "es": "Verificación Certn no iniciada"
   },
   "didnt_get_code": {
     "en": "I didn't receive a code?",
@@ -747,6 +768,48 @@
     "pa": "ਹੈਲੋ",
     "zh": "你好",
     "es": "Hola"
+  },
+  "registration_pending": {
+    "en": "Registration Pending",
+    "fr": "Inscription en attente",
+    "pa": "ਰਜਿਸਟਰੇਸ਼ਨ ਬਾਕੀ",
+    "zh": "注册待定",
+    "es": "Registro Pendiente"
+  },
+  "registration_failed": {
+    "en": "Registration Failed",
+    "fr": "Inscription échouée",
+    "pa": "ਰਜਿਸਟਰੇਸ਼ਨ ਅਸਫਲ",
+    "zh": "注册失败",
+    "es": "Registro Fallido"
+  },
+  "certn_verification_failure": {
+    "en": "We found some issues with your registration. Please contact us for more information.",
+    "fr": "Nous avons trouvé quelques problèmes avec votre inscription. Veuillez nous contacter pour plus d'informations.",
+    "pa": "ਤੁਹਾਡੇ ਰਜਿਸਟਰੇਸ਼ਨ ਵਿੱਚ ਕੁਝ ਸਮੱਸਿਆਵਾਂ ਮਿਲੀਆਂ। ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।",
+    "zh": "我们发现您的注册有一些问题。 请联系我们以获取更多信息。",
+    "es": "Encontramos algunos problemas con su registro. Por favor contáctenos para más información."
+  },
+  "certn_verification_not_submitted_subtext": {
+    "en": "Please complete the verification email sent by Certn.",
+    "fr": "Veuillez compléter l'e-mail de vérification envoyé par Certn.",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਸਰਟਨ ਦੁਆਰਾ ਭੇਜੇ ਗਏ ਪੁਸ਼ਟੀਕਰਣ ਈਮੇਲ ਨੂੰ ਮੁਕੰਮਲ ਕਰੋ।",
+    "zh": "请完成Certn发送的验证电子邮件。",
+    "es": "Por favor complete el correo electrónico de verificación enviado por Certn."
+  },
+  "certn_verification_pending": {
+    "en": "Thank you for completing the Certn email verification process. Kindly note that verification may take some time. Rest assured, our team is diligently processing your information.",
+    "fr": "Merci d'avoir complété le processus de vérification par e-mail de Certn. Veuillez noter que la vérification peut prendre un certain temps. Soyez assuré, notre équipe traite diligemment vos informations.",
+    "pa": "ਸਰਟਨ ਈਮੇਲ ਪੁਸ਼ਟੀਕਰਣ ਪ੍ਰਕਿਰਿਆ ਪੂਰੀ ਕਰਨ ਲਈ ਤੁਹਾਡਾ ਧੰਨਵਾਦ। ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਦਿਓ ਕਿ ਪੁਸ਼ਟੀ ਕਰਨ ਲਈ ਕੁਝ ਸਮਾਂ ਲੱਗ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਜਾਣਕਾਰੀ ਨੂੰ ਪ੍ਰੋਸੈਸ ਕਰਨ ਲਈ ਹਮਾਰੀ ਟੀਮ ਮਿਹਨਤੀ ਤੌਰ 'ਤੇ ਸੁਰੱਖਿਅਤ ਹੈ।",
+    "zh": "感谢您完成了Certn电子邮件验证流程。 请注意，验证可能需要一些时间。 请放心，我们的团队正在认真处理您的信息。",
+    "es": "Gracias por completar el proceso de verificación de correo electrónico de Certn. Tenga en cuenta que la verificación puede llevar algún tiempo. Tenga la seguridad de que nuestro equipo está procesando diligentemente su información."
+  },
+  "gst_pending_info": {
+    "en": "Thank you for submitting your GST details. Please note that verification may take some time. Rest assured, our team is diligently processing your information. We appreciate your patience and will notify you as soon as your GST details are verified.",
+    "fr": "Merci d'avoir soumis vos détails de TVA. Veuillez noter que la vérification peut prendre un certain temps. Soyez assuré que notre équipe traite diligemment vos informations. Nous apprécions votre patience et vous informerons dès que vos détails de TVA auront été vérifiés.",
+    "pa": "ਤੁਹਾਡੇ ਜੀ.ਐਸ.ਟੀ. ਵੇਰਵੇ ਸਬਮਿਟ ਕਰਨ ਲਈ ਧੰਨਵਾਦ। ਕਿਰਪਾ ਕਰਕੇ ਧਿਆਨ ਦਿਓ ਕਿ ਪੁਸ਼ਟੀ ਕਰਨ ਲਈ ਕੁਝ ਸਮਾਂ ਲੱਗ ਸਕਦਾ ਹੈ। ਆਪਣੇ ਜਾਣਕਾਰੀ ਨੂੰ ਤੁਸੀਂ ਵਿਸ਼ੇਸ਼ ਧਿਆਨ ਨਾਲ ਪ੍ਰਸੇਸ ਕਰ ਰਹੇ ਹੋ। ਅਸੀਂ ਤੁਹਾਡੀ ਧੈਰਿਆ ਦੀ ਕਦਰ ਕਰਦੇ ਹਾਂ ਅਤੇ ਜਦੋਂ ਤੁਹਾਡੇ ਜੀ.ਐਸ.ਟੀ. ਵੇਰਵੇ ਪੁਸ਼ਟੀ ਕੀਤੇ ਜਾਂਦੇ ਹਨ ਤਾਂ ਤੁਹਾਨੂੰ ਸੂਚਿਤ ਕੀਤਾ ਜਾਵੇਗਾ।",
+    "zh": "感谢您提交您的GST详细信息。 请注意，验证可能需要一些时间。 请放心，我们的团队正在认真处理您的信息。 我们感谢您的耐心，并将在您的GST详细信息经过验证后尽快通知您。",
+    "es": "Gracias por enviar los detalles de su GST. Tenga en cuenta que la verificación puede llevar algún tiempo. Tenga la seguridad de que nuestro equipo está procesando diligentemente su información. Apreciamos su paciencia y le notificaremos tan pronto como sus detalles de GST sean verificados."
   },
   "video_subhead": {
     "en": "To get onboarded fully, please watch this short training video. Once you have watched the video you will be prompted to complete a short quiz.",

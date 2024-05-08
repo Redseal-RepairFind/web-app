@@ -59,8 +59,10 @@ const IndividualUpdate: React.FC = () => {
   return (
     <Layout className={"bg-gray-100"}>
       <Container className="flex w-full items-center py-3 sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
-        <div className="flex-1 p-10 bg-white max-w-[800px]">
-          <StepProgressBar steps={steps} stepIndex={stepIndex} />
+        <div className="flex-1 p-5 md:p-10 bg-white max-w-[800px]">
+          <div className="px-5 w-full">
+            <StepProgressBar steps={steps} stepIndex={stepIndex} />
+          </div>
           {steps[stepIndex].screen}
         </div>
       </Container>

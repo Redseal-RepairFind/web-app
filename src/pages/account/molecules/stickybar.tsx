@@ -7,7 +7,7 @@ const Stickybar = ({ toggleSticky }: { toggleSticky: any }) => {
   const userString = sessionStorage.getItem("repairfind_user");
   const user = userString ? JSON.parse(userString) : null;
 
-  console.log(user);
+  // console.log(user);
   return (
     <div className="flex-1 p-2 border-l border-gray-100 shadow bg-white z-10 left-0 h-[100vh] w-[70%] absolute">
       <button

@@ -91,7 +91,7 @@ const TakePhoto = ({
         {/* {handleLanguageChoice("take_photo")} */}
         Verify your Identity
       </h1>
-      <div className="flex items-center justify-center p-5">
+      <div className="flex w-full items-center justify-center py-5 px-2">
         <iframe
           title="User verification"
           src={verifyUrl}
