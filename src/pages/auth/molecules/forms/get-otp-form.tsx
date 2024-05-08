@@ -4,12 +4,15 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
+import useLanguage from "../../../../hooks/useLanguage";
 
 const GetOtpForm = ({ handleNext }: { handleNext: any }) => {
   const { handleSubmit, register } = useForm();
 
   const { GetOTP } = useAuth();
   const navigate = useNavigate();
+
+  const { handleLanguageChoice } = useLanguage();
 
   const onSubmit = async (payload: any) => {
     toast.loading("Processing...");
@@ -33,13 +36,16 @@ const GetOtpForm = ({ handleNext }: { handleNext: any }) => {
         className="w-full flex flex-col mt-4 rounded-md p-8 bg-white"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="font-semibold text-2xl">Password Reset</h1>
+        <h1 className="font-semibold text-2xl">
+          {handleLanguageChoice("password_reset")}
+        </h1>
         <span className=" mb-7 text-gray-500">
-          Please enter your email associated with your RepairFind Account and we
-          will send a link to reset your password.
+          {handleLanguageChoice("reset_instruction")}
         </span>
         <div className="mb-7">
-          <label className="text-sm font-medium text-gray-500">Email</label>
+          <label className="text-sm font-medium text-gray-500">
+            {handleLanguageChoice("email")}
+          </label>
           <input
             type="email"
             {...register("email", {
@@ -51,12 +57,14 @@ const GetOtpForm = ({ handleNext }: { handleNext: any }) => {
         </div>
 
         <button className="border border-black bg-black mt-5 py-3 rounded-md text-white">
-          Continue
+          {handleLanguageChoice("continue")}
         </button>
         <span className="flex text-xs mt-1 items-center justify-center gap-1">
-          <p className=" text-gray-400">Have an account?</p>
+          <p className=" text-gray-400">
+            {handleLanguageChoice("have_account")}
+          </p>
           <Link className="font-medium " to={"/"}>
-            Login
+            {handleLanguageChoice("login")}
           </Link>
         </span>
       </form>

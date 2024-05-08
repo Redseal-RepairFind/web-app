@@ -6,7 +6,7 @@ import NewPassword from "../molecules/forms/create-new-password-form";
 import { useLocation } from "react-router-dom";
 
 const ResetPassword: React.FC = () => {
-  const [screenIndex, setScreenIndex] = useState(0);
+  const [screenIndex, setScreenIndex] = useState<number>(0);
 
   const location = useLocation();
 
