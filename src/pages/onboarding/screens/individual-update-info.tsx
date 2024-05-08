@@ -48,11 +48,11 @@ const IndividualUpdate: React.FC = () => {
           />
         ),
       },
-      {
-        id: 3,
-        title: "GST/HST Validation",
-        screen: <GstValidation handlePrev={handlePrevStep} />,
-      },
+      // {
+      //   id: 3,
+      //   title: "GST/HST Validation",
+      //   screen: <GstValidation handlePrev={handlePrevStep} />,
+      // },
     ],
     [stepIndex]
   );

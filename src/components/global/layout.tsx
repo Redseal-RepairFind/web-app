@@ -8,7 +8,7 @@ const Layout = ({ children, className, hasBackground }: LayoutProps) => {
   return (
     <div
       style={{
-        backgroundImage: hasBackground ? "url(/images/phone_bg.png)" : "url()",
+        backgroundImage: hasBackground ? "url(/images/screen.png)" : "url()",
         backgroundRepeat: "repeat",
         backgroundSize: "contain",
       }}

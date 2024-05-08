@@ -261,8 +261,9 @@ const ProfileDetails = ({
         sessionStorage.setItem("repairfind_user", JSON.stringify(data?.data));
         sessionStorage.removeItem("session_repairfind_profile_onboarding");
         setTimeout(() => {
-          accountType === "employee" ? navigate("/quiz") : handleNext();
+          accountType !== "company" ? navigate("/quiz") : handleNext();
           sessionStorage.removeItem("employee_session_step");
+          sessionStorage.removeItem("individual_session_step");
         }, 800);
       } catch (e: any) {
         console.log({ e });

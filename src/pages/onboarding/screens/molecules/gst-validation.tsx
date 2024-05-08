@@ -115,7 +115,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
             <option value={"Company"}>Company</option>
           </select>
         </div> */}
-        {location.pathname.includes("individual") ? (
+        {/* {location.pathname.includes("individual") ? (
           <div className="w-full mb-1 flex-1">
             <label className="text-sm font-medium">Link to Certificate</label>
             <input
@@ -147,7 +147,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
               )}
             </div>
           </div>
-        )}
+        )} */}
 
         <div className="flex my-4 items-center sm:flex-row flex-col gap-2 justify-between">
           <label

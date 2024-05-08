@@ -161,7 +161,7 @@ const useAuth = () => {
       } else if (user?.onboarding?.stage?.status === 3) {
         toast.remove();
         toast.error("Kindly complete your onboarding process...");
-        if (user?.accountType.toLowerCase() === "employee") {
+        if (user?.accountType.toLowerCase() !== "company") {
           return navigate(`/quiz`);
         }
         sessionStorage.setItem(
@@ -174,9 +174,9 @@ const useAuth = () => {
       } else if (user?.onboarding?.stage?.status === 4) {
         toast.remove();
         toast.error("Kindly complete your onboarding process...");
-        if (user?.accountType.toLowerCase() === "individual") {
-          return navigate(`/quiz`);
-        }
+        // if (user?.accountType.toLowerCase() === "individual") {
+        //   return navigate(`/quiz`);
+        // }
         sessionStorage.setItem(
           `${user?.accountType?.toLowerCase()}_session_step`,
           `${user?.onboarding?.stage?.status - 1}`
