@@ -49,10 +49,11 @@ const NewPassword = ({ handlePrev }: { handlePrev: any }) => {
             className="w-full flex flex-col max-w-2xl mx-auto mt-4 rounded-md p-8 bg-white"
             onSubmit={handleSubmit(handleReset)}
           >
-            <h1 className="font-semibold text-2xl mb-2">Create New Password</h1>
+            <h1 className="font-semibold text-2xl mb-2">
+              {handleLanguageChoice("create_new_password")}
+            </h1>
             <span className=" mb-7 text-gray-500">
-              Enter the new password you will like to use when logging in to
-              your account
+              {handleLanguageChoice("create_new_password_subhead")}
             </span>
             <PasswordField
               {...register("password", {
@@ -67,7 +68,7 @@ const NewPassword = ({ handlePrev }: { handlePrev: any }) => {
               title={handleLanguageChoice("confirm_password")}
             />
             <button className="border mt-7 border-black bg-black py-3 rounded-md text-white">
-              Continue
+              {handleLanguageChoice("continue")}
             </button>
           </form>
         </div>
