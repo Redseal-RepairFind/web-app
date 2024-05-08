@@ -55,7 +55,6 @@ const GetOtpForm = ({ handleNext }: { handleNext: any }) => {
             className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 bg-slate-200 focus:bg-transparent outline-none focus:ring-0"
           />
         </div>
-
         <button className="border border-black bg-black mt-5 py-3 rounded-md text-white">
           {handleLanguageChoice("continue")}
         </button>

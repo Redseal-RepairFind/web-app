@@ -4,12 +4,15 @@ import OtpInput from "react-otp-input";
 import useAuth from "../../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import useLanguage from "../../../../hooks/useLanguage";
 
 const VerifyAccountForm = ({ handleNext }: { handleNext: any }) => {
   const [otp, setOtp] = useState("");
   // const { handleSubmit, register } = useForm();
 
   const navigate = useNavigate();
+
+  const { handleLanguageChoice } = useLanguage();
 
   const { GetOTP, VerifyAccount } = useAuth();
 
@@ -50,14 +53,19 @@ const VerifyAccountForm = ({ handleNext }: { handleNext: any }) => {
   return (
     <div className="flex-1 p-3">
       <div className="w-full flex flex-col mt-4 rounded-md p-8 bg-white">
-        <span className="font-semibold mb-5">Password Reset</span>
-        <p className="font-semibold text-2xl mb-1">Account Verification</p>
+        <span className="font-semibold mb-5">
+          {handleLanguageChoice("password_reset")}
+        </span>
+        <p className="font-semibold text-2xl mb-1">
+          {handleLanguageChoice("account_verification")}
+        </p>
         <span className=" mb-7 text-gray-500 font-medium">
-          We sent a verification code to {email}.
-          <br /> Please enter it below.
+          {handleLanguageChoice("sent_verification_to_email")} {email}.
+          <br /> {handleLanguageChoice("please_enter_here")}
         </span>
         <span className=" text-gray-500 text-xs mb-1 font-medium">
-          Code expires in 5 minutes
+          {handleLanguageChoice("code_expires")} 5{" "}
+          {handleLanguageChoice("minutes")}
         </span>
         <div className="mb-2">
           <OtpInput
@@ -76,19 +84,24 @@ const VerifyAccountForm = ({ handleNext }: { handleNext: any }) => {
           onClick={requestOtp}
           className="mb-7 text-gray-500 text-xs font-medium flex gap-1 items-center"
         >
-          Didn't receive a code? <p className="text-black">Click to resend</p>
+          {handleLanguageChoice("didnt_get_code")}{" "}
+          <p className="text-black">
+            {handleLanguageChoice("click_to_resend")}
+          </p>
         </button>
 
         <button
           onClick={handleVerify}
           className="border border-black bg-black mt-5 py-3 rounded-md text-white"
         >
-          Verify Account
+          {handleLanguageChoice("verify_account")}
         </button>
         <span className="flex text-xs mt-1 items-center justify-center gap-1">
-          <p className=" text-gray-400">Have an account?</p>
+          <p className=" text-gray-400">
+            {handleLanguageChoice("have_account")}
+          </p>
           <Link className="font-medium " to={"/"}>
-            Login
+            {handleLanguageChoice("login")}
           </Link>
         </span>
       </div>

@@ -678,6 +678,13 @@
     "zh": "验证邮件",
     "es": "Verificar correo electrónico"
   },
+  "verify_account": {
+    "en": "Verify Account",
+    "fr": "Vérifier le compte",
+    "pa": "ਖਾਤਾ ਪੁਸ਼ਟੀ ਕਰੋ",
+    "zh": "验证帐户",
+    "es": "Verificar cuenta"
+  },
   "code_expires": {
     "en": "Code expires in",
     "fr": "Le code expire dans",
