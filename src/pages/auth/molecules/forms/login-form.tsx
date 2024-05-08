@@ -1,9 +1,5 @@
-import React from "react";
-
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-
+import { Link } from "react-router-dom";
 import useLanguage from "../../../../hooks/useLanguage";
 import useAuth from "../../../../hooks/useAuth";
 import PasswordField from "../../../../components/form/password-field";
@@ -16,83 +12,8 @@ const LoginForm = () => {
   } = useForm();
 
   const { handleLanguageChoice } = useLanguage();
-  const { Login } = useAuth();
+  const { handleLogin } = useAuth();
 
-  const navigate = useNavigate();
-
-  const handleLogin = async (payload: any) => {
-    toast.loading("Logging you in...");
-    try {
-      const data = await Login(payload);
-      // console.log(data);
-      toast.remove();
-      toast.success(data?.message);
-      sessionStorage.setItem("repairfind_user", JSON.stringify(data?.user));
-      sessionStorage.setItem("userToken", data?.accessToken);
-      // console.log(data?.user);
-      const { user } = data;
-      if (user?.onboarding?.stage?.status === 1) {
-        toast.remove();
-        toast.error("Kindly complete your onboarding process...");
-        sessionStorage.setItem(
-          `${user?.accountType?.toLowerCase()}_session_step`,
-          `${user?.onboarding?.stage?.status - 1}`
-        );
-        navigate(
-          `/onboarding/update-information?accountType=${user?.accountType.toLowerCase()}`
-        );
-      } else if (user?.onboarding?.stage?.status === 2) {
-        toast.remove();
-        toast.error("Kindly complete your onboarding process...");
-        sessionStorage.setItem(
-          `${user?.accountType?.toLowerCase()}_session_step`,
-          `${user?.onboarding?.stage?.status - 1}`
-        );
-        navigate(
-          `/onboarding/update-information?accountType=${user?.accountType.toLowerCase()}`
-        );
-      } else if (user?.onboarding?.stage?.status === 3) {
-        toast.remove();
-        toast.error("Kindly complete your onboarding process...");
-        if (user?.accountType.toLowerCase() === "employee") {
-          return navigate(`/quiz`);
-        }
-        sessionStorage.setItem(
-          `${user?.accountType?.toLowerCase()}_session_step`,
-          `${user?.onboarding?.stage?.status - 1}`
-        );
-        navigate(
-          `/onboarding/update-information?accountType=${user?.accountType.toLowerCase()}`
-        );
-      } else if (user?.onboarding?.stage?.status === 4) {
-        toast.remove();
-        toast.error("Kindly complete your onboarding process...");
-        if (user?.accountType.toLowerCase() === "individual") {
-          return navigate(`/quiz`);
-        }
-        sessionStorage.setItem(
-          `${user?.accountType?.toLowerCase()}_session_step`,
-          `${user?.onboarding?.stage?.status - 1}`
-        );
-        navigate(
-          `/onboarding/update-information?accountType=${user?.accountType.toLowerCase()}`
-        );
-      } else if (user?.onboarding?.stage?.status === 5) {
-        toast.remove();
-        toast.error("Kindly complete your onboarding process...");
-        navigate(`/quiz`);
-      } else {
-        // console.log("done");
-        setTimeout(() => {
-          navigate(`/account`);
-        }, 300);
-      }
-    } catch (e: any) {
-      console.log({ e });
-      toast.remove();
-      toast.error(e?.response?.data?.message);
-    }
-  };
   return (
     <div className="flex-1 p-3">
       <form
