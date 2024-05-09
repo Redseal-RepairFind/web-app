@@ -22,7 +22,7 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
 
   const navigate = useNavigate();
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ["Quiz"],
     () => {
       return auth.getQuiz();
@@ -169,6 +169,24 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
   };
 
   const { handleLanguageChoice } = useLanguage();
+
+  if (isError)
+    return (
+      <div className="flex items-center h-[100vh] w-full justify-center gap-2 flex-col">
+        <FontAwesomeIcon icon={faExclamationCircle} className="text-7xl mb-3" />
+        <p className="text-xl font-semibold text-center mb-5">
+          No questions found, if error persists, kindly reach out to
+          administrator...
+        </p>
+        <button
+          onClick={() => location.reload()}
+          className="relative border px-10 border-black bg-black py-3 rounded-md text-white"
+        >
+          Click to reload page
+        </button>
+      </div>
+    );
+
   if (isLoading)
     return (
       <div className=" flex items-center justify-center w-full h-[100vh]">
