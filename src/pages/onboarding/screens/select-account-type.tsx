@@ -27,7 +27,7 @@ const SelectAccountType: React.FC = () => {
 
   return (
     <Layout hasBackground={true}>
-      <Container className="flex w-full items-center sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
+      <Container className="flex w-full items-center justify-center">
         <main className="flex w-full items-center justify-end py-4">
           <div className="w-full max-w-xl flex flex-col mt-4 rounded-md p-8 bg-white">
             <h1 className="font-semibold text-2xl mb-5 text-center">

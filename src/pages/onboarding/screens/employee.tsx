@@ -6,7 +6,7 @@ import CreateAccount from "./molecules/create-account";
 const employee = () => {
   return (
     <Layout className={"bg-gray-100"}>
-      <Container className="flex w-full items-center py-3 sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
+      <Container className="flex w-full items-center py-3 justify-center">
         <CreateAccount />
       </Container>
     </Layout>

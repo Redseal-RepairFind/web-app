@@ -20,7 +20,7 @@ const SelectLanguage: React.FC = () => {
 
   return (
     <Layout>
-      <Container className="flex items-center sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
+      <Container className="flex items-center justify-center">
         <main className="flex w-full items-center justify-center py-4">
           <div className="w-full max-w-xl flex flex-col mt-4 rounded-md p-8 bg-white">
             <h1 className="font-semibold text-2xl mb-5 text-center">

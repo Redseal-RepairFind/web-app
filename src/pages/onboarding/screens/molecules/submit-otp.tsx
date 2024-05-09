@@ -60,7 +60,7 @@ const SubmitOtp = () => {
 
   return (
     <Layout className={"bg-gray-100"}>
-      <Container className="flex w-full items-center py-3 sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
+      <Container className="flex w-full items-center py-3 justify-center">
         <div className="flex-1 p-3 bg-white max-w-[550px]">
           <div className="w-full flex flex-col mt-4 rounded-md p-8 bg-white">
             <p className="font-semibold text-2xl mb-1 text-center">

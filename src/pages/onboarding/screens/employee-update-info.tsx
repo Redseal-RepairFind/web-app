@@ -51,7 +51,7 @@ const EmployeeUpdateInformation: React.FC = () => {
   );
   return (
     <Layout className={"bg-gray-100"}>
-      <Container className="flex w-full items-center py-3 sm:min-h-[77.4vh] min-h-[64.2vh] justify-center">
+      <Container className="flex w-full items-center py-3 justify-center">
         <div className="flex-1 p-10 bg-white max-w-[800px]">
           <StepProgressBar steps={steps} stepIndex={stepIndex} />
           {steps[stepIndex].screen}
