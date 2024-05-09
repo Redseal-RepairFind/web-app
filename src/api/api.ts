@@ -1,5 +1,5 @@
 import axios from "axios";
-import { url } from "../url";
+import url from "../url";
 import toast from "react-hot-toast";
 
 const createApiClient = () => {
