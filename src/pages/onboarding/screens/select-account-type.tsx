@@ -16,7 +16,7 @@ const SelectAccountType: React.FC = () => {
 
   const { handleLanguageChoice } = useLanguage();
 
-  console.log(selectedRoute);
+  // console.log(selectedRoute);
 
   const handleBtnStyle = (selectedRoute: any) => {
     if (selectedRoute)
