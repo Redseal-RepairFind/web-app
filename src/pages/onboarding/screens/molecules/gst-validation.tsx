@@ -35,13 +35,11 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
       ? "Individual"
       : "Company";
 
-    if (gstType === "Company" && !file)
-      return toast.error("Please upload your certificate...");
+    // if (gstType === "Company" && !file)
+    //   return toast.error("Please upload your certificate...");
 
-    const payload =
-      gstType === "Individual"
-        ? { ...values, gstType }
-        : { ...values, gstType, certificate: file };
+    const payload = { ...values, gstType };
+
     try {
       toast.loading("Processing...");
       const data = (await UpdateGST(payload)) as ApiResponse;
