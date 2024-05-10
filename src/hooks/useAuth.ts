@@ -172,6 +172,9 @@ const useAuth = () => {
           `/onboarding/update-information?accountType=${user?.accountType.toLowerCase()}`
         );
       } else if (user?.onboarding?.stage?.status === 4) {
+        if (user?.accountType.toLowerCase() !== "company") {
+          return navigate(`/account`);
+        }
         toast.remove();
         toast.error("Kindly complete your onboarding process...");
         // if (user?.accountType.toLowerCase() === "individual") {
