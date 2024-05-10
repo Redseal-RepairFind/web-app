@@ -18,9 +18,9 @@ function Accountroutes() {
   const userString = sessionStorage.getItem("repairfind_user");
   const user = userString ? JSON.parse(userString) : null;
 
-  // useEffect(() => {
-  //   !user && navigate("/");
-  // }, []);
+  useEffect(() => {
+    !user && navigate("/");
+  }, []);
 
   const toggleSticky = () => {
     setShowSticky(!showSticky);

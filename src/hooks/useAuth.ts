@@ -94,7 +94,7 @@ const useAuth = () => {
         toast.remove();
         toast.success(data?.message);
         sessionStorage.setItem("repairfind_user", JSON.stringify(data?.user));
-        console.log(data);
+        // console.log(data);
         setTimeout(() => {
           navigate(`/onboarding/submit-otp?email=${values.email}`);
         }, 1000);

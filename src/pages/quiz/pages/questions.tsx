@@ -131,10 +131,10 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
         }
       }
       handleModal();
-      if (totalScore >= 8) toast.loading("Re-directing to your account...");
+      if (totalScore >= 8) toast.loading("Re-directing you to login...");
       setTimeout(() => {
         toast.remove();
-        if (totalScore >= 8) navigate("/account");
+        if (totalScore >= 8) navigate("/");
       }, 3000);
       return;
     }

@@ -25,7 +25,7 @@ const useOnboarding = () => {
     }
   }, []);
 
-  console.log(selectedLanguage);
+  // console.log(selectedLanguage);
 
   const handleLanguage = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedLanguage(e.target.value);

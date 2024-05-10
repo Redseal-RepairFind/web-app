@@ -4,7 +4,6 @@ import Container from "../../../components/global/container";
 import StepProgressBar from "../../../components/ui/progress-bar";
 import TakePhoto from "./molecules/take-photo";
 import ProfileDetails from "./molecules/profile-details";
-import GstValidation from "./molecules/gst-validation";
 
 const EmployeeUpdateInformation: React.FC = () => {
   const employee_session_step = sessionStorage.getItem("employee_session_step");

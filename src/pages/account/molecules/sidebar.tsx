@@ -33,12 +33,13 @@ const Sidebar = ({ className }: { className?: string }) => {
               <span className="w-1 bg-black h-1 rounded-full"></span>
               <p className="text-sm">{user?.accountType}</p>
             </div>
-            {user?.accountType.toLowerCase() !== "company" && (
-              <div className="flex items-center gap-1 justify-start">
-                <span className="w-1 bg-black h-1 rounded-full"></span>
-                <p className="text-sm">{user?.profile?.skill}</p>
-              </div>
-            )}
+            {user?.accountType.toLowerCase() !== "company" &&
+              user?.profile?.skill && (
+                <div className="flex items-center gap-1 justify-start">
+                  <span className="w-1 bg-black h-1 rounded-full"></span>
+                  <p className="text-sm">{user?.profile?.skill}</p>
+                </div>
+              )}
             {user?.accountType.toLowerCase() === "company" &&
               user?.profile?.skill && (
                 <div className="flex items-center gap-1 justify-start">

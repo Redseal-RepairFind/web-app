@@ -48,6 +48,9 @@ const ProfileDetails = ({
   handleNext: any;
   handlePrev: any;
 }) => {
+  const userString = sessionStorage.getItem("repairfind_user");
+  const user = userString ? JSON.parse(userString) : null;
+
   const { handleLanguageChoice } = useLanguage();
   const { UpdateProfile } = useAuth();
 
@@ -122,7 +125,7 @@ const ProfileDetails = ({
     register,
     handleSubmit,
     getValues,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm();
 
   const togglePreview = () => {
@@ -177,6 +180,8 @@ const ProfileDetails = ({
   };
 
   const onSubmit = async (values: any) => {
+    if (accountType === "employee") return onSubmitEmployee(values);
+
     if (!address) return toast.error("Please enter your address...");
 
     if (!pictures.length)
@@ -277,6 +282,31 @@ const ProfileDetails = ({
     }
   };
 
+  const onSubmitEmployee = async (values: any) => {
+    if (!address) return toast.error("Please enter your address...");
+
+    const payload = { ...values, location: { ...address } };
+    toast.loading("Creating your profile...");
+
+    try {
+      const data = (await UpdateProfile(payload)) as ApiResponse;
+      // console.log(data);
+      toast.remove();
+      toast.success(data?.message);
+      sessionStorage.setItem("repairfind_user", JSON.stringify(data?.data));
+      sessionStorage.removeItem("session_repairfind_profile_onboarding");
+      setTimeout(() => {
+        navigate("/quiz");
+        sessionStorage.removeItem("employee_session_step");
+        sessionStorage.removeItem("individual_session_step");
+      }, 800);
+    } catch (e: any) {
+      console.log({ e });
+      toast.remove();
+      toast.error(e?.response?.data?.message);
+    }
+  };
+
   const [autocomplete, setAutocomplete] = useState<any>(null);
 
   const onLocationSelect = (locationData: any) => {
@@ -332,6 +362,28 @@ const ProfileDetails = ({
           {handleLanguageChoice("enter_profile")}
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex items-center justify-between gap-2 flex-col md:flex-row">
+            <div className="w-full mb-10 flex-1">
+              <label className="text-sm font-medium">
+                {handleLanguageChoice("firstname")}
+              </label>
+              <input
+                disabled={true}
+                defaultValue={user?.firstName}
+                className="w-full bg-slate-100 mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 outline-none focus:ring-0"
+              />
+            </div>
+            <div className="w-full mb-10 flex-1">
+              <label className="text-sm font-medium">
+                {handleLanguageChoice("lastname")}
+              </label>
+              <input
+                disabled={true}
+                defaultValue={user?.lastName}
+                className="w-full bg-slate-100 mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 outline-none focus:ring-0"
+              />
+            </div>
+          </div>
           <div className="w-full mb-10 flex-1">
             <label className="text-sm font-medium">
               {handleLanguageChoice("specialization")}
@@ -349,35 +401,39 @@ const ProfileDetails = ({
               ))}
             </select>
           </div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("years_of_exp")}
-            </label>
-            <select
-              {...register("experienceYear", {
-                required: true,
-              })}
-              className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-            >
-              {experience.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("about_me")}
-            </label>
-            <textarea
-              rows={5}
-              {...register("about", {
-                required: true,
-              })}
-              className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
-            />
-          </div>
+          {accountType !== "employee" && (
+            <>
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("years_of_exp")}
+                </label>
+                <select
+                  {...register("experienceYear", {
+                    required: true,
+                  })}
+                  className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+                >
+                  {experience.map((item) => (
+                    <option key={item.value} value={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("about_me")}
+                </label>
+                <textarea
+                  rows={5}
+                  {...register("about", {
+                    required: true,
+                  })}
+                  className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
+                />
+              </div>
+            </>
+          )}
           <div className="w-full mb-10 flex-1">
             <label className="text-sm font-medium">
               {handleLanguageChoice("address")}
@@ -393,144 +449,178 @@ const ProfileDetails = ({
               />
             </Autocomplete>
           </div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("available_days")}
-            </label>
-            <div className="flex items-center gap-4 flex-wrap mt-1">
-              {days.map((day: string, index) => (
-                <div key={day} className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id={day}
-                    checked={selectedDays.includes(day)}
-                    onChange={() => handleCheckboxChange(day)}
-                    className="accent-black mr-1 cursor-pointer"
-                  />
-                  <label className="cursor-pointer" htmlFor={day}>
-                    {day}
-                  </label>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex my-4 items-center sm:flex-row flex-col gap-2 justify-between">
-            <span className="flex gap-1 font-medium flex-wrap">
-              {handleLanguageChoice("available_for_emergency")}
-            </span>
-            <Switch
-              onColor="#000000"
-              onChange={() => setEmergencyJobs(!emergencyJobs)}
-              checked={emergencyJobs}
-            />
-          </div>
-          <div className="w-full border-t border-gray-300 mt-5 mb-10 flex-1"></div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("pictures_of_previous_jobs")}
-            </label>
-            <div
-              {...getRootProps()}
-              className="dropzone mt-1 cursor-pointer flex items-center justify-center py-5 rounded-md border border-gray-100 bg-gray-100"
-            >
-              <input {...getInputProps()} />
-              <p className="bg-gray-200 py-3 px-7 rounded-lg">
-                {handleLanguageChoice("browse_files")}
-              </p>
-            </div>
-            <div className="mt-3 flex items-center flex-wrap gap-2">
-              {pictures.map((picture, index) => (
-                <div
-                  key={index}
-                  className="flex items-start justify-normal flex-col gap-1"
-                >
-                  <img
-                    src={URL.createObjectURL(picture)}
-                    alt={`Uploaded ${index + 1}`}
-                    className="max-w-[100px] max-h-[100px]"
-                  />
-                  <button
-                    className="text-black rounded-full text-xs"
-                    onClick={() => handleDeletePicture(index)}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="w-full mb-10 flex-1">
-            <label className="text-sm font-medium">
-              {handleLanguageChoice("videos_of_previous_jobs")}
-            </label>
-            <div
-              {...getRootVideoProps()}
-              className="dropzone mt-1 cursor-pointer flex items-center justify-center py-5 rounded-md border border-gray-100 bg-gray-100"
-            >
-              <input {...getInputVideoProps()} />
-              <p className="bg-gray-200 py-3 px-7 rounded-lg">
-                {handleLanguageChoice("browse_files")}
-              </p>
-            </div>
-            <div className="mt-3 flex items-center flex-wrap gap-1">
-              {mediaFiles.map((file, index) => (
-                <div
-                  key={index}
-                  className="flex items-start justify-normal flex-col gap-1"
-                >
-                  {file.type.startsWith("image/") ? (
-                    <img
-                      src={URL.createObjectURL(file)}
-                      alt={`Uploaded ${index + 1}`}
-                      className="max-w-[100px] max-h-[100px]"
-                    />
-                  ) : file.type.startsWith("video/") ? (
-                    <video controls width="100" height="100">
-                      <source
-                        src={URL.createObjectURL(file)}
-                        type={file.type}
+          {accountType !== "employee" && (
+            <>
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("available_days")}
+                </label>
+                <div className="flex items-center gap-4 flex-wrap mt-1">
+                  {days.map((day: string, index) => (
+                    <div key={day} className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id={day}
+                        checked={selectedDays.includes(day)}
+                        onChange={() => handleCheckboxChange(day)}
+                        className="accent-black mr-1 cursor-pointer"
                       />
-                      {handleLanguageChoice("browser_support_tag")}
-                    </video>
-                  ) : (
-                    <span>{`Uploaded ${index + 1}`}</span>
-                  )}
-                  <button
-                    className="text-black rounded-full text-xs"
-                    onClick={() => handleDeleteMedia(index)}
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
+                      <label className="cursor-pointer" htmlFor={day}>
+                        {day}
+                      </label>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="w-full border-t border-gray-300 mt-5 mb-10 flex-1"></div>
+              </div>
+              <div className="flex my-4 items-center sm:flex-row flex-col gap-2 justify-between">
+                <span className="flex gap-1 font-medium flex-wrap">
+                  {handleLanguageChoice("available_for_emergency")}
+                </span>
+                <Switch
+                  onColor="#000000"
+                  onChange={() => setEmergencyJobs(!emergencyJobs)}
+                  checked={emergencyJobs}
+                />
+              </div>
+              <div className="w-full border-t border-gray-300 mt-5 mb-10 flex-1"></div>
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("pictures_of_previous_jobs")}
+                </label>
+                <div
+                  {...getRootProps()}
+                  className="dropzone mt-1 cursor-pointer flex items-center justify-center py-5 rounded-md border border-gray-100 bg-gray-100"
+                >
+                  <input {...getInputProps()} />
+                  <p className="bg-gray-200 py-3 px-7 rounded-lg">
+                    {handleLanguageChoice("browse_files")}
+                  </p>
+                </div>
+                <div className="mt-3 flex items-center flex-wrap gap-2">
+                  {pictures.map((picture, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start justify-normal flex-col gap-1"
+                    >
+                      <img
+                        src={URL.createObjectURL(picture)}
+                        alt={`Uploaded ${index + 1}`}
+                        className="max-w-[100px] max-h-[100px]"
+                      />
+                      <button
+                        className="text-black rounded-full text-xs"
+                        onClick={() => handleDeletePicture(index)}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("videos_of_previous_jobs")}
+                </label>
+                <div
+                  {...getRootVideoProps()}
+                  className="dropzone mt-1 cursor-pointer flex items-center justify-center py-5 rounded-md border border-gray-100 bg-gray-100"
+                >
+                  <input {...getInputVideoProps()} />
+                  <p className="bg-gray-200 py-3 px-7 rounded-lg">
+                    {handleLanguageChoice("browse_files")}
+                  </p>
+                </div>
+                <div className="mt-3 flex items-center flex-wrap gap-1">
+                  {mediaFiles.map((file, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start justify-normal flex-col gap-1"
+                    >
+                      {file.type.startsWith("image/") ? (
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={`Uploaded ${index + 1}`}
+                          className="max-w-[100px] max-h-[100px]"
+                        />
+                      ) : file.type.startsWith("video/") ? (
+                        <video controls width="100" height="100">
+                          <source
+                            src={URL.createObjectURL(file)}
+                            type={file.type}
+                          />
+                          {handleLanguageChoice("browser_support_tag")}
+                        </video>
+                      ) : (
+                        <span>{`Uploaded ${index + 1}`}</span>
+                      )}
+                      <button
+                        className="text-black rounded-full text-xs"
+                        onClick={() => handleDeleteMedia(index)}
+                      >
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="w-full border-t border-gray-300 mt-5 mb-10 flex-1"></div>
+            </>
+          )}
+          {accountType === "employee" && (
+            <>
+              <div className="flex mb-4 items-center sm:flex-row flex-col gap-2 justify-between">
+                <label
+                  className={`w-full flex items-center gap-1 py-2 ${
+                    errors.backgroundCheckConsent
+                      ? "border-red-500"
+                      : "border-transparent"
+                  } border-b border-t text-[12px] px-1 duration-200 cursor-pointer
+      `}
+                >
+                  <input
+                    {...register("backgroundCheckConsent", {
+                      required: true,
+                    })}
+                    type="checkbox"
+                    className="accent-black"
+                  />{" "}
+                  {handleLanguageChoice("consent")}
+                </label>
+              </div>
+              {errors.backgroundCheckConsent && (
+                <div className="text-red-500 text-xs font-medium w-full text-center">
+                  {handleLanguageChoice("consent_check")}
+                </div>
+              )}
+            </>
+          )}
           <div className="w-full flex items-center justify-center gap-4 mt-5">
-            <button
-              className="relative border w-full border-black bg-transparent py-3 rounded-md text-black"
-              onClick={(e) => {
-                e.preventDefault();
-                toast.loading("Loading preview...");
-                // console.log(getValues());
-                const previewData = {
-                  ...getValues(),
-                  location: address,
-                  emergencyJobs,
-                  selectedDays,
-                  pictures,
-                  mediaFiles,
-                };
-                setPreviewDetails(previewData);
-                // console.log(previewData);
-                setTimeout(() => {
-                  toast.remove();
-                  togglePreview();
-                }, 1500);
-              }}
-            >
-              {handleLanguageChoice("preview")}
-            </button>
+            {accountType !== "employee" && (
+              <button
+                className="relative border w-full border-black bg-transparent py-3 rounded-md text-black"
+                onClick={(e) => {
+                  e.preventDefault();
+                  toast.loading("Loading preview...");
+                  // console.log(getValues());
+                  const previewData = {
+                    ...getValues(),
+                    location: address,
+                    emergencyJobs,
+                    selectedDays,
+                    pictures,
+                    mediaFiles,
+                  };
+                  setPreviewDetails(previewData);
+                  // console.log(previewData);
+                  setTimeout(() => {
+                    toast.remove();
+                    togglePreview();
+                  }, 1500);
+                }}
+              >
+                {handleLanguageChoice("preview")}
+              </button>
+            )}
 
             <button
               disabled={isSubmitting}
