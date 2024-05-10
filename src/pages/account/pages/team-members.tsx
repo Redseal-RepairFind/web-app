@@ -64,7 +64,7 @@ const TeamMembers = () => {
                       />
                     </div>
                     <div className="relative">
-                      {member?.status?.toLowerCase() === "active " && (
+                      {member?.status?.toLowerCase() === "pending" && (
                         <span className="md:absolute inline top-0 font-medium right-[-70px] text-center bg-pink-300 py-1 px-3 text-[12px]">
                           Pending
                         </span>
