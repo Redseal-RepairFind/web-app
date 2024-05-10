@@ -175,14 +175,13 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
       <div className="flex items-center h-[100vh] w-full justify-center gap-2 flex-col">
         <FontAwesomeIcon icon={faExclamationCircle} className="text-7xl mb-3" />
         <p className="text-xl font-semibold text-center mb-5">
-          No questions found, if error persists, kindly reach out to
-          administrator...
+          {handleLanguageChoice("no_questions_found")}
         </p>
         <button
           onClick={() => location.reload()}
           className="relative border px-10 border-black bg-black py-3 rounded-md text-white"
         >
-          Click to reload page
+          {handleLanguageChoice("reload_page")}
         </button>
       </div>
     );
@@ -239,7 +238,7 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
                   questionIndex !== 0 ? "" : "cursor-not-allowed"
                 } w-full border-black py-3 rounded-md text-black`}
               >
-                Back
+                {handleLanguageChoice("back")}
                 <FontAwesomeIcon
                   className="absolute top-[50%] translate-y-[-50%] left-2.5"
                   icon={faArrowLeftLong}
@@ -269,15 +268,14 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
               className="text-7xl mb-3"
             />
             <p className="text-2xl font-semibold text-center mb-5">
-              No questions found, if error persists, kindly reach out to
-              administrator...
+              {handleLanguageChoice("no_questions_found")}
             </p>
             <button
               // disabled={questionIndex + 1 === questions.length}
               onClick={() => location.reload()}
               className="relative border px-10 border-black bg-black py-3 rounded-md text-white"
             >
-              Click to reload page
+              {handleLanguageChoice("reload_page")}
             </button>
           </div>
         )}

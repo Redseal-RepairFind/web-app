@@ -8,11 +8,12 @@ const Instructions = ({ handleIndex }: { handleIndex: any }) => {
   return (
     <div className="w-full h-[100vh] flex items-center justify-center">
       <div className="flex items-center justify-center max-w-[700px] p-5 gap-5 flex-col">
-        <h1 className="text-xl font-semibold">Quiz Questions</h1>
+        <h1 className="text-xl font-semibold">
+          {handleLanguageChoice("quiz_questions")}
+        </h1>
         <div className="flex flex-col items-center justify-center mb-10">
           <span className="text-center text-gray-600">
-            Please complete this short quiz to complete your onboarding to
-            RepairFind.
+            {handleLanguageChoice("instructions_text")}
           </span>
         </div>
         <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex items-center gap-4">

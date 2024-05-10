@@ -839,12 +839,40 @@
     "zh": "注册失败",
     "es": "Registro Fallido"
   },
+  "no_questions_found": {
+    "en": "No questions found, if error persists, kindly reach out to administrator...",
+    "fr": "Aucune question trouvée, si l'erreur persiste, veuillez contacter l'administrateur...",
+    "pa": "ਕੋਈ ਪ੍ਰਸ਼ਨ ਨਹੀਂ ਮਿਲੇ, ਜੇ ਗਲਤੀ ਦਾ ਪੱਧਰ ਰਹਿੰਦਾ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਪ੍ਰਬੰਧਕ ਨਾਲ ਸੰਪਰਕ ਕਰੋ...",
+    "zh": "未找到任何问题，如果错误仍然存在，请联系管理员...",
+    "es": "No se encontraron preguntas, si el error persiste, por favor contacte al administrador..."
+  },
   "consent_check": {
     "en": "Please consent to background check",
     "fr": "Veuillez consentir à la vérification des antécédents",
     "pa": "ਕਿਰਪਾ ਕਰਕੇ ਪਿਛਲੇ ਚੈੱਕ ਦੀ ਸਹਿਮਤੀ ਦਿਓ",
     "zh": "请同意背景检查",
     "es": "Por favor, consienta a la verificación de antecedentes"
+  },
+  "reload_page": {
+    "en": "Click to reload page",
+    "fr": "Cliquez pour recharger la page",
+    "pa": "ਪੇਜ ਨੂੰ ਰੀਲੋਡ ਕਰਨ ਲਈ ਕਲਿੱਕ ਕਰੋ",
+    "zh": "点击重新加载页面",
+    "es": "Haz clic para recargar la página"
+  },
+  "score": {
+    "en": "Score",
+    "fr": "Score",
+    "pa": "ਸਕੋਰ",
+    "zh": "分数",
+    "es": "Puntuación"
+  },
+  "back": {
+    "en": "Back",
+    "fr": "Retour",
+    "pa": "ਪਿਛੇ",
+    "zh": "返回",
+    "es": "Atrás"
   },
   "gst_number": {
     "en": "GST Number",
@@ -866,6 +894,20 @@
     "pa": "ਕਿਰਪਾ ਕਰਕੇ ਸਰਟਨ ਦੁਆਰਾ ਭੇਜੇ ਗਏ ਪੁਸ਼ਟੀਕਰਣ ਈਮੇਲ ਨੂੰ ਮੁਕੰਮਲ ਕਰੋ।",
     "zh": "请完成Certn发送的验证电子邮件。",
     "es": "Por favor complete el correo electrónico de verificación enviado por Certn."
+  },
+  "quiz_questions": {
+    "en": "Quiz Questions",
+    "fr": "Questions du quiz",
+    "pa": "ਕੁਇਜ਼ ਪ੍ਰਸ਼ਨ",
+    "zh": "测验问题",
+    "es": "Preguntas del cuestionario"
+  },
+  "instructions_text": {
+    "en": "Please complete this short quiz to complete your onboarding to RepairFind.",
+    "fr": "Veuillez compléter ce court quiz pour terminer votre intégration à RepairFind.",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਇਹ ਛੋਟਾ ਕੁਇਜ਼ ਪੂਰਾ ਕਰੋ ਤਾਂ ਕਿ ਤੁਹਾਡੀ RepairFind ਉਸਤੋਂ ਪੂਰਾ ਹੋ ਸਕੇ।",
+    "zh": "请完成这个简短的测验，以完成您在RepairFind的入职。",
+    "es": "Por favor, completa este breve cuestionario para completar tu integración en RepairFind."
   },
   "certn_verification_pending": {
     "en": "Thank you for completing the Certn email verification process. Kindly note that verification may take some time. Rest assured, our team is diligently processing your information.",

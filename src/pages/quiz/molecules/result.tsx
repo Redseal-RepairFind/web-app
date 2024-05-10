@@ -28,7 +28,9 @@ const Result = ({ handleModal, totalScore, profile }: any) => {
   };
   return (
     <div className="bg-white flex flex-col items-center gap-5 justify-center">
-      <p className="font-medium text-sm">Score: {totalScore}/10</p>
+      <p className="font-medium text-sm">
+        {handleLanguageChoice("score")}: {totalScore}/10
+      </p>
       <img
         className="w-24"
         src={totalScore >= 8 ? success : error}
