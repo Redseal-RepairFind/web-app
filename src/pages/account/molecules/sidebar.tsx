@@ -64,7 +64,7 @@ const Sidebar = ({ className }: { className?: string }) => {
         className={`w-full flex items-center ${
           location.pathname === "/account" ? "bg-gray-100" : "bg-transparent"
         } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
-        to={"/account/team"}
+        to={"/account"}
       >
         <FontAwesomeIcon icon={faHome} />
         Home
