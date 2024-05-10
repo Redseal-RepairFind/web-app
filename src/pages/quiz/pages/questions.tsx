@@ -118,7 +118,10 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
           };
           const response = await SubmitQuiz(payload);
           console.log(response);
-          sessionStorage.setItem("repairfind_user", response?.data?.contractor);
+          sessionStorage.setItem(
+            "repairfind_user",
+            JSON.stringify(response?.data?.contractor)
+          );
           toast.remove();
           toast.success(response?.message);
         } catch (e: any) {

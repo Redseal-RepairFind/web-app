@@ -66,7 +66,7 @@ const useAuth = () => {
         const data = (await CreateAccount(payload)) as ApiResponse;
         toast.remove();
         toast.success(data?.message);
-        sessionStorage.setItem("repairfind_user", data?.data);
+        sessionStorage.setItem("repairfind_user", JSON.stringify(data?.data));
         // console.log(data);
         setTimeout(() => {
           navigate(`/onboarding/submit-otp?email=${values.email}`);
@@ -93,7 +93,7 @@ const useAuth = () => {
         const data = (await CreateAccount(payload)) as ApiResponse;
         toast.remove();
         toast.success(data?.message);
-        sessionStorage.setItem("repairfind_user", data?.user);
+        sessionStorage.setItem("repairfind_user", JSON.stringify(data?.user));
         console.log(data);
         setTimeout(() => {
           navigate(`/onboarding/submit-otp?email=${values.email}`);
