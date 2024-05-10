@@ -13,7 +13,7 @@ const EmployeeUpdateInformation: React.FC = () => {
   const parsedStep =
     employee_session_step !== null ? parseInt(employee_session_step) : null;
 
-  const [stepIndex, setStepIndex] = useState<number>(parsedStep || 1);
+  const [stepIndex, setStepIndex] = useState<number>(parsedStep || 0);
 
   const handleNextStep = () => {
     setStepIndex(stepIndex + 1);

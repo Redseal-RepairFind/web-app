@@ -10,6 +10,7 @@ import {
   faShield,
   faUsers,
   faBuilding,
+  faHome,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ className }: { className?: string }) => {
@@ -75,6 +76,15 @@ const Sidebar = ({ className }: { className?: string }) => {
         <FontAwesomeIcon icon={faBook} />
         Terms & Conditions
       </a>
+      <Link
+        className={`w-full flex items-center ${
+          location.pathname === "/account" ? "bg-gray-100" : "bg-transparent"
+        } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+        to={"/account/team"}
+      >
+        <FontAwesomeIcon icon={faHome} />
+        Home
+      </Link>
       {user?.accountType.toLowerCase() === "company" && (
         // user?.gstDetails?.status?.toLowerCase() !== "pending" &&
         <Link

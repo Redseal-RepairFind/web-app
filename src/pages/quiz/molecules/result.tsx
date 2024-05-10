@@ -5,12 +5,10 @@ import error from "./error.png";
 import useLanguage from "../../../hooks/useLanguage";
 import { useNavigate } from "react-router-dom";
 
-const Result = ({ handleModal, totalScore, profile }: any) => {
+const Result = ({ handleModal, totalScore }: any) => {
   const { handleLanguageChoice } = useLanguage();
 
   const navigate = useNavigate();
-
-  console.log(profile);
 
   //   console.log(totalScore);
 

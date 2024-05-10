@@ -35,28 +35,6 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
     }
   );
 
-  const { data: profile, refetch: refetchProfile } = useQuery(
-    ["Profile"],
-    () => {
-      return auth.getProfile();
-    },
-    {
-      cacheTime: 30000,
-      staleTime: 30000,
-      select: (data) => data?.data,
-      refetchOnWindowFocus: false,
-    }
-  );
-
-  // console.log(profile);
-
-  useEffect(() => {
-    sessionStorage.setItem(
-      "repairfind_user",
-      JSON.stringify(profile?.contractor)
-    );
-  }, [profile]);
-
   // console.log(data);
 
   const [questionIndex, setQuestionIndex] = useState<any>(0);
@@ -124,7 +102,7 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
       );
       toast.success("You have completed all questions!");
       setTotalScore(totalScore);
-      handleModal();
+      // handleModal();
       if (totalScore >= 8) {
         toast.remove();
         toast.loading("Submitting your answers...");
@@ -139,7 +117,6 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
             }),
           };
           const response = await SubmitQuiz(payload);
-          refetchProfile();
           console.log(response);
           sessionStorage.setItem("repairfind_user", response?.data?.contractor);
           toast.remove();
@@ -151,11 +128,11 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
         }
       }
       handleModal();
-      // if (totalScore >= 8) toast.loading("Re-directing to your account...");
-      // setTimeout(() => {
-      //   toast.remove();
-      //   if (totalScore >= 8) navigate("/account");
-      // }, 3000);
+      if (totalScore >= 8) toast.loading("Re-directing to your account...");
+      setTimeout(() => {
+        toast.remove();
+        if (totalScore >= 8) navigate("/account");
+      }, 3000);
       return;
     }
 
@@ -196,11 +173,7 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
   return (
     <div className="w-full h-[100vh] flex items-center justify-center">
       <CenteredModal title="" open={modal} setOpen={handleModal}>
-        <Result
-          profile={profile}
-          totalScore={totalScore}
-          handleModal={handleModal}
-        />
+        <Result totalScore={totalScore} handleModal={handleModal} />
       </CenteredModal>
       <div className="relative max-w-[800px] w-full flex items-center justify-center flex-col gap-5">
         {answers && answers.length > 1 && (
