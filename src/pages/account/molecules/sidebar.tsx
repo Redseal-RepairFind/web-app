@@ -60,6 +60,15 @@ const Sidebar = ({ className }: { className?: string }) => {
           />
         </div>
       </div>
+      <Link
+        className={`w-full flex items-center ${
+          location.pathname === "/account" ? "bg-gray-100" : "bg-transparent"
+        } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+        to={"/account/team"}
+      >
+        <FontAwesomeIcon icon={faHome} />
+        Home
+      </Link>
       <a
         className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
         href="https://repairfind.ca/privacy-policy/"
@@ -76,15 +85,7 @@ const Sidebar = ({ className }: { className?: string }) => {
         <FontAwesomeIcon icon={faBook} />
         Terms & Conditions
       </a>
-      <Link
-        className={`w-full flex items-center ${
-          location.pathname === "/account" ? "bg-gray-100" : "bg-transparent"
-        } border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
-        to={"/account/team"}
-      >
-        <FontAwesomeIcon icon={faHome} />
-        Home
-      </Link>
+
       {user?.accountType.toLowerCase() === "company" && (
         // user?.gstDetails?.status?.toLowerCase() !== "pending" &&
         <Link
