@@ -103,7 +103,7 @@ const UploadLogo = ({
             <img src={URL.createObjectURL(file)} alt="Uploaded" />
           ) : (
             <div className="text-center bg-gray-200 rounded-3xl px-5 py-3">
-              Upload logo here
+              {handleLanguageChoice("upload_logo")}
             </div>
           )}
         </div>

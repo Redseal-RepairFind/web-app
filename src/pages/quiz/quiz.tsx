@@ -10,7 +10,7 @@ const Quiz = () => {
     sessionStorage.getItem("sessionIndex") || "null"
   );
 
-  const [screenIndex, setScreenIndex] = useState(sessionIndex || 0);
+  const [screenIndex, setScreenIndex] = useState(sessionIndex || 2);
 
   const { data, isLoading } = useQuery(
     ["Quiz"],

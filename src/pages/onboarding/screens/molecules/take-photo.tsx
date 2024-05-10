@@ -49,9 +49,9 @@ const TakePhoto = ({
       });
 
       socket.on("disconnect", () => {
-        toast.remove();
-        toast.success("Disconnected..");
-        // console.log("Disconnected from Socket.IO server");
+        // toast.remove();
+        // toast.success("Disconnected..");
+        console.log("Disconnected from Socket.IO server");
       });
 
       socket.on("error", (error) => {
@@ -88,8 +88,7 @@ const TakePhoto = ({
   return (
     <div className="w-full mt-[80px]">
       <h1 className=" text-center mb-5 text-xl font-medium">
-        {/* {handleLanguageChoice("take_photo")} */}
-        Verify your Identity
+        {handleLanguageChoice("verify_identity")}
       </h1>
       <div className="flex w-full items-center justify-center py-5 px-2">
         <iframe

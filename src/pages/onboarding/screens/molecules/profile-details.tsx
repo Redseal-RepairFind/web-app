@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useLanguage from "../../../../hooks/useLanguage";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightLong, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useDropzone } from "react-dropzone";
 import Switch from "react-switch";
 import toast from "react-hot-toast";
@@ -309,6 +309,19 @@ const ProfileDetails = ({
     }
   };
 
+  const handleDeletePicture = (index: any) => {
+    const newPictures = [...pictures];
+    newPictures.splice(index, 1);
+    setPictures(newPictures);
+  };
+
+  // Function to handle deletion of a media file
+  const handleDeleteMedia = (index: any) => {
+    const newMediaFiles = [...mediaFiles];
+    newMediaFiles.splice(index, 1);
+    setMediaFiles(newMediaFiles);
+  };
+
   return (
     <React.Fragment>
       <CenteredModal open={showPreview} setOpen={togglePreview} title="">
@@ -330,7 +343,9 @@ const ProfileDetails = ({
               className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
             >
               {skills.map((skill) => (
-                <option value={skill.value}>{skill.label}</option>
+                <option key={skill.value} value={skill.value}>
+                  {skill.label}
+                </option>
               ))}
             </select>
           </div>
@@ -345,7 +360,9 @@ const ProfileDetails = ({
               className="w-full mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-300 outline-none focus:ring-0"
             >
               {experience.map((item) => (
-                <option value={item.value}>{item.label}</option>
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
               ))}
             </select>
           </div>
@@ -421,14 +438,24 @@ const ProfileDetails = ({
                 {handleLanguageChoice("browse_files")}
               </p>
             </div>
-            <div className="mt-3 flex items-center flex-wrap gap-1">
+            <div className="mt-3 flex items-center flex-wrap gap-2">
               {pictures.map((picture, index) => (
-                <img
+                <div
                   key={index}
-                  src={URL.createObjectURL(picture)}
-                  alt={`Uploaded ${index + 1}`}
-                  className="max-w-[100px] max-h-[100px]"
-                />
+                  className="flex items-start justify-normal flex-col gap-1"
+                >
+                  <img
+                    src={URL.createObjectURL(picture)}
+                    alt={`Uploaded ${index + 1}`}
+                    className="max-w-[100px] max-h-[100px]"
+                  />
+                  <button
+                    className="text-black rounded-full text-xs"
+                    onClick={() => handleDeletePicture(index)}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </div>
               ))}
             </div>
           </div>
@@ -447,7 +474,10 @@ const ProfileDetails = ({
             </div>
             <div className="mt-3 flex items-center flex-wrap gap-1">
               {mediaFiles.map((file, index) => (
-                <div key={index}>
+                <div
+                  key={index}
+                  className="flex items-start justify-normal flex-col gap-1"
+                >
                   {file.type.startsWith("image/") ? (
                     <img
                       src={URL.createObjectURL(file)}
@@ -460,11 +490,17 @@ const ProfileDetails = ({
                         src={URL.createObjectURL(file)}
                         type={file.type}
                       />
-                      Your browser does not support the video tag.
+                      {handleLanguageChoice("browser_support_tag")}
                     </video>
                   ) : (
                     <span>{`Uploaded ${index + 1}`}</span>
                   )}
+                  <button
+                    className="text-black rounded-full text-xs"
+                    onClick={() => handleDeleteMedia(index)}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
                 </div>
               ))}
             </div>

@@ -72,7 +72,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
     <div className="w-full mt-[80px] py-4">
       <h1 className=" text-center mb-5 text-xl font-medium">
         {/* {handleLanguageChoice("enter_profile")} */}
-        GST/HST Validation
+        {handleLanguageChoice("gst_hst_validation")}
       </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="w-full mb-10 flex-1">
@@ -89,8 +89,8 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
         </div>
         <div className="w-full mb-10 flex-1">
           <label className="text-sm font-medium">
-            {/* {handleLanguageChoice("business_name")} */}
-            GST Number
+            {handleLanguageChoice("gst_number")}
+            {/* GST Number */}
           </label>
           <input
             type="text"
@@ -170,7 +170,7 @@ const GstValidation = ({ handlePrev }: { handlePrev: any }) => {
         </div>
         {errors.backgroundCheckConsent && (
           <div className="text-red-500 text-xs font-medium w-full text-center">
-            Please consent to background check
+            {handleLanguageChoice("consent_check")}
           </div>
         )}
         <div className="w-full flex items-center justify-center gap-4 mt-5">

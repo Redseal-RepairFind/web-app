@@ -128,7 +128,7 @@ const CreateAccount = () => {
           />
           {errors.phoneNumber && (
             <div className="text-red-500 text-xs font-medium w-full text-center">
-              Please enter your phone number
+              {handleLanguageChoice("phone_error")}
             </div>
           )}
         </div>
@@ -182,7 +182,7 @@ const CreateAccount = () => {
         </div>
         {errors.acceptTerms && (
           <div className="text-red-500 text-xs font-medium w-full text-center">
-            Please accept the terms and conditions
+            {handleLanguageChoice("accept_terms")}
           </div>
         )}
         <button

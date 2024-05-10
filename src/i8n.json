@@ -20,6 +20,13 @@
     "zh": "欢迎来到维修查找",
     "es": "Bienvenido a RepairFind"
   },
+  "phone_error": {
+    "en": "Please enter your phone number",
+    "fr": "Veuillez saisir votre numéro de téléphone",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਫੋਨ ਨੰਬਰ ਦਰਜ ਕਰੋ",
+    "zh": "请输入您的电话号码",
+    "es": "Por favor, introduzca su número de teléfono"
+  },
   "get_started": {
     "en": "Get Started",
     "fr": "Commencer",
@@ -216,6 +223,13 @@
     "zh": "创建一个帐户",
     "es": "Crea una cuenta"
   },
+  "accept_terms": {
+    "en": "Please accept the terms and conditions",
+    "fr": "Veuillez accepter les termes et conditions",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਸ਼ਰਤਾਂ ਅਤੇ ਹਾਲਾਤ ਨੂੰ ਮੰਨੋ",
+    "zh": "请接受条款和条件",
+    "es": "Por favor, acepte los términos y condiciones"
+  },
   "login": {
     "en": "Login",
     "fr": "Se connecter",
@@ -348,6 +362,20 @@
     "pa": "ਫੋਟੋ ਸਫਲਤਾਪੂਰਵਕ ਅੱਪਲੋਡ ਕੀਤੀ ਗਈ",
     "zh": "照片上传成功",
     "es": "Foto cargada exitosamente"
+  },
+  "profile": {
+    "en": "Profile",
+    "fr": "Profil",
+    "pa": "ਪ੍ਰੋਫਾਈਲ",
+    "zh": "轮廓",
+    "es": "Perfil"
+  },
+  "media": {
+    "en": "Media",
+    "fr": "Médias",
+    "pa": "ਮੀਡੀਆ",
+    "zh": "媒体",
+    "es": "Medios"
   },
   "enter_profile": {
     "en": "Enter your Profile Details",
@@ -489,6 +517,13 @@
     "zh": "评分",
     "es": "Clasificación"
   },
+  "close": {
+    "en": "Close",
+    "fr": "Fermer",
+    "pa": "ਬੰਦ ਕਰੋ",
+    "zh": "关闭",
+    "es": "Cerrar"
+  },
   "response_time": {
     "en": "Response Time",
     "fr": "Temps de réponse",
@@ -530,13 +565,6 @@
     "pa": "ਸਮੀਖਿਆ",
     "zh": "审查",
     "es": "Revisar"
-  },
-  "media": {
-    "en": "Media",
-    "fr": "Médias",
-    "pa": "ਮੀਡੀਆ",
-    "zh": "媒体",
-    "es": "Medios de comunicación"
   },
   "enter_bank_details": {
     "en": "Enter your Bank Details",
@@ -615,6 +643,13 @@
     "zh": "职位参考",
     "es": "Referencia laboral"
   },
+  "gst_hst_validation": {
+    "en": "GST/HST Validation",
+    "fr": "Validation de la TPS/TVH",
+    "pa": "ਜੀ.ਐਸ.ਟੀ/ਏਚ.ਐਸ.ਟੀ ਪ੍ਰਮਾਣਿਕਤਾ",
+    "zh": "GST/HST 验证",
+    "es": "Validación de GST/IVA"
+  },
   "general_reference": {
     "en": "General Reference",
     "fr": "Référence générale",
@@ -642,6 +677,13 @@
     "pa": "ਕੰਪਨੀ ਲੋਗੋ ਅੱਪਲੋਡ ਕਰੋ",
     "zh": "上传公司标志",
     "es": "Cargar logotipo de la empresa"
+  },
+  "upload_logo": {
+    "en": "Upload logo here",
+    "fr": "Téléchargez le logo ici",
+    "pa": "ਲੋਗੋ ਇੱਥੇ ਅੱਪਲੋਡ ਕਰੋ",
+    "zh": "在此上传徽标",
+    "es": "Subir logo aquí"
   },
   "logo_uploaded_successfully": {
     "en": "Logo Uploaded Successfully",
@@ -692,12 +734,26 @@
     "zh": "请在此输入。",
     "es": "Por favor ingréselo aquí."
   },
+  "browser_support_tag": {
+    "en": "Your browser does not support the video tag.",
+    "fr": "Votre navigateur ne prend pas en charge la balise vidéo.",
+    "pa": "ਤੁਹਾਡਾ ਬ੍ਰਾਊਜ਼ਰ ਵੀਡੀਓ ਟੈਗ ਨੂੰ ਸਮਰਥਨ ਨਹੀਂ ਕਰਦਾ।",
+    "zh": "您的浏览器不支持视频标签。",
+    "es": "Tu navegador no soporta la etiqueta de video."
+  },
   "verify_email": {
     "en": "Verify Email",
     "fr": "Vérifier les courriels",
     "pa": "ਈਮੇਲ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
     "zh": "验证邮件",
     "es": "Verificar correo electrónico"
+  },
+  "verify_identity": {
+    "en": "Verify your Identity",
+    "fr": "Vérifiez votre identité",
+    "pa": "ਆਪਣੀ ਸਥਿਤੀ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ",
+    "zh": "验证您的身份",
+    "es": "Verifica tu identidad"
   },
   "verify_account": {
     "en": "Verify Account",
@@ -782,6 +838,20 @@
     "pa": "ਰਜਿਸਟਰੇਸ਼ਨ ਅਸਫਲ",
     "zh": "注册失败",
     "es": "Registro Fallido"
+  },
+  "consent_check": {
+    "en": "Please consent to background check",
+    "fr": "Veuillez consentir à la vérification des antécédents",
+    "pa": "ਕਿਰਪਾ ਕਰਕੇ ਪਿਛਲੇ ਚੈੱਕ ਦੀ ਸਹਿਮਤੀ ਦਿਓ",
+    "zh": "请同意背景检查",
+    "es": "Por favor, consienta a la verificación de antecedentes"
+  },
+  "gst_number": {
+    "en": "GST Number",
+    "fr": "Numéro de TPS",
+    "pa": "ਜੀ.ਐਸ.ਟੀ ਨੰਬਰ",
+    "zh": "GST 编号",
+    "es": "Número de GST"
   },
   "certn_verification_failure": {
     "en": "We found some issues with your registration. Please contact us for more information.",

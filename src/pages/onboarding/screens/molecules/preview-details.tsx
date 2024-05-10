@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import Switch from "react-switch";
+import useLanguage from "../../../../hooks/useLanguage";
 
 const PreviewDetails = ({
   handleModal,
@@ -23,6 +24,8 @@ const PreviewDetails = ({
   // console.log(data);
 
   const repairfind_user = sessionStorage.getItem("repairfind_user");
+
+  const { handleLanguageChoice } = useLanguage();
 
   const [currentTab, setCurrentTab] = useState("profile");
 
@@ -55,7 +58,7 @@ const PreviewDetails = ({
             currentTab === "profile" ? "border-black" : "border-gray-300"
           }`}
         >
-          Profile
+          {handleLanguageChoice("profile")}
         </button>
         <button
           onClick={() => setCurrentTab("media")}
@@ -63,7 +66,7 @@ const PreviewDetails = ({
             currentTab === "media" ? "border-black" : "border-gray-300"
           }`}
         >
-          Media
+          {handleLanguageChoice("media")}
         </button>
       </div>
       {currentTab === "profile" && (
@@ -71,21 +74,21 @@ const PreviewDetails = ({
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-between">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faHandFist} />
-              Skill / Specialization
+              {handleLanguageChoice("specialization")}
             </h2>
             <p className="text-gray-700 font-medium">{data?.skill}</p>
           </div>
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-between">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faCalendarCheck} />
-              Years of Experience
+              {handleLanguageChoice("years_of_exp")}
             </h2>
             <p className="text-gray-700 font-medium">{data?.experienceYear}</p>
           </div>
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-center flex-col">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faExclamationCircle} />
-              About Me
+              {handleLanguageChoice("about_me")}
             </h2>
             <p className="text-gray-600 w-full text-start mt-1">
               {data?.about}
@@ -94,7 +97,7 @@ const PreviewDetails = ({
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-center flex-col">
             <h2 className="font-semibold mb-1">
               <FontAwesomeIcon className="mr-1" icon={faLocationDot} />
-              Address
+              {handleLanguageChoice("address")}
             </h2>
             {data?.location && (
               <GoogleMap
@@ -109,7 +112,7 @@ const PreviewDetails = ({
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-center flex-col">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faCalendarDays} />
-              Available Days
+              {handleLanguageChoice("available_days")}
             </h2>
             <div className="flex flex-wrap gap-2 mt-1">
               {data?.selectedDays?.map((day: string, index: number) => (
@@ -125,7 +128,7 @@ const PreviewDetails = ({
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-between">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faBell} />
-              Available for Emergency Jobs
+              {handleLanguageChoice("available_for_emergency")}
             </h2>
             <Switch
               onColor="#000000"
@@ -141,7 +144,7 @@ const PreviewDetails = ({
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-center flex-col">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faImage} />
-              Pictures of Previous Jobs
+              {handleLanguageChoice("pictures_of_previous_jobs")}
             </h2>
             <div className="flex flex-wrap gap-2 mt-2">
               {data?.pictures?.map((picture: any, index: number) => (
@@ -156,13 +159,13 @@ const PreviewDetails = ({
           <div className="mb-4 border-b border-gray-300 py-4 flex items-start justify-center flex-col">
             <h2 className="font-semibold">
               <FontAwesomeIcon className="mr-1" icon={faVideo} />
-              Videos of Previous Jobs
+              {handleLanguageChoice("videos_of_previous_jobs")}
             </h2>
             <div className="flex flex-wrap gap-2 mt-2">
               {data?.mediaFiles?.map((video: any, index: number) => (
                 <video controls width="100" height="100">
                   <source src={URL.createObjectURL(video)} type={video.type} />
-                  Your browser does not support the video tag.
+                  {handleLanguageChoice("browser_support_tag")}
                 </video>
               ))}
             </div>
@@ -173,7 +176,7 @@ const PreviewDetails = ({
         onClick={() => handleModal()}
         className=" mt-3 border w-full border-black bg-black py-3 rounded-md text-white"
       >
-        Close
+        {handleLanguageChoice("close")}
       </button>
     </div>
   );
