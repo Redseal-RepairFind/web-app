@@ -69,22 +69,6 @@ const Sidebar = ({ className }: { className?: string }) => {
         <FontAwesomeIcon icon={faHome} />
         Home
       </Link>
-      <a
-        className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
-        href="https://repairfind.ca/privacy-policy/"
-        target="_blank"
-      >
-        <FontAwesomeIcon icon={faShield} />
-        Privacy Policy
-      </a>
-      <a
-        className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
-        href="https://repairfind.ca/terms-of-service/"
-        target="_blank"
-      >
-        <FontAwesomeIcon icon={faBook} />
-        Terms & Conditions
-      </a>
 
       {user?.accountType.toLowerCase() === "company" && (
         // user?.gstDetails?.status?.toLowerCase() !== "pending" &&
@@ -113,6 +97,22 @@ const Sidebar = ({ className }: { className?: string }) => {
           Your Company
         </Link>
       )}
+      <a
+        className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+        href="https://repairfind.ca/privacy-policy/"
+        target="_blank"
+      >
+        <FontAwesomeIcon icon={faShield} />
+        Privacy Policy
+      </a>
+      <a
+        className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
+        href="https://repairfind.ca/terms-of-service/"
+        target="_blank"
+      >
+        <FontAwesomeIcon icon={faBook} />
+        Terms & Conditions
+      </a>
       {/* <a
         className={`w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md`}
         href="https://repairfind.ca/about-us/"
