@@ -362,28 +362,30 @@ const ProfileDetails = ({
           {handleLanguageChoice("enter_profile")}
         </h1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex items-center justify-between gap-2 flex-col md:flex-row">
-            <div className="w-full mb-10 flex-1">
-              <label className="text-sm font-medium">
-                {handleLanguageChoice("firstname")}
-              </label>
-              <input
-                disabled={true}
-                defaultValue={user?.firstName}
-                className="w-full bg-slate-100 mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 outline-none focus:ring-0"
-              />
+          {accountType === "employee" && (
+            <div className="flex items-center justify-between gap-2 flex-col md:flex-row">
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("firstname")}
+                </label>
+                <input
+                  disabled={true}
+                  defaultValue={user?.firstName}
+                  className="w-full bg-slate-100 mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 outline-none focus:ring-0"
+                />
+              </div>
+              <div className="w-full mb-10 flex-1">
+                <label className="text-sm font-medium">
+                  {handleLanguageChoice("lastname")}
+                </label>
+                <input
+                  disabled={true}
+                  defaultValue={user?.lastName}
+                  className="w-full bg-slate-100 mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 outline-none focus:ring-0"
+                />
+              </div>
             </div>
-            <div className="w-full mb-10 flex-1">
-              <label className="text-sm font-medium">
-                {handleLanguageChoice("lastname")}
-              </label>
-              <input
-                disabled={true}
-                defaultValue={user?.lastName}
-                className="w-full bg-slate-100 mt-1 py-3 text-[12px] px-3 duration-200 focus:px-3.5 focus:border-black rounded-md border border-slate-200 outline-none focus:ring-0"
-              />
-            </div>
-          </div>
+          )}
           <div className="w-full mb-10 flex-1">
             <label className="text-sm font-medium">
               {handleLanguageChoice("specialization")}
