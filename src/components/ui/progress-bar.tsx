@@ -29,7 +29,7 @@ const StepProgressBar = ({
         filledBackground="#000000"
       >
         {steps.map((step) => (
-          <Step transition="scale">
+          <Step key={step.id} transition="scale">
             {({
               accomplished,
               index,
