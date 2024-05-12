@@ -49,9 +49,9 @@ const Sidebar = ({ className }: { className?: string }) => {
               )}
           </div>
         </div>
-        <div className="w-12 flex items-center justify-center h-12 rounded-full border border-gray-100 shadow">
+        <div className="w-12 flex items-center justify-center h-12 overflow-hidden rounded-full border border-gray-100 shadow">
           <img
-            className="w-7"
+            className="w-full rounded-full"
             src={
               user?.accountType.toLowerCase() !== "company"
                 ? user?.profilePhoto?.url
