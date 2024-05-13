@@ -11,6 +11,8 @@ const StepProgressBar = ({
   steps: any[];
   stepIndex: number;
 }) => {
+  const userString = sessionStorage.getItem("repairfind_user");
+  const user = userString ? JSON.parse(userString) : null;
   const percent = (stepIndex / (steps.length - 1)) * 100;
 
   const positions = steps.map((step, index) => {
@@ -20,6 +22,9 @@ const StepProgressBar = ({
   //   console.log(positions);
 
   //   console.log(percent);
+
+  // if (user?.) return <div></div>
+
   return (
     <div className="w-full p-4">
       <ProgressBar

@@ -150,7 +150,7 @@ const TeamData = () => {
         }}
         className="border border-black bg-black py-3 px-8 rounded-md text-white"
       >
-        View Invites {`(${invites?.length && invites?.length})`}
+        View Invites {invites?.length ? `(${invites?.length})` : ""}
       </button>
     </div>
   );

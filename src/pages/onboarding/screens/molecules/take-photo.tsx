@@ -41,11 +41,17 @@ const TakePhoto = ({
 
       socket.on("STRIPE_IDENTITY", (data) => {
         // console.log("Received stripe_identity event:", data);
-        toast.remove();
-        toast.success("Verification successful...");
-        setTimeout(() => {
-          handleNext();
-        }, 800);
+
+        if (data.status === "verified") {
+          toast.remove();
+          toast.success("Verification successful...");
+          setTimeout(() => {
+            handleNext();
+          }, 800);
+        } else {
+          toast.remove();
+          toast.error("Unable to verify, please try again...");
+        }
       });
 
       socket.on("disconnect", () => {
