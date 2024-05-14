@@ -69,6 +69,14 @@ const Account = () => {
         <p className="text-sm text-gray-500 font-medium text-center w-full mt-1 md:max-w-[500px]">
           {handleLanguageChoice("certn_verification_not_submitted_subtext")}
         </p>
+        <a
+          className="px-5 py-3 mt-5 rounded-md bg-black text-white "
+          target="_blank"
+          rel="noreferrer"
+          href={`${user?.certnReport?.action}`}
+        >
+          Click Link to Submit
+        </a>
       </div>
     );
   }
