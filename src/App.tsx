@@ -77,37 +77,37 @@ function App() {
 
   // console.log
 
-  if (isFetching && location.pathname.includes("onboarding")) {
-    return (
-      <div className="w-full h-[100vh] flex items-center p-5 justify-center">
-        <BarLoader color="black" />
-      </div>
-    );
-  }
+  // if (isFetching && location.pathname.includes("onboarding")) {
+  //   return (
+  //     <div className="w-full h-[100vh] flex items-center p-5 justify-center">
+  //       <BarLoader color="black" />
+  //     </div>
+  //   );
+  // }
 
-  if (!locationIsEnabled && location.pathname.includes("onboarding")) {
-    return (
-      <div className="w-full h-[100vh] flex items-center gap-10 p-5 justify-center">
-        <img src={error} className="w-[25%]" alt="Error" />
-        <p className="text-cente font-semibold md:w-[50%] w-full">
-          Oops, You have to enable location to sign up on our app...
-        </p>
-      </div>
-    );
-  }
+  // if (!locationIsEnabled && location.pathname.includes("onboarding")) {
+  //   return (
+  //     <div className="w-full h-[100vh] flex items-center gap-10 p-5 justify-center">
+  //       <img src={error} className="w-[25%]" alt="Error" />
+  //       <p className="text-cente font-semibold md:w-[50%] w-full">
+  //         Oops, You have to enable location to sign up on our app...
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
-  if (!isCanada && location.pathname.includes("onboarding")) {
-    return (
-      <div className="w-full h-[100vh] flex items-center flex-col gap-10 p-5 justify-center">
-        <img src={error} className="w-[25%]" alt="Error" />
-        <p className="text-center font-medium md:w-[50%] w-full">
-          Oops, You cannot sign up on our app at this time in your current
-          location, please be rest assured that we are scaling and you will be
-          notified when your region is available for sign up...
-        </p>
-      </div>
-    );
-  }
+  // if (!isCanada && location.pathname.includes("onboarding")) {
+  //   return (
+  //     <div className="w-full h-[100vh] flex items-center flex-col gap-10 p-5 justify-center">
+  //       <img src={error} className="w-[25%]" alt="Error" />
+  //       <p className="text-center font-medium md:w-[50%] w-full">
+  //         Oops, You cannot sign up on our app at this time in your current
+  //         location, please be rest assured that we are scaling and you will be
+  //         notified when your region is available for sign up...
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <React.Fragment>
