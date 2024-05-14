@@ -75,7 +75,7 @@ const Account = () => {
           rel="noreferrer"
           href={`${user?.certnReport?.action}`}
         >
-          Click Link to Submit
+          Click to Continue
         </a>
       </div>
     );
