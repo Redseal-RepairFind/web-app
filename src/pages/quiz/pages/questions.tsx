@@ -178,14 +178,14 @@ const Questions = ({ handleIndex }: { handleIndex: any }) => {
       <CenteredModal title="" open={modal} setOpen={handleModal}>
         <Result totalScore={totalScore} handleModal={handleModal} />
       </CenteredModal>
-      <div className="relative max-w-[800px] w-full flex items-center justify-center flex-col gap-5">
+      <div className="relative max-w-[800px] w-full flex items-center p-5 justify-center flex-col gap-5">
         {answers && answers.length > 1 && (
           <>
             <Timer />
-            <p className="bg-gray-100 py-4 px-5 rounded-md">
+            <p className="bg-gray-100 py-4 px-5 md:mt-0 mt-[50px] rounded-md">
               Question {questionIndex + 1} of {answers?.length}
             </p>
-            <h1 className="w-full text-3xl font-semibold text-start">
+            <h1 className="w-full md:text-3xl text-xl font-semibold text-start">
               {questionIndex + 1}. {answers[questionIndex]?.question}
             </h1>
             <div className="w-full my-5 p-5">

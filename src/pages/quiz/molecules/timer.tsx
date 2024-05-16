@@ -48,7 +48,7 @@ export default function Timer() {
   const timeElements = formatTime(timeLeft).split(":");
 
   return (
-    <div className="flex top-0 right-0 items-center gap-2 bg-slate-100 absolute px-5 py-3">
+    <div className="flex top-0 right-3 items-center gap-2 bg-slate-100 absolute px-5 py-3">
       <Each
         of={timeElements}
         render={(item: any, index: number) => (

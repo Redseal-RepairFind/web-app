@@ -16,39 +16,41 @@ const Instructions = ({ handleIndex }: { handleIndex: any }) => {
             {handleLanguageChoice("instructions_text")}
           </span>
         </div>
-        <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex items-center gap-4">
+        <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex md:flex-row flex-col items-center gap-4">
           <div className="w-7 h-7 flex items-center justify-center rounded-full border border-black bg-black text-white">
             <FontAwesomeIcon icon={faQuestion} />
           </div>
           <div>
-            <p className="text-lg font-semibold">
+            <p className="text-lg font-semibold text-center md:text-left w-full">
               10 {handleLanguageChoice("questions")}
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-center md:text-left w-full">
               {handleLanguageChoice("question_info")}
             </p>
           </div>
         </div>
-        <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex items-center gap-4">
+        <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex items-center md:flex-row flex-col gap-4">
           <div className="w-7 h-7 flex items-center justify-center rounded-full border border-black bg-black text-white">
             <FontAwesomeIcon icon={faQuestion} />
           </div>
           <div>
-            <p className="text-lg font-semibold">
+            <p className="text-lg font-semibold text-center md:text-left w-full">
               20 {handleLanguageChoice("minutes")}
             </p>
-            <p className="text-gray-600">{handleLanguageChoice("time_info")}</p>
+            <p className="text-gray-600 text-center md:text-left w-full">
+              {handleLanguageChoice("time_info")}
+            </p>
           </div>
         </div>
-        <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex items-center gap-4">
+        <div className="w-full bg-gray-100 rounded-md py-3 px-5 flex items-center md:flex-row flex-col gap-4">
           <div className="w-7 h-7 flex items-center justify-center rounded-full border border-black bg-black text-white">
             <FontAwesomeIcon icon={faQuestion} />
           </div>
           <div>
-            <p className="text-lg font-semibold">
+            <p className="text-lg font-semibold text-center md:text-left w-full">
               {handleLanguageChoice("get_certificate_badge")}
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-center md:text-left w-full">
               {handleLanguageChoice("certificate_info")}
             </p>
           </div>
