@@ -853,6 +853,13 @@
     "zh": "请同意背景检查",
     "es": "Por favor, consienta a la verificación de antecedentes"
   },
+  "completed_quiz": {
+    "en": "You have completed your quiz, please click the link below to login",
+    "fr": "Vous avez terminé votre quiz, veuillez cliquer sur le lien ci-dessous pour vous connecter",
+    "pa": "ਤੁਸੀਂ ਆਪਣਾ ਕਵਿਜ਼ ਮੁਕੰਮਲ ਕਰ ਲਿਆ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਹੇਠਾਂ ਦਿੱਤੇ ਲਿੰਕ 'ਤੇ ਕਲਿੱਕ ਕਰੋ",
+    "zh": "您已完成您的测验，请点击下面的链接登录",
+    "es": "Ha completado su prueba, por favor haga clic en el enlace de abajo para iniciar sesión"
+  },
   "reload_page": {
     "en": "Click to reload page",
     "fr": "Cliquez pour recharger la page",

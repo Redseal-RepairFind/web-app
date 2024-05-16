@@ -4,6 +4,9 @@ import Instructions from "./pages/instructions";
 import Questions from "./pages/questions";
 import { useQuery } from "react-query";
 import { auth } from "../../api/auth";
+import welcome from "../../images/welcome.png";
+import { Link } from "react-router-dom";
+import useLanguage from "../../hooks/useLanguage";
 
 const Quiz = () => {
   const sessionIndex = JSON.parse(
@@ -12,7 +15,12 @@ const Quiz = () => {
 
   const [screenIndex, setScreenIndex] = useState(sessionIndex || 0);
 
-  const { data, isLoading } = useQuery(
+  const userString = sessionStorage.getItem("repairfind_user");
+  const user = userString ? JSON.parse(userString) : null;
+
+  const { handleLanguageChoice } = useLanguage();
+
+  const { data } = useQuery(
     ["Quiz"],
     () => {
       return auth.getQuiz();
@@ -48,6 +56,27 @@ const Quiz = () => {
     ],
     [screenIndex, data]
   );
+
+  if (user?.onboarding?.hasPassedQuiz) {
+    return (
+      <div className="w-full h-[100vh] flex items-center justify-center flex-col gap-5 p-5">
+        <img
+          src={welcome}
+          className="w-[90%] md:w-[40%] h-auto mb-10"
+          alt="Welcome"
+        />
+        <p className="text-sm text-gray-500 font-medium text-center mt-1 md:max-w-[400px]">
+          {handleLanguageChoice("completed_quiz")}
+        </p>
+        <Link
+          className="px-8 py-3 mt-2 rounded-md bg-black text-white "
+          to={`/account`}
+        >
+          {handleLanguageChoice("login")}
+        </Link>
+      </div>
+    );
+  }
 
   return <React.Fragment>{screens[screenIndex].page}</React.Fragment>;
 };

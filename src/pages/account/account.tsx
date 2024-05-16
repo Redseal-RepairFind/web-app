@@ -75,7 +75,7 @@ const Account = () => {
           rel="noreferrer"
           href={`${user?.certnReport?.action}`}
         >
-          Click to Continue
+          {handleLanguageChoice("continue")}
         </a>
       </div>
     );
