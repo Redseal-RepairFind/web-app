@@ -5,6 +5,11 @@ const client = createApiClient();
 export const team = {
   getTeam: () => client.get(`/contractor/teams`).then(({ data }: any) => data),
 
+  leaveTeam: (id: string) =>
+    client
+      .delete(`/contractor/teams/${id}/leave`)
+      .then(({ data }: any) => data),
+
   sendInvite: (payload: any) =>
     client
       .post(`/contractor/teams/invitations`, payload)

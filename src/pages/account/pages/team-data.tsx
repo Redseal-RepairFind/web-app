@@ -1,7 +1,5 @@
 /* eslint-disable no-restricted-globals */
 import React, { useState } from "react";
-import { useQuery } from "react-query";
-import { team } from "../../../api/team";
 import { SyncLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,21 +14,10 @@ import { convertDate } from "../../../utils";
 import useLanguage from "../../../hooks/useLanguage";
 
 const TeamData = () => {
-  const { AcceptReject } = useTeam();
+  const { invites, teamData, loadingTeamData, loadingInvites, LeaveTeam } =
+    useTeam();
 
   const { handleLanguageChoice } = useLanguage();
-
-  const { data: teamData, isLoading } = useQuery(
-    ["Team Data"],
-    () => {
-      return team.getTeamInfo();
-    },
-    {
-      cacheTime: 30000,
-      staleTime: 30000,
-      select: (data) => data?.data,
-    }
-  );
 
   const [showModal, hideModal] = useState<boolean>(false);
 
@@ -38,43 +25,30 @@ const TeamData = () => {
     hideModal(!showModal);
   };
 
-  const { data: invites, isLoading: loadingInvites } = useQuery(
-    ["Invites"],
-    () => {
-      return team.getInvites();
-    },
-    {
-      cacheTime: 30000,
-      staleTime: 30000,
-      select: (data) => data?.data,
-    }
-  );
-
-  //   console.log(teamData);
+  // console.log(teamData);
   //   console.log(invites);
 
-  const onSubmit = async ({ type, id }: { type: string; id: string }) => {
-    // console.log(values);
-    toast.loading("Processing...");
-    try {
-      const data = await AcceptReject({
-        type,
-        id,
-      });
-      toast.remove();
-      toast.success(data?.message);
-      setTimeout(() => {
-        toggleModal();
-        location.reload();
-      }, 1000);
-    } catch (e: any) {
-      console.log({ e });
-      toast.remove();
-      toast.error(e?.response?.data?.message);
+  const handleExit = async (team: any) => {
+    if (
+      confirm(`Kindly confirm you wish to leave ${team?.contractor?.name}?`)
+    ) {
+      toast.loading("Processing...");
+      try {
+        const data = await LeaveTeam(team?.id);
+        toast.remove();
+        toast.success(data?.message);
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } catch (e: any) {
+        console.log({ e });
+        toast.remove();
+        toast.error(e?.response?.data?.message);
+      }
     }
   };
 
-  if (isLoading) {
+  if (loadingTeamData) {
     return (
       <div className=" flex items-center justify-center">
         <SyncLoader className="text-[#000000]" />
@@ -93,13 +67,14 @@ const TeamData = () => {
       </CenteredModal>
       {teamData?.length ? (
         <>
-          {teamData?.map((team: any) => (
+          {teamData?.map((team: any, index: number) => (
             <div
+              key={index}
               className={`w-full max-w-[500px] flex-col md:flex-row flex items-center gap-5 md:gap-2 justify-between border bg-white border-gray-200 shadow rounded-md mb-3 p-5`}
             >
               <div className="w-12 flex items-center justify-center h-12 rounded-full border border-gray-100 shadow">
                 <img
-                  className="w-7"
+                  className="w-full rounded-full"
                   src={team?.contractor?.profilePhoto?.url}
                   alt={""}
                 />
@@ -123,7 +98,10 @@ const TeamData = () => {
                   })}
                 </p>
               </div>
-              <button className="flex items-center justify-end gap-2">
+              <button
+                onClick={() => handleExit(team)}
+                className="flex items-center justify-end gap-2"
+              >
                 <FontAwesomeIcon icon={faRightFromBracket} />
                 {handleLanguageChoice("exit")}
               </button>
