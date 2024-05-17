@@ -98,7 +98,7 @@ function App() {
       <div className="w-full h-[100vh] flex items-center gap-10 p-5 justify-center">
         <img src={error} className="w-[25%]" alt="Error" />
         <p className="text-cente font-semibold md:w-[50%] w-full">
-          Oops, You have to enable location to sign up on our app...
+          Oops, You have to enable location to sign up on our app.
         </p>
       </div>
     );
@@ -111,7 +111,7 @@ function App() {
         <p className="text-center font-medium md:w-[50%] w-full">
           Oops, You cannot sign up on our app at this time in your current
           location, please be rest assured that we are scaling and you will be
-          notified when your region is available for sign up...
+          notified when your region is available for sign up.
         </p>
       </div>
     );

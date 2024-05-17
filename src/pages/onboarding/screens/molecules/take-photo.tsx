@@ -3,6 +3,7 @@ import useLanguage from "../../../../hooks/useLanguage";
 import toast from "react-hot-toast";
 import useAuth from "../../../../hooks/useAuth";
 import io, { Socket } from "socket.io-client";
+import URL from "../../../../url";
 
 const TakePhoto = ({
   handleNext,
@@ -28,7 +29,7 @@ const TakePhoto = ({
 
     if (token) {
       // console.log("ln42", token);
-      socket = io(`${process.env.REACT_APP_SOCKET_TEST_URL}`, {
+      socket = io(`${URL}`, {
         extraHeaders: {
           token,
         },

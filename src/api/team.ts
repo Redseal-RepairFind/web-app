@@ -10,6 +10,11 @@ export const team = {
       .delete(`/contractor/teams/${id}/leave`)
       .then(({ data }: any) => data),
 
+  removeTeamMember: (id: string) =>
+    client
+      .delete(`/contractor/teams/${id}/remove-member`)
+      .then(({ data }: any) => data),
+
   sendInvite: (payload: any) =>
     client
       .post(`/contractor/teams/invitations`, payload)

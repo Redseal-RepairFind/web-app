@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React, { useState } from "react";
 import useTeam from "../../../hooks/useTeam";
 import { SyncLoader } from "react-spinners";
@@ -10,11 +11,13 @@ import {
   faEllipsisV,
 } from "@fortawesome/free-solid-svg-icons";
 import Search from "../../../components/ui/search";
+import VerticalMenu from "../../../components/ui/vertical-menu";
+import toast from "react-hot-toast";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const TeamMembers = () => {
-  const { data, isLoading } = useTeam();
+  const { data, isLoading, RemoveMember } = useTeam();
 
   const [selectedContractor, setSelectedContractor] = useState<any | null>(
     null
@@ -27,6 +30,24 @@ const TeamMembers = () => {
 
   const toggleModal = () => {
     hideModal(!showModal);
+  };
+
+  const handleRemove = async (member: any) => {
+    if (confirm(`Kindly confirm you wish to leave ${member?.name}?`)) {
+      toast.loading("Processing...");
+      try {
+        const data = await RemoveMember(member?.id);
+        toast.remove();
+        toast.success(data?.message);
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      } catch (e: any) {
+        console.log({ e });
+        toast.remove();
+        toast.error(e?.response?.data?.message);
+      }
+    }
   };
 
   if (isLoading) {
@@ -56,9 +77,9 @@ const TeamMembers = () => {
                   className={`w-full relative flex-col md:flex-row flex items-center gap-5 md:gap-2 justify-between border bg-white border-gray-200 shadow rounded-md mb-3 p-5`}
                 >
                   <div className="flex items-center flex-col md:flex-row justify-start gap-4">
-                    <div className="w-12 flex items-center justify-center h-12 rounded-full border border-gray-100 shadow">
+                    <div className="w-12 flex items-center overflow-hidden justify-center h-12 rounded-full border border-gray-100 shadow">
                       <img
-                        className="w-7"
+                        className="w-full rounded-full"
                         src={member?.profilePhoto?.url}
                         alt={""}
                       />
@@ -76,7 +97,14 @@ const TeamMembers = () => {
                     </div>
                   </div>
                   <button className="absolute md:inline top-5 right-5">
-                    <FontAwesomeIcon icon={faEllipsisV} />
+                    <VerticalMenu isBackground>
+                      <button
+                        onClick={() => handleRemove(member)}
+                        className="w-full py-2 hover:bg-gray-50"
+                      >
+                        Remove member
+                      </button>
+                    </VerticalMenu>
                   </button>
                 </div>
               ))}

@@ -62,6 +62,7 @@ const useTeam = () => {
   const { mutateAsync: SendInvite } = useMutation(team.sendInvite);
   const { mutateAsync: AcceptReject } = useMutation(team.acceptRejectInvite);
   const { mutateAsync: LeaveTeam } = useMutation(team.leaveTeam);
+  const { mutateAsync: RemoveMember } = useMutation(team.removeTeamMember);
 
   return {
     data,
@@ -76,6 +77,7 @@ const useTeam = () => {
     loadingInvites,
     AcceptReject,
     LeaveTeam,
+    RemoveMember,
   };
 };
 
