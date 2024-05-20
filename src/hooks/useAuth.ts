@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useMutation } from "react-query";
 import { auth } from "../api/auth";
 import toast from "react-hot-toast";
@@ -21,6 +22,7 @@ const useAuth = () => {
     auth.addCompanyDetails
   );
   const { mutateAsync: SubmitQuiz } = useMutation(auth.submitQuiz);
+  const { mutateAsync: DeleteAccount } = useMutation(auth.deleteAccount);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -207,6 +209,25 @@ const useAuth = () => {
     }
   };
 
+  const handleDeactivate = async () => {
+    if (confirm("Are you sure you wish to deactivate your account?")) {
+      toast.loading("De-activating your account...");
+      try {
+        const data = await DeleteAccount();
+        toast.remove();
+        toast.success(data?.message);
+        sessionStorage.clear();
+        setTimeout(() => {
+          navigate(`/`);
+        }, 300);
+      } catch (e: any) {
+        console.log({ e });
+        toast.remove();
+        toast.error(e?.response?.data?.message);
+      }
+    }
+  };
+
   return {
     handleCreate,
     VerifyEmail,
@@ -221,6 +242,7 @@ const useAuth = () => {
     AddCompanyDetails,
     SubmitQuiz,
     handleLogin,
+    handleDeactivate,
   };
 };
 

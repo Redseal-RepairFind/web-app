@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 // import { routes } from "../routes";
@@ -11,11 +12,14 @@ import {
   faUsers,
   faBuilding,
   faHome,
+  faUserXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../../hooks/useAuth";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const userString = sessionStorage.getItem("repairfind_user");
   const user = userString ? JSON.parse(userString) : null;
+  const { handleDeactivate } = useAuth();
 
   // console.log(user);
 
@@ -124,11 +128,18 @@ const Sidebar = ({ className }: { className?: string }) => {
       </a> */}
 
       <button
+        onClick={handleDeactivate}
+        className="w-full flex items-center mt-10 border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md"
+      >
+        <FontAwesomeIcon icon={faUserXmark} />
+        <p>De-activate Account?</p>
+      </button>
+      <button
         onClick={() => {
           sessionStorage.clear();
           navigate("/");
         }}
-        className="w-full flex items-center mt-10 border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md"
+        className="w-full flex items-center border border-transparent gap-2 p-2 mb-2 hover:bg-gray-100 hover:border-gray-100 duration-200 rounded-md"
       >
         <FontAwesomeIcon icon={faArrowRightFromBracket} />
         <p>Logout</p>

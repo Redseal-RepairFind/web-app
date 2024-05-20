@@ -2,7 +2,7 @@ const getBaseUrl = () => {
   const hostname = window.location.hostname;
 
   if (hostname.includes("localhost")) {
-    return process.env.REACT_APP_TEST_URL;
+    return process.env.REACT_APP_BASE_URL;
   } else {
     return process.env.REACT_APP_BASE_URL;
   }
