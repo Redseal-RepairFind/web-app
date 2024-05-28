@@ -58,24 +58,34 @@ function App() {
   // console.log(isCanada);
 
   const checkLocationInCanada = async (latitude: any, longitude: any) => {
-    // Call a reverse geocoding API to get the user's country
+    // Call a reverse geocoding API to get the user's country and locality
     const response = await fetch(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
     );
     const data = await response.json();
     const userCountry = data.countryCode;
-    const userLocality = data.locality;
+    const userProvince = data.principalSubdivision;
+    // const userLocality = data.locality;
 
-    // Check if the user is in Canada (country code 'CA')
+    // List of cities to include in British Columbia
+    // const bcCities = [
+    //   "Vancouver",
+    //   "Burnaby",
+    //   "Richmond",
+    //   "New Westminster",
+    //   "Surrey",
+    //   "Delta",
+    //   "Coquitlam",
+    //   "Langley",
+    //   "White Rock",
+    //   "Port Coquitlam",
+    //   "Port Moody",
+    //   "Maple Ridge",
+    //   "Pitt Meadows"
+    // ];
 
-    // console.log(userLocality);
-
-    // console.log(userCountry);
-
-    if (
-      userCountry === "CA" &&
-      (userLocality === "Langley" || userLocality === "South Surrey")
-    ) {
+    // Check if the user is in Canada, in British Columbia, and in one of the specified cities
+    if (userCountry === "CA" && userProvince === "British Columbia") {
       setIsCanada(true);
     } else {
       setIsCanada(false);
