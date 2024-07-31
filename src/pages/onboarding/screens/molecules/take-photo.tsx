@@ -25,23 +25,38 @@ const TakePhoto = ({
   // console.log(token);
 
   useEffect(() => {
+    handleIdentity();
+  }, []);
+
+  useEffect(() => {
     let socket: Socket;
 
     if (token) {
-      // console.log("ln42", token);
+      console.log("ln42", token);
+      // socket = io(`${URL}`, {
+      //   extraHeaders: {
+      //     token,
+      //   },
+      // });
       socket = io(`${URL}`, {
-        extraHeaders: {
-          token,
-        },
+        // query: {
+        //   token,
+        // },
+        extraHeaders: { token },
+        // or if using extraHeaders, make sure it's supported
+        // extraHeaders: {
+        //   Authorization: `Bearer ${token}`,
+        // },
       });
 
       socket.on("connect", () => {
         toast.remove();
+        console.log("Connection successful..");
         toast.success("Connection successful..");
       });
 
       socket.on("STRIPE_IDENTITY", (data) => {
-        // console.log("Received stripe_identity event:", data);
+        console.log("Received stripe_identity event:", data);
 
         if (data.status === "verified") {
           toast.remove();
@@ -87,10 +102,6 @@ const TakePhoto = ({
       toast.error(e?.response?.data?.message);
     }
   };
-
-  useEffect(() => {
-    handleIdentity();
-  }, []);
 
   return (
     <div className="w-full mt-[80px]">
