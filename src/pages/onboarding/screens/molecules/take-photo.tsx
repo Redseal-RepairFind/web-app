@@ -32,26 +32,13 @@ const TakePhoto = ({
     let socket: Socket;
 
     if (token) {
-      console.log("ln42", token);
-      // socket = io(`${URL}`, {
-      //   extraHeaders: {
-      //     token,
-      //   },
-      // });
-      socket = io(`${URL}`, {
-        // query: {
-        //   token,
-        // },
+      // console.log("ln42", token);
+      socket = io(`${process.env.REACT_APP_SOCKET_URL}`, {
         extraHeaders: { token },
-        // or if using extraHeaders, make sure it's supported
-        // extraHeaders: {
-        //   Authorization: `Bearer ${token}`,
-        // },
       });
 
       socket.on("connect", () => {
         toast.remove();
-        console.log("Connection successful..");
         toast.success("Connection successful..");
       });
 
@@ -71,8 +58,6 @@ const TakePhoto = ({
       });
 
       socket.on("disconnect", () => {
-        // toast.remove();
-        // toast.success("Disconnected..");
         console.log("Disconnected from Socket.IO server");
       });
 
