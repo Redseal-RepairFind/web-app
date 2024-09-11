@@ -26,7 +26,10 @@ const Welcomequiz = ({ handleIndex, url }: { handleIndex: any; url: any }) => {
           height="700"
         >
           <source
-            src="https://contractorapp.s3.eu-west-3.amazonaws.com/y2mate.com+-+RepairFind_480p.mp4"
+            src={
+              url ??
+              "https://contractorapp.s3.eu-west-3.amazonaws.com/y2mate.com+-+RepairFind_480p.mp4"
+            }
             type="video/mp4"
           />
           {handleLanguageChoice("browser_support_tag")}

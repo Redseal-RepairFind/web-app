@@ -3,7 +3,13 @@ import useLanguage from "../../../hooks/useLanguage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 
-const Instructions = ({ handleIndex }: { handleIndex: any }) => {
+const Instructions = ({
+  handleIndex,
+  questionLength,
+}: {
+  handleIndex: any;
+  questionLength?: any;
+}) => {
   const { handleLanguageChoice } = useLanguage();
   return (
     <div className="w-full h-[100vh] flex items-center justify-center">
@@ -22,7 +28,7 @@ const Instructions = ({ handleIndex }: { handleIndex: any }) => {
           </div>
           <div>
             <p className="text-lg font-semibold text-center md:text-left w-full">
-              10 {handleLanguageChoice("questions")}
+              {questionLength ?? 10} {handleLanguageChoice("questions")}
             </p>
             <p className="text-gray-600 text-center md:text-left w-full">
               {handleLanguageChoice("question_info")}

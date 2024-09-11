@@ -57,6 +57,22 @@ export const auth = {
       .post(`/contractor/quiz-submit`, payload)
       .then(({ data }: any) => data),
 
+  getDirectQuiz: (sessionId: any) =>
+    client
+      .get(`/common/trainings/get-quiz?session=${sessionId}`)
+      .then(({ data }: any) => data),
+
+  submitDirectQuiz: ({
+    sessionId,
+    payload,
+  }: {
+    sessionId: any;
+    payload: any;
+  }) =>
+    client
+      .post(`/common/trainings/submit-quiz?session=${sessionId}`, payload)
+      .then(({ data }: any) => data),
+
   addCompanyDetails: (payload: any) =>
     client
       .post(`/contractor/me/company`, payload)

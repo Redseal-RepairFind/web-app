@@ -22,6 +22,7 @@ const useAuth = () => {
     auth.addCompanyDetails
   );
   const { mutateAsync: SubmitQuiz } = useMutation(auth.submitQuiz);
+  const { mutateAsync: SubmitDirectQuiz } = useMutation(auth.submitDirectQuiz);
   const { mutateAsync: DeleteAccount } = useMutation(auth.deleteAccount);
 
   const location = useLocation();
@@ -241,6 +242,7 @@ const useAuth = () => {
     ResendEmail,
     AddCompanyDetails,
     SubmitQuiz,
+    SubmitDirectQuiz,
     handleLogin,
     handleDeactivate,
   };

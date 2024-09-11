@@ -6,6 +6,7 @@ import Onboardingroutes from "./pages/onboarding/onboarding-routes";
 import Accountroutes from "./pages/account/account-routes";
 import ResetPassword from "./pages/auth/pages/reset-password";
 import Quiz from "./pages/quiz/quiz";
+import DirectQuiz from "./pages/quiz/direct-quiz";
 import toast, { Toaster } from "react-hot-toast";
 import { UserContext } from "./context/user-context";
 import { ContextType } from "./types";
@@ -137,6 +138,7 @@ function App() {
             <Route path="/account/*" element={<Accountroutes />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/quiz" element={<Quiz />} />
+            <Route path="/take-quiz/:token" element={<DirectQuiz />} />
           </Routes>
         </UserContext.Provider>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />
