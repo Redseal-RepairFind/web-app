@@ -23,7 +23,7 @@ function App() {
 
   const location = useLocation();
 
-  // console.log(location.pathname);
+  console.log(location.pathname);
 
   const [isCanada, setIsCanada] = useState<boolean>(false);
   const [isFetching, setIsFetching] = useState<boolean>(true);
@@ -34,25 +34,32 @@ function App() {
 
   useEffect(() => {
     // Get user's location
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLocationIsEnabled(true);
-          const { latitude, longitude } = position.coords;
-          // Call a function to check if the user is in Canada
-          checkLocationInCanada(latitude, longitude);
-        },
-        (error) => {
-          setLocationIsEnabled(false);
-          setIsFetching(false);
-          toast.error("Error getting user location:");
-          console.log(error);
-        }
-      );
+
+    if (location.pathname.includes("training")) {
+      toast.remove();
+      toast.success("Welcome...");
+      return;
     } else {
-      setLocationIsEnabled(false);
-      setIsFetching(false);
-      toast.error("Geolocation is not supported by this browser.");
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLocationIsEnabled(true);
+            const { latitude, longitude } = position.coords;
+            // Call a function to check if the user is in Canada
+            checkLocationInCanada(latitude, longitude);
+          },
+          (error) => {
+            setLocationIsEnabled(false);
+            setIsFetching(false);
+            toast.error("Error getting user location:");
+            console.log(error);
+          }
+        );
+      } else {
+        setLocationIsEnabled(false);
+        setIsFetching(false);
+        toast.error("Geolocation is not supported by this browser.");
+      }
     }
   }, []);
 
@@ -138,7 +145,7 @@ function App() {
             <Route path="/account/*" element={<Accountroutes />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/quiz" element={<Quiz />} />
-            <Route path="/take-quiz/:token" element={<DirectQuiz />} />
+            <Route path="/training" element={<DirectQuiz />} />
           </Routes>
         </UserContext.Provider>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-left" />

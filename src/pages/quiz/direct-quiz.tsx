@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 import { useQuery } from "react-query";
 import { auth } from "../../api/auth";
@@ -25,7 +25,10 @@ const DirectQuiz = () => {
 
   const { token } = useParams();
 
-  console.log(token);
+  const [searchParams] = useSearchParams(); // Hook to access the search params
+  const session = searchParams.get("session"); // Extract the 'session' query parameter
+
+  console.log(session);
 
   const { data, isLoading, isError } = useQuery(
     ["Direct Quiz"],
@@ -74,6 +77,7 @@ const DirectQuiz = () => {
       {screenIndex === 2 && (
         <DirectQuestions
           id={data?._id}
+          session={session}
           questions={data?.questions}
           handleIndex={handleIndex}
         />

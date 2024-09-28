@@ -16,21 +16,21 @@ const DirectQuestions = ({
   questions,
   id,
   handleIndex,
+  session,
 }: {
   questions: any;
   handleIndex: any;
   id: any;
+  session: any;
 }) => {
   const { SubmitDirectQuiz } = useAuth();
 
-  const { token } = useParams();
-
-  console.log(token);
+  // console.log(session, "questions");
   // console.log(data);
 
   const [questionIndex, setQuestionIndex] = useState<any>(0);
 
-  console.log(questions);
+  // console.log(id);
 
   const [answers, setAnswers] = useState<any>(
     questions?.map((question: any) => ({
@@ -92,12 +92,15 @@ const DirectQuestions = ({
           }),
         };
         const response = await SubmitDirectQuiz({
-          sessionId: "666b0e50c4278aca070a88fe%2566757e4a795e7db532309997",
+          sessionId: session,
           payload,
         });
         console.log(response);
         toast.remove();
         toast.success(response?.message);
+        setTimeout(() => {
+          handleIndex(3);
+        }, 1000);
       } catch (e: any) {
         console.log({ e });
         toast.remove();
