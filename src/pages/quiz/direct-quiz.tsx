@@ -28,12 +28,12 @@ const DirectQuiz = () => {
   const [searchParams] = useSearchParams(); // Hook to access the search params
   const session = searchParams.get("session"); // Extract the 'session' query parameter
 
-  console.log(session);
+  // console.log(session);
 
   const { data, isLoading, isError } = useQuery(
     ["Direct Quiz"],
     () => {
-      return auth.getDirectQuiz(token);
+      return auth.getDirectQuiz(session);
     },
     {
       cacheTime: 30000,
